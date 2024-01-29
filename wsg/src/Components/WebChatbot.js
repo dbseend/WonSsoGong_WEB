@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { createGlobalStyle } from "styled-components";
 
-const Chatbot = () => {
+const WebChatbot = () => {
    const [messages, setMessages] = useState([]);
    const [userInput, setUserInput] = useState('');
    const [loading, setLoading] = useState(false);
 
-   const apiKey = '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';
+   const apiKey = '';
    const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
 
    const addMessage = (sender, message) => {
@@ -90,4 +90,4 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default Chatbot;
+export default WebChatbot;

@@ -1,6 +1,6 @@
 import React from "react";
-//import WebChatbot from "../Components/WebChatbot";
-import WebNavbar from "../Components/WebNavbar";
+import WebChatbot from "../Components/WebChatbot";
+//import WebNavbar from "../Components/WebNavbar";
 
 const Chatbot = () => {
   return (

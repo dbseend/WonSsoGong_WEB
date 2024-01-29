@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { createGlobalStyle } from "styled-components";
 
+
 const WebChatbot = () => {
+
    const [messages, setMessages] = useState([]);
    const [userInput, setUserInput] = useState('');
    const [loading, setLoading] = useState(false);
+
 
    const apiKey = '';
    const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
@@ -89,5 +92,6 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 `;
+
 
 export default WebChatbot;

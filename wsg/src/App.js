@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Chatbot from "./Pages/Chatbot";
+import Chatbot from "./Components/WebChatbot";
 import Main from "./Pages/Main";
 
 function App() {

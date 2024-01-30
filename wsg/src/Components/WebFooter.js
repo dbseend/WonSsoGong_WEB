@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
-import { useRecoilState } from "recoil";
-import { useNavigate, useLocation } from  "react-router-dom";
 
 const WebFooter = () => {
 
@@ -17,9 +14,9 @@ const FooterContainer = styled.div`
     display: flex;
     justify-content: center; /* 가운데 정렬을 위해 변경 */
     align-items: center;
-    height: 50px; /* 높이 조정 */
+    height: 40px; /* 높이 조정 */
     flex-shrink: 0;
-    background: rgba(43, 74, 154, 0.60);
+    background: #5379c2;
     backdrop-filter: blur(10px);
     width: 100%;
     position: fixed;

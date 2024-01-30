@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
-import { useRecoilState } from "recoil";
 import { useNavigate, useLocation } from  "react-router-dom";
 
 const WebNavbar = () => {
@@ -31,9 +29,6 @@ const WebNavbar = () => {
             <Menu onClick={handleTutorial}>튜토리얼</Menu>
             <Menu>(서비스 이름)</Menu>
             <Menu>법안 분석</Menu>
-            {/* <Menu onClick = {handleClick}>게시판</Menu> */}
-            {/* <Menu onClick = {handleGoBack}>이전화면</Menu> */}
-            {/* <Menu onClick = {handleGoRoot}>첫화면</Menu> */}
         </NavbarContainer>
     );
 }
@@ -44,10 +39,13 @@ const NavbarContainer = styled.div`
     align-items: center;
     height: 50px;
     flex-shrink: 0;
-    background: rgba(43, 74, 154, 0.60);
+    background: #5379c2;
     backdrop-filter: blur(10px);
     width: 100%;
-    position: relative; /* 상대적인 위치 설정 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 `;
 
 const Menu = styled.div`

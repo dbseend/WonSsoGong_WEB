@@ -1,23 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
+import GlobalStyle from "./GlobalStyle";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 
-const Main = () => {
+const WebMain = () => {
   return (
-  <>
-  <GlobalStyle />
-    Hello, World!
-  </>
+    <>
+      <GlobalStyle />
+      Main
+    </>
   );
 };
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin : 0;
-    padding: 0;
-  }
-`;
-
-export default Main;
+export default WebMain;

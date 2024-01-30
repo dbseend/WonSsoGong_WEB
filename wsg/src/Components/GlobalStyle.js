@@ -14,5 +14,4 @@ const GlobalStyle = createGlobalStyle`
     align-items: center;
   }
 `;
-
 export default GlobalStyle;

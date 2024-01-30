@@ -5,7 +5,19 @@ import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 
 const Main = () => {
-  return (<>Hello, World!</>);
+  return (
+  <>
+  <GlobalStyle />
+    Hello, World!
+  </>
+  );
 };
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin : 0;
+    padding: 0;
+  }
+`;
 
 export default Main;

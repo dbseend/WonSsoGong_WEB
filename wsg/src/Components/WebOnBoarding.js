@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import FluentArrow from "../Assets/FluentArrow.svg";
@@ -6,8 +6,12 @@ import intersectImage1 from "../Assets/Intersect-3.png";
 import intersectImage2 from "../Assets/Intersect-1.png";
 import intersectImage3 from "../Assets/Intersect.png";
 import intersectImage4 from "../Assets/Intersect-2.png";
+import WebFooter from "./WebFooter";
 
 const WebOnBoarding = () => {
+
+  const [showFooter, setShowFooter] = useState(false);
+
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -41,6 +45,29 @@ const WebOnBoarding = () => {
     // Add more data for other Rects
   ];
 
+  useEffect(() => { // 스크롤 이벤트 리스너 등록
+    const handleScroll = () => {
+      const scrolledHeight = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+
+      // 스크롤이 일정 높이 이상 내려갔을 때 Footer 표시
+      if (scrolledHeight + windowHeight >= documentHeight) {
+        setShowFooter(true);
+      } else {
+        setShowFooter(false);
+      }
+    };
+
+    // 스크롤 이벤트 리스너 등록
+    window.addEventListener("scroll", handleScroll);
+
+    // 컴포넌트 언마운트 시 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <Div>
       <GlobalStyle />
@@ -66,6 +93,7 @@ const WebOnBoarding = () => {
         ))}
       </RectArea>
       <Arrow src={FluentArrow} onClick={handleScrollToTop} />
+      {showFooter && <WebFooter />} 
     </Div>
   );
 };

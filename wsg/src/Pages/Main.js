@@ -1,5 +1,5 @@
 import React from "react";
-import WebMain from "../Components/WebMain";
+import WebMain from "../Components/WebOnBoarding";
 
 const Main = () => {
   return (

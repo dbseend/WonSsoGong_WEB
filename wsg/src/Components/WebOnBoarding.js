@@ -1,14 +1,48 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
-import { useRecoilState } from "recoil";
-import { useNavigate } from "react-router-dom";
-// import Arrow from '../Assets/Arrow.svg';
 import FluentArrow from "../Assets/FluentArrow.svg";
-import Ellipse from "../Assets/Ellipse 6.svg";
+import intersectImage1 from "../Assets/Intersect-3.png";
+import intersectImage2 from "../Assets/Intersect-1.png";
+import intersectImage3 from "../Assets/Intersect.png";
+import intersectImage4 from "../Assets/Intersect-2.png";
+
 const WebOnBoarding = () => {
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const rectData = [
+    {
+      title: "법안 발의",
+      content: "사용자가 가상 국회의원이 되어 법안을 발의하는 시뮬레이션",
+      image: intersectImage1,
+    },
+    {
+      title: "토론 참여",
+      content: "다른 가상 의원들과 법안에 대해 토론 및 사용자 의견 제시",
+      image: intersectImage2,
+    },
+    {
+      title: "투표 진행",
+      content:
+        "토론 시간이 끝난 후 법안에 대한 최종 투표(찬성, 반대, 기권) 참여",
+      image: intersectImage3,
+    },
+    {
+      title: "법안 분석",
+      content:
+        "내가 선택한 법안 주제와 같은 주제의 법안을 이해하기 쉬운 언어로 요약 및 정보 제공",
+      image: intersectImage4,
+    },
+    // Add more data for other Rects
+  ];
+
   return (
-    <>
+    <Div>
       <GlobalStyle />
       <Top>
         <div>
@@ -22,16 +56,33 @@ const WebOnBoarding = () => {
         <Button>시작하기</Button>
       </Top>
       <RectArea>
-        <Rect>법안 발의</Rect>
-        <Rect>토론 참여</Rect>
-        <Rect>투표 진행</Rect>
-        <Rect>법안 분석</Rect>
+        {rectData.map((data, index) => (
+          <Rect
+            key={index}
+            title={data.title}
+            content={data.content}
+            image={data.image}
+          />
+        ))}
       </RectArea>
-      <img src={Ellipse} />
-      <img src={FluentArrow} />
-    </>
+      <Arrow src={FluentArrow} onClick={handleScrollToTop} />
+    </Div>
   );
 };
+
+const Rect = ({ title, content, image }) => (
+  <StyledRect>
+    <BillText className="bill-text">{title}</BillText>
+    <NewText className="new-text">{title}</NewText>
+    <NewSubText className="newSub-text">{content}</NewSubText>
+    <RectImage className =" rect-image" src={image} alt={title} />
+  </StyledRect>
+);
+
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const Top = styled.div`
   margin-top: 168px;
@@ -40,6 +91,7 @@ const Top = styled.div`
   align-items: center;
   text-align: center;
 `;
+
 const Title = styled.div`
   color: #fff;
   font-family: "Pretendard Variable";
@@ -76,6 +128,7 @@ const Button = styled.div`
   line-height: 40px;
   text-align: center;
   margin-top: 65px;
+  cursor: pointer;
 `;
 
 const RectArea = styled.div`
@@ -84,7 +137,9 @@ const RectArea = styled.div`
   gap: 26px;
   margin-top: 88px;
 `;
-const Rect = styled.div`
+
+const StyledRect = styled.div`
+  position: relative;
   width: 206px;
   height: 612px;
   flex-shrink: 0;
@@ -103,18 +158,104 @@ const Rect = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: 150px;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease,
+    backdrop-filter 0.3s ease;
+
+  &::before {
+    content: url(${(props) => props.image});
+    display: block;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  &:hover {
+    border-radius: 103px;
+    background: linear-gradient(
+      180deg,
+      rgba(246, 246, 246, 0.72) 6%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    box-shadow: 0px 3.6px 3.6px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4.5px);
+
+    &::before {
+      opacity: 1;
+    }
+    .rect-image {
+      opacity: 1;
+    }
+    .bill-text {
+      opacity: 0;
+    }
+
+    .new-text {
+      opacity: 1;
+    }
+
+    .newSub-text {
+      opacity: 1;
+    }
+    
+  }
 `;
 
-const ButtonEllipse = styled.img`
-  width: 64px;
-  height: 64px;
-  flex-shrink: 0;
-  fill: linear-gradient(180deg, #f6f6f6 -18%, rgba(246, 246, 246, 0) 120.5%);
-  opacity: 0.8;
-  filter: drop-shadow(0px 3.2px 3.2px rgba(0, 0, 0, 0.25));
+const RectImage = styled.img`
+opacity: 0;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s ease;
+  z-index: 0;
+`;
+const BillText = styled.div`
+  opacity: 1;
+  /* transition: opacity 1s ease; */
 `;
 
-// const FluentArrow = styled.img`
-//   z-index: 2;
-// `;
+const NewText = styled.div`
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  position: absolute;
+  top: 12.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--Primary, #ffa130);
+  -webkit-text-stroke-width: 1;
+  -webkit-text-stroke-color: #000;
+  font-family: "Pretendard Variable";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  z-index: 2;
+`;
+
+const NewSubText = styled.div`
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  position: absolute;
+  top: 45.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 152px;
+  color: #000;
+  font-family: "Pretendard Variable";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
+
+const Arrow = styled.img`
+  margin-top: 742.8px;
+  align-self: center;
+  cursor: pointer;
+`;
+
 export default WebOnBoarding;

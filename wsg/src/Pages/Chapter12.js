@@ -1,13 +1,13 @@
 import React from "react";
 import WebFooter from "../Components/WebFooter";
 import WebNavbar from "../Components/WebNavbar";
-import WebMain from "../Components/WebMain";
+import WebChapter12 from "../Components/WebChapter12";
 
 const Main = () => {
   return (
     <div>
       <WebNavbar />
-      <WebMain />
+      <WebChapter12 />
       <WebFooter />
     </div>
   );

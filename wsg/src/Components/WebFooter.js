@@ -29,10 +29,12 @@ const Menu = styled.div`
     color: white; /* 글자색 설정 */
     font-family: "Pretendard Variable";
     font-style: normal;
-    line-height: 50px; /* 부모인 FooterContainer의 높이와 동일하게 맞춤 */
-    margin-left: 5px; /* 왼쪽 여백 조정 */
-    margin-right: 50px; /* 오른쪽 여백 조정 */
+    height: 100%; /* 높이를 100%로 설정 */
+    display: flex;
+    align-items: center; /* 상하 중앙 정렬 */
+    margin: 0 10px; /* 좌우 간격 조정 */
     font-size: 10px;
+    text-align: center; /* 텍스트 가운데 정렬 */
 `;
 
 export default WebFooter;

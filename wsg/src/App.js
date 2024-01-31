@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Chatbot from "./Pages/Chatbot";
 import OnBoarding from "./Pages/OnBoarding";
 import Main from "./Pages/Main";
+import Bill from "./Pages/Bill";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<OnBoarding />} />
         <Route path="/main" element={<Main />} />
         <Route path="/chatbot" element={<Chatbot />} />
+        <Route path="/bill" element={<Bill />} />
       </Routes>
     </Router>
   );

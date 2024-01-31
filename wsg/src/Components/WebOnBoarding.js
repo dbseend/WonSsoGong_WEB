@@ -7,10 +7,12 @@ import intersectImage2 from "../Assets/Intersect-1.png";
 import intersectImage3 from "../Assets/Intersect.png";
 import intersectImage4 from "../Assets/Intersect-2.png";
 import WebFooter from "./WebFooter";
+import { useNavigate, useLocation } from  "react-router-dom";
 
 const WebOnBoarding = () => {
 
   const [showFooter, setShowFooter] = useState(false);
+  const navigate = useNavigate();
 
   const handleScrollToTop = () => {
     window.scrollTo({
@@ -18,6 +20,10 @@ const WebOnBoarding = () => {
       behavior: "smooth",
     });
   };
+
+  const handleClickStart = () => {
+    navigate("/bill");  // wirte페이지로 이동
+  }
 
   const rectData = [
     {
@@ -80,7 +86,7 @@ const WebOnBoarding = () => {
             과정의 이해와 정치적 관심을 높임
           </SubT>
         </div>
-        <Button>시작하기</Button>
+        <Button onClick = {handleClickStart}>시작하기</Button>
       </Top>
       <RectArea>
         {rectData.map((data, index) => (

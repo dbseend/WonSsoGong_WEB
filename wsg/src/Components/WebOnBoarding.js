@@ -7,23 +7,20 @@ import intersectImage2 from "../Assets/Intersect-1.png";
 import intersectImage3 from "../Assets/Intersect.png";
 import intersectImage4 from "../Assets/Intersect-2.png";
 import WebFooter from "./WebFooter";
-import { useNavigate, useLocation } from  "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const WebOnBoarding = () => {
-
   const [showFooter, setShowFooter] = useState(false);
   const navigate = useNavigate();
-
+  const moveToMain = () => {
+    navigate("/main");
+  };
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   };
-
-  const handleClickStart = () => {
-    navigate("/bill");  // wirte페이지로 이동
-  }
 
   const rectData = [
     {
@@ -51,7 +48,8 @@ const WebOnBoarding = () => {
     // Add more data for other Rects
   ];
 
-  useEffect(() => { // 스크롤 이벤트 리스너 등록
+  useEffect(() => {
+    // 스크롤 이벤트 리스너 등록
     const handleScroll = () => {
       const scrolledHeight = window.scrollY;
       const windowHeight = window.innerHeight;
@@ -86,7 +84,7 @@ const WebOnBoarding = () => {
             과정의 이해와 정치적 관심을 높임
           </SubT>
         </div>
-        <Button onClick = {handleClickStart}>시작하기</Button>
+        <Button onClick={moveToMain}>시작하기</Button>
       </Top>
       <RectArea>
         {rectData.map((data, index) => (
@@ -99,7 +97,7 @@ const WebOnBoarding = () => {
         ))}
       </RectArea>
       <Arrow src={FluentArrow} onClick={handleScrollToTop} />
-      {showFooter && <WebFooter />} 
+      {showFooter && <WebFooter />}
     </Div>
   );
 };
@@ -109,13 +107,15 @@ const Rect = ({ title, content, image }) => (
     <BillText className="bill-text">{title}</BillText>
     <NewText className="new-text">{title}</NewText>
     <NewSubText className="newSub-text">{content}</NewSubText>
-    <RectImage className =" rect-image" src={image} alt={title} />
+    <RectImage className=" rect-image" src={image} alt={title} />
   </StyledRect>
 );
 
 const Div = styled.div`
   display: flex;
   flex-direction: column;
+  /* overflow: scroll; */
+  align-items: center;
 `;
 
 const Top = styled.div`
@@ -234,12 +234,11 @@ const StyledRect = styled.div`
     .newSub-text {
       opacity: 1;
     }
-    
   }
 `;
 
 const RectImage = styled.img`
-opacity: 0;
+  opacity: 0;
   position: absolute;
   top: 20%;
   left: 50%;
@@ -260,8 +259,7 @@ const NewText = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   color: var(--Primary, #ffa130);
-  -webkit-text-stroke-width: 1;
-  -webkit-text-stroke-color: #000;
+  text-shadow: 1px 1px 1px #000;
   font-family: "Pretendard Variable";
   font-size: 24px;
   font-style: normal;
@@ -287,7 +285,7 @@ const NewSubText = styled.div`
 `;
 
 const Arrow = styled.img`
-  margin-top: 742.8px;
+  margin-top: 750px;
   align-self: center;
   cursor: pointer;
 `;

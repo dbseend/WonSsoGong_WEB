@@ -1,14 +1,14 @@
 import React from "react";
-import WebBill from "../Components/WebBill";
 import WebFooter from "../Components/WebFooter";
 import WebNavbar from "../Components/WebNavbar";
+import WebChapter12 from "../Components/WebChapter12";
 
 const Main = () => {
   return (
     <div>
-        <WebNavbar />
-        <WebBill />
-        <WebFooter />
+      <WebNavbar />
+      <WebChapter12 />
+      <WebFooter />
     </div>
   );
 };

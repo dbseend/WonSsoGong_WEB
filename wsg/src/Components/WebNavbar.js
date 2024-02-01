@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate, useLocation } from  "react-router-dom";
+import GlobalStyle from "./GlobalStyle";
 
 const WebNavbar = () => {
     const navigate = useNavigate();
@@ -27,7 +28,7 @@ const WebNavbar = () => {
             <Logo>로고</Logo>
             <ColorMenu onClick={handleGoRoot}>홈</ColorMenu>
             <Menu onClick={handleTutorial}>튜토리얼</Menu>
-            <Menu>(서비스 이름)</Menu>
+            <Menu>방방국국</Menu>
             <Menu>법안 분석</Menu>
         </NavbarContainer>
     );
@@ -39,7 +40,7 @@ const NavbarContainer = styled.div`
     align-items: center;
     height: 50px;
     flex-shrink: 0;
-    background: #5379c2;
+    background: var(--secondary-bg, #77A1F5);
     backdrop-filter: blur(10px);
     width: 100%;
     position: fixed;
@@ -57,6 +58,7 @@ const Menu = styled.div`
     font-style: normal;
     line-height: normal;
 `;
+
 const ColorMenu = styled(Menu)`
     color: #FFA438;
 `;

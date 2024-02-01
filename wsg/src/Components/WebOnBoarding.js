@@ -48,26 +48,19 @@ const WebOnBoarding = () => {
     // Add more data for other Rects
   ];
 
-  useEffect(() => {
-    // 스크롤 이벤트 리스너 등록
+  useEffect(() => { // 스크롤 이벤트 리스너 등록
     const handleScroll = () => {
       const scrolledHeight = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
-
-      // 스크롤이 일정 높이 이상 내려갔을 때 Footer 표시
-      if (scrolledHeight + windowHeight >= documentHeight) {
+      if (scrolledHeight + windowHeight >= documentHeight) { // 스크롤이 일정 높이 이상 내려갔을 때 Footer 표시
         setShowFooter(true);
       } else {
         setShowFooter(false);
       }
     };
-
-    // 스크롤 이벤트 리스너 등록
-    window.addEventListener("scroll", handleScroll);
-
-    // 컴포넌트 언마운트 시 이벤트 리스너 제거
-    return () => {
+    window.addEventListener("scroll", handleScroll); // 스크롤 이벤트 리스너 등록
+    return () => { // 컴포넌트 언마운트 시 이벤트 리스너 제거
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -76,13 +69,16 @@ const WebOnBoarding = () => {
     <Div>
       <GlobalStyle />
       <Top>
+      <StyledCircleWrapper>
+        <StyledSecondCircle/> {/* 그 위에 원 */}
+        <StyledCircle /> {/* 맨 아래 원 */}
+      </StyledCircleWrapper>
         <div>
-          <Title>가상 국회 체험 서비스를 제공합니다.</Title>
-          <SubT>
-            사용자가 가상의 국회 의원이 되어 법안을 발의하고, 토론에 참여하며,
-            투표를 진행하는 등의 활동을 체험할 수 있는 서비스. 국회의 의사결정
-            과정의 이해와 정치적 관심을 높임
-          </SubT>
+            <WhiteText>국회의 일부가 되어 국회 의원이 되어보는 경험,</WhiteText>{" "}
+            <GradientText> 방방국국!</GradientText>
+            <SubT>
+              가상 국회 의원으로서 법안을 발의하고, 토론에 참여하며, 투표하는 등의 다양한 활동을 체험할 수 있습니다.
+            </SubT>
         </div>
         <Button onClick={moveToMain}>시작하기</Button>
       </Top>
@@ -119,7 +115,7 @@ const Div = styled.div`
 `;
 
 const Top = styled.div`
-  margin-top: 168px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -137,7 +133,7 @@ const Title = styled.div`
 
 const SubT = styled.div`
   width: 887px;
-  height: 60px;
+  height: auto; /* 높이를 자동으로 조절하도록 변경 */
   flex-shrink: 0;
   color: #fff;
   font-family: "Pretendard Variable";
@@ -146,15 +142,26 @@ const SubT = styled.div`
   font-weight: 400;
   line-height: normal;
   margin-top: 32px;
+  white-space: pre-line; /* 줄 바꿈을 유지하도록 추가 */
 `;
 
 const Button = styled.div`
   width: 240px;
   height: 40px;
   flex-shrink: 0;
+  display: flex; /* 수평 가운데 정렬을 위한 설정 */
+  justify-content: center; /* 수평 가운데 정렬을 위한 설정 */
+  align-items: center; /* 수직 가운데 정렬을 위한 설정 */
   border-radius: 84px;
-  background: #ffa438;
-  color: #5379c2;
+  background: linear-gradient(
+    90deg,
+    #FFC634 0%,
+    #FFD34A 10%,
+    #FFEA5F 30%,
+    #FFF275 50%,
+    #D8F5DD 100%
+  );
+  color: #5379C2;
   font-family: "Pretendard Variable";
   font-size: 25.2px;
   font-style: normal;
@@ -237,6 +244,38 @@ const StyledRect = styled.div`
   }
 `;
 
+const StyledCircle = styled.div`
+  position: relative;
+  width: 2290px;
+  height: 1000px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  opacity: 0.4;
+  background: linear-gradient(180deg, rgba(246, 246, 246, 0.00) 54%, #F6F6F6 100%);
+`;
+
+const StyledCircleWrapper = styled.div`
+  position: absolute;
+  top: 50%; /* 중앙 정렬을 위해 top 50% 설정 */
+  left: 50%; /* 중앙 정렬을 위해 left 50% 설정 */
+  transform: translate(-50%, -50%); /* 중앙 정렬을 위한 transform 설정 */
+  z-index: -1; /* 다른 요소보다 뒤에 위치하도록 설정 */
+`;
+
+const StyledSecondCircle = styled.div`
+  position: absolute;
+  top: calc(50% - 50px); /* 중앙에서 100px 위로 이동 */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2290px;
+  height: 1000px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  opacity: 0.4;
+  background: linear-gradient(180deg, rgba(246, 246, 246, 0.00) 54%, #F6F6F6 100%);
+  z-index: -2; /* 다른 요소보다 뒤에 위치하도록 설정 */
+`;
+
 const RectImage = styled.img`
   opacity: 0;
   position: absolute;
@@ -246,6 +285,7 @@ const RectImage = styled.img`
   transition: opacity 0.5s ease;
   z-index: 0;
 `;
+
 const BillText = styled.div`
   opacity: 1;
   /* transition: opacity 1s ease; */
@@ -288,6 +328,31 @@ const Arrow = styled.img`
   margin-top: 750px;
   align-self: center;
   cursor: pointer;
+`;
+
+const GradientText = styled.div`
+  font-family: "Pretendard Variable";
+  font-size: 40px;
+  font-weight: 800;
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    #FFC634 0%,
+    #FFD34A 10%,
+    #FFEA5F 30%,
+    #FFF275 50%,
+    #D8F5DD 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+const WhiteText = styled.span`
+  color: white;
+  font-family: "Pretendard Variable";
+  font-size: 40px;
+  font-weight: 800;
 `;
 
 export default WebOnBoarding;

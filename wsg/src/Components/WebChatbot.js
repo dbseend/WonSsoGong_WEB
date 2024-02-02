@@ -90,4 +90,4 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default WebChatbot;ㅋ
+export default WebChatbot;

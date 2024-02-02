@@ -7,17 +7,16 @@ import { useNavigate } from "react-router-dom";
 const WebMain = () => {
   const navigate = useNavigate();
   const moveToNext = () => {
-    navigate("/chapter12");
+    navigate("/chapter22");
   };
   return (
     <>
       <GlobalStyle />
-      <ChapTitle>Chapter 1.</ChapTitle>
-      <Title>법안 발의</Title>
+      <ChapTitle>Chapter 2.</ChapTitle>
+      <Title>토론 참여</Title>
       <SubText>
-        사용자가 가상 국회의원이 되어 AI의 도움을 받아...~~~~~ 법안을 발의하는
-        시뮬레이션입니다. 칩을 이용해 ~~~를 하고 AI의 도움을 받아 ~~~~할 수
-        있습니다.
+      사용자가 가상 국회의원이 되어 AI의 도움을 받아...~~~~~ 법안을 발의하는 시뮬레이션입니다. 
+      칩을 이용해 ~~~를 하고 AI의 도움을 받아 ~~~~할 수 있습니다.
       </SubText>
       <Button onClick={moveToNext}>다음으로 넘어가기</Button>
     </>

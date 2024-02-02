@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     margin-top : 120px;
     padding: 0;
-    background: #5379c2;
+    background: var(--secondary-bg, #77A1F5);
     /* z-index: auto; */
     display: flex;
     flex-direction: column;

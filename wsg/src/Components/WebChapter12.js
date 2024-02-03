@@ -4,6 +4,7 @@ import GlobalStyle from "./GlobalStyle";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import Twinkle from "../Assets/Twinkle.svg"
+import { createBill } from "../Api/Api";
 
 const WebChapter12 = () => {
   const navigate = useNavigate();
@@ -17,6 +18,9 @@ const WebChapter12 = () => {
     setSelectedType(type);
   };
 
+  const addBill = () => {
+    createBill();
+  }
   return (
     <>
       <GlobalStyle />
@@ -75,8 +79,8 @@ const WebChapter12 = () => {
           <Form2 placeholder="작성한 법안 주제를 설명해주세요." />
         </Part2>
         <ButtonContainer>
-            <img src ={Twinkle} />
-          <Button onClick={moveToNext}>AI로 완성하기</Button>
+            {/* <img src ={Twinkle} /> */}
+          <Button onClick={addBill}>AI로 완성하기</Button>
         </ButtonContainer>
       </Body>
     </>
@@ -209,6 +213,7 @@ const Part2 = styled.div`
 
 const ButtonContainer = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: center;
 `;
 

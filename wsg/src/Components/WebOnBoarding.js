@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import React, { useState } from "react";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import FluentArrow from "../Assets/FluentArrow.svg";
@@ -19,27 +18,9 @@ import HoverCharBubble from "../Assets/HoverCharBubble.svg";
 import flower from "../Assets/flower.svg";
 import diamond from "../Assets/diamond.svg";
 import circle from "../Assets/circle.svg";
-import GroupA from "../Assets/Group 15.svg";
-import GroupB from "../Assets/Group 16.svg";
-import GroupC from "../Assets/Group 17.svg";
-import GroupD from "../Assets/Group 60.svg";
-import Group1 from "../Assets/Group 50.svg";
-import Group2 from "../Assets/Group 51.svg";
-import Group3 from "../Assets/Group 52.svg";
-import Group4 from "../Assets/Group 53.svg";
-import BasicChar from "../Assets/BasicChar.svg";
-import HoverChar from "../Assets/HoverChar.svg";
-import HoverCharBubble from "../Assets/HoverCharBubble.svg";
-import flower from "../Assets/flower.svg";
-import diamond from "../Assets/diamond.svg";
-import circle from "../Assets/circle.svg";
+
 
 const WebOnBoarding = () => {
-  const [rectHoverd1, setRectHovered1] = useState(false);
-  const [rectHoverd2, setRectHovered2] = useState(false);
-  const [rectHoverd3, setRectHovered3] = useState(false);
-  const [rectHoverd4, setRectHovered4] = useState(false);
-  const [charHovered, setCharHovered] = useState(false);
   const [rectHoverd1, setRectHovered1] = useState(false);
   const [rectHoverd2, setRectHovered2] = useState(false);
   const [rectHoverd3, setRectHovered3] = useState(false);
@@ -185,35 +166,20 @@ const RectArea = styled.div`
 `;
 
 const RectImage = styled.img`
-  /* background: linear-gradient(
-const RectImage = styled.img`
-  /* background: linear-gradient(
-    180deg,
-    rgba(246, 246, 246, 0.9) 6%,
-    rgba(246, 246, 246, 0) 100%*/
   backdrop-filter: blur(30px);
   z-index: 0;
   border-radius: 103px;
   transition: all 0.5s ease;
 `;
-const CharImage = styled.img`
+
 const CharImage = styled.img`
   position: absolute;
-  margin-top: 800px;
-  margin-left: 1110px;
-  z-index: 0;
   margin-top: 800px;
   margin-left: 1110px;
   z-index: 0;
 `;
 const Img2 = styled.img`
-const Img2 = styled.img`
   position: absolute;
-  margin-top: 20px;
-  margin-left: -930px;
-  width: 329px;
-  height: 322px;
-  z-index: -1;
   margin-top: 20px;
   margin-left: -930px;
   width: 329px;
@@ -222,13 +188,7 @@ const Img2 = styled.img`
 `;
 
 const Img3 = styled.img`
-const Img3 = styled.img`
   position: absolute;
-  margin-top: 650px;
-  margin-left: -850px;
-  width: 500.47px;
-  height: 500.47px;
-  z-index: -1;
   margin-top: 650px;
   margin-left: -850px;
   width: 500.47px;
@@ -237,13 +197,7 @@ const Img3 = styled.img`
 `;
 
 const Img4 = styled.img`
-const Img4 = styled.img`
   position: absolute;
-  margin-top: 150px;
-  margin-left: 890px;
-  width: 329px;
-  height: 322px;
-  z-index: -1;
   margin-top: 150px;
   margin-left: 890px;
   width: 329px;
@@ -291,11 +245,5 @@ const BubbleImage = styled.img`
   z-index: 1;
 `;
 
-const BubbleImage = styled.img`
-  position: absolute;
-  margin-top: 800px;
-  margin-left: 450px;
-  z-index: 1;
-`;
 
 export default WebOnBoarding;

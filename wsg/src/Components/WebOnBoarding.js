@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import FluentArrow from "../Assets/FluentArrow.svg";
@@ -18,8 +19,27 @@ import HoverCharBubble from "../Assets/HoverCharBubble.svg";
 import flower from "../Assets/flower.svg";
 import diamond from "../Assets/diamond.svg";
 import circle from "../Assets/circle.svg";
+import GroupA from "../Assets/Group 15.svg";
+import GroupB from "../Assets/Group 16.svg";
+import GroupC from "../Assets/Group 17.svg";
+import GroupD from "../Assets/Group 60.svg";
+import Group1 from "../Assets/Group 50.svg";
+import Group2 from "../Assets/Group 51.svg";
+import Group3 from "../Assets/Group 52.svg";
+import Group4 from "../Assets/Group 53.svg";
+import BasicChar from "../Assets/BasicChar.svg";
+import HoverChar from "../Assets/HoverChar.svg";
+import HoverCharBubble from "../Assets/HoverCharBubble.svg";
+import flower from "../Assets/flower.svg";
+import diamond from "../Assets/diamond.svg";
+import circle from "../Assets/circle.svg";
 
 const WebOnBoarding = () => {
+  const [rectHoverd1, setRectHovered1] = useState(false);
+  const [rectHoverd2, setRectHovered2] = useState(false);
+  const [rectHoverd3, setRectHovered3] = useState(false);
+  const [rectHoverd4, setRectHovered4] = useState(false);
+  const [charHovered, setCharHovered] = useState(false);
   const [rectHoverd1, setRectHovered1] = useState(false);
   const [rectHoverd2, setRectHovered2] = useState(false);
   const [rectHoverd3, setRectHovered3] = useState(false);
@@ -82,7 +102,18 @@ const WebOnBoarding = () => {
       <Img2 src={flower} />
       <Img3 src={diamond} />
       <Img4 src={circle} />
+
+      <CharImage
+        src={charHovered ? HoverChar : BasicChar}
+        onMouseEnter={() => setCharHovered(true)}
+        onMouseLeave={() => setCharHovered(false)}
+      />
+      {charHovered && <BubbleImage src={HoverCharBubble} />}
+      <Img2 src={flower} />
+      <Img3 src={diamond} />
+      <Img4 src={circle} />
       <Arrow src={FluentArrow} onClick={handleScrollToTop} />
+      <WebFooter />
       <WebFooter />
     </Div>
   );
@@ -105,6 +136,7 @@ const Top = styled.div`
 const SubT = styled.div`
   width: 887px;
   height: auto;
+  height: auto;
   flex-shrink: 0;
   color: #fff;
   font-family: "Pretendard Variable";
@@ -118,6 +150,9 @@ const Button = styled.div`
   width: 240px;
   height: 40px;
   flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,8 +181,11 @@ const RectArea = styled.div`
   flex-direction: row;
   gap: 26px;
   margin-top: 88px;
+
 `;
 
+const RectImage = styled.img`
+  /* background: linear-gradient(
 const RectImage = styled.img`
   /* background: linear-gradient(
     180deg,
@@ -159,13 +197,23 @@ const RectImage = styled.img`
   transition: all 0.5s ease;
 `;
 const CharImage = styled.img`
+const CharImage = styled.img`
   position: absolute;
+  margin-top: 800px;
+  margin-left: 1110px;
+  z-index: 0;
   margin-top: 800px;
   margin-left: 1110px;
   z-index: 0;
 `;
 const Img2 = styled.img`
+const Img2 = styled.img`
   position: absolute;
+  margin-top: 20px;
+  margin-left: -930px;
+  width: 329px;
+  height: 322px;
+  z-index: -1;
   margin-top: 20px;
   margin-left: -930px;
   width: 329px;
@@ -174,7 +222,13 @@ const Img2 = styled.img`
 `;
 
 const Img3 = styled.img`
+const Img3 = styled.img`
   position: absolute;
+  margin-top: 650px;
+  margin-left: -850px;
+  width: 500.47px;
+  height: 500.47px;
+  z-index: -1;
   margin-top: 650px;
   margin-left: -850px;
   width: 500.47px;
@@ -183,13 +237,20 @@ const Img3 = styled.img`
 `;
 
 const Img4 = styled.img`
+const Img4 = styled.img`
   position: absolute;
   margin-top: 150px;
   margin-left: 890px;
   width: 329px;
   height: 322px;
   z-index: -1;
+  margin-top: 150px;
+  margin-left: 890px;
+  width: 329px;
+  height: 322px;
+  z-index: -1;
 `;
+
 
 const Arrow = styled.img`
   margin-top: 750px;
@@ -221,6 +282,13 @@ const WhiteText = styled.span`
   font-family: "Pretendard Variable";
   font-size: 40px;
   font-weight: 800;
+`;
+
+const BubbleImage = styled.img`
+  position: absolute;
+  margin-top: 800px;
+  margin-left: 450px;
+  z-index: 1;
 `;
 
 const BubbleImage = styled.img`

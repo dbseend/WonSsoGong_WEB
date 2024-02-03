@@ -9,6 +9,7 @@ import Group90 from "../Assets/Group 90.svg";
 import Group82 from "../Assets/Group 82.svg";
 import Group81 from "../Assets/Group 81.svg";
 import Group84 from "../Assets/Group 84.svg";
+import Group63 from "../Assets/Group 63.svg";
 import Rectangle24 from "../Assets/Rectangle 24.svg";
 import Rectangle10 from "../Assets/Rectangle 10.svg";
 

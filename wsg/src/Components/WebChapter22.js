@@ -3,7 +3,7 @@ import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
-import Twinkle from "../Assets/Twinkle.svg";
+
 
 const WebChapter22 = () => {
   return (

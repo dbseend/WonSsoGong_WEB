@@ -9,6 +9,9 @@ import Group2 from "../Assets/Group 51.svg";
 import Group3 from "../Assets/Group 52.svg";
 import Group4 from "../Assets/Group 53.svg";
 import onBoardingChar from "../Assets/onBoardingChar.svg";
+import flower from "../Assets/flower.svg";
+import diamond from "../Assets/diamond.svg";
+import circle from "../Assets/circle.svg";
 const WebOnBoarding2 = () => {
   const [showFooter, setShowFooter] = useState(false);
   const navigate = useNavigate();
@@ -63,7 +66,10 @@ const WebOnBoarding2 = () => {
         <StyledRect image={Group4}></StyledRect>
       </RectArea>
 
-      <onBoardingChar />
+      <img src="onBoardingChar" alt="빵긋이"></img>
+      <img src="flower" />
+      <img src="diamond" />
+      <img src="circle" />
       <Arrow src={FluentArrow} onClick={handleScrollToTop} />
       {showFooter && <WebFooter />}
     </Div>

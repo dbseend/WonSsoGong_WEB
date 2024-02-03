@@ -52,12 +52,12 @@ const WebOnBoarding = () => {
       </Top>
       <RectArea>
         <RectImage
-          src={rectHoverd1 ? Group1 : GroupA}
+          src={rectHoverd1 ? Group1 : GroupB}
           onMouseEnter={() => setRectHovered1(true)}
           onMouseLeave={() => setRectHovered1(false)}
         />
         <RectImage
-          src={rectHoverd2 ? Group2 : GroupB}
+          src={rectHoverd2 ? Group2 : GroupA}
           onMouseEnter={() => setRectHovered2(true)}
           onMouseLeave={() => setRectHovered2(false)}
         />
@@ -146,7 +146,6 @@ const RectArea = styled.div`
   flex-direction: row;
   gap: 26px;
   margin-top: 88px;
-
 `;
 
 const RectImage = styled.img`
@@ -157,7 +156,7 @@ const RectImage = styled.img`
   backdrop-filter: blur(30px);
   z-index: 0;
   border-radius: 103px;
- 
+  transition: all 0.5s ease;
 `;
 const CharImage = styled.img`
   position: absolute;

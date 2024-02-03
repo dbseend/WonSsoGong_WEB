@@ -19,6 +19,7 @@ import flower from "../Assets/flower.svg";
 import diamond from "../Assets/diamond.svg";
 import circle from "../Assets/circle.svg";
 
+
 const WebOnBoarding = () => {
   const [rectHoverd1, setRectHovered1] = useState(false);
   const [rectHoverd2, setRectHovered2] = useState(false);
@@ -52,12 +53,12 @@ const WebOnBoarding = () => {
       </Top>
       <RectArea>
         <RectImage
-          src={rectHoverd1 ? Group1 : GroupA}
+          src={rectHoverd1 ? Group1 : GroupB}
           onMouseEnter={() => setRectHovered1(true)}
           onMouseLeave={() => setRectHovered1(false)}
         />
         <RectImage
-          src={rectHoverd2 ? Group2 : GroupB}
+          src={rectHoverd2 ? Group2 : GroupA}
           onMouseEnter={() => setRectHovered2(true)}
           onMouseLeave={() => setRectHovered2(false)}
         />
@@ -82,7 +83,18 @@ const WebOnBoarding = () => {
       <Img2 src={flower} />
       <Img3 src={diamond} />
       <Img4 src={circle} />
+
+      <CharImage
+        src={charHovered ? HoverChar : BasicChar}
+        onMouseEnter={() => setCharHovered(true)}
+        onMouseLeave={() => setCharHovered(false)}
+      />
+      {charHovered && <BubbleImage src={HoverCharBubble} />}
+      <Img2 src={flower} />
+      <Img3 src={diamond} />
+      <Img4 src={circle} />
       <Arrow src={FluentArrow} onClick={handleScrollToTop} />
+      <WebFooter />
       <WebFooter />
     </Div>
   );
@@ -105,6 +117,7 @@ const Top = styled.div`
 const SubT = styled.div`
   width: 887px;
   height: auto;
+  height: auto;
   flex-shrink: 0;
   color: #fff;
   font-family: "Pretendard Variable";
@@ -118,6 +131,9 @@ const Button = styled.div`
   width: 240px;
   height: 40px;
   flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -150,15 +166,12 @@ const RectArea = styled.div`
 `;
 
 const RectImage = styled.img`
-  /* background: linear-gradient(
-    180deg,
-    rgba(246, 246, 246, 0.9) 6%,
-    rgba(246, 246, 246, 0) 100%*/
   backdrop-filter: blur(30px);
   z-index: 0;
   border-radius: 103px;
- 
+  transition: all 0.5s ease;
 `;
+
 const CharImage = styled.img`
   position: absolute;
   margin-top: 800px;
@@ -191,6 +204,7 @@ const Img4 = styled.img`
   height: 322px;
   z-index: -1;
 `;
+
 
 const Arrow = styled.img`
   margin-top: 750px;
@@ -230,5 +244,6 @@ const BubbleImage = styled.img`
   margin-left: 450px;
   z-index: 1;
 `;
+
 
 export default WebOnBoarding;

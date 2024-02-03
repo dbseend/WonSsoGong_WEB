@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import FluentArrow from "../Assets/FluentArrow.svg";
@@ -18,6 +18,9 @@ import HoverCharBubble from "../Assets/HoverCharBubble.svg";
 import flower from "../Assets/flower.svg";
 import diamond from "../Assets/diamond.svg";
 import circle from "../Assets/circle.svg";
+import Ellipse5 from "../Assets/Ellipse 5.svg";
+import Ellipse7 from "../Assets/Ellipse 7.svg";
+
 
 const WebOnBoarding = () => {
   const [rectHoverd1, setRectHovered1] = useState(false);
@@ -25,6 +28,7 @@ const WebOnBoarding = () => {
   const [rectHoverd3, setRectHovered3] = useState(false);
   const [rectHoverd4, setRectHovered4] = useState(false);
   const [charHovered, setCharHovered] = useState(false);
+  const [showFooter, setShowFooter] = useState(false);
   const navigate = useNavigate();
   const moveToMain = () => {
     navigate("/main");
@@ -36,9 +40,28 @@ const WebOnBoarding = () => {
     });
   };
 
+  useEffect(() => { // 스크롤 이벤트 리스너 등록
+    const handleScroll = () => {
+      const scrolledHeight = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      if (scrolledHeight + windowHeight >= documentHeight) { // 스크롤이 일정 높이 이상 내려갔을 때 Footer 표시
+        setShowFooter(true);
+      } else {
+        setShowFooter(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll); // 스크롤 이벤트 리스너 등록
+    return () => { // 컴포넌트 언마운트 시 이벤트 리스너 제거
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <Div>
       <GlobalStyle />
+      <Ellipse5Image src={Ellipse5} alt="Chapter 2 Ellipse5" />
+      <Ellipse7Image src={Ellipse7} alt="Chapter 2 Ellipse7" />
       <Top>
         <div>
           <WhiteText>국회의 일부가 되어 국회 의원이 되어보는 경험,</WhiteText>{" "}
@@ -52,12 +75,12 @@ const WebOnBoarding = () => {
       </Top>
       <RectArea>
         <RectImage
-          src={rectHoverd1 ? Group1 : GroupA}
+          src={rectHoverd1 ? Group1 : GroupB}
           onMouseEnter={() => setRectHovered1(true)}
           onMouseLeave={() => setRectHovered1(false)}
         />
         <RectImage
-          src={rectHoverd2 ? Group2 : GroupB}
+          src={rectHoverd2 ? Group2 : GroupA}
           onMouseEnter={() => setRectHovered2(true)}
           onMouseLeave={() => setRectHovered2(false)}
         />
@@ -82,8 +105,18 @@ const WebOnBoarding = () => {
       <Img2 src={flower} />
       <Img3 src={diamond} />
       <Img4 src={circle} />
+
+      <CharImage
+        src={charHovered ? HoverChar : BasicChar}
+        onMouseEnter={() => setCharHovered(true)}
+        onMouseLeave={() => setCharHovered(false)}
+      />
+      {charHovered && <BubbleImage src={HoverCharBubble} />}
+      <Img2 src={flower} />
+      <Img3 src={diamond} />
+      <Img4 src={circle} />
       <Arrow src={FluentArrow} onClick={handleScrollToTop} />
-      <WebFooter />
+      {showFooter && <WebFooter />}
     </Div>
   );
 };
@@ -105,6 +138,7 @@ const Top = styled.div`
 const SubT = styled.div`
   width: 887px;
   height: auto;
+  height: auto;
   flex-shrink: 0;
   color: #fff;
   font-family: "Pretendard Variable";
@@ -115,9 +149,13 @@ const SubT = styled.div`
 `;
 
 const Button = styled.div`
+  z-index: 1000;
   width: 240px;
   height: 40px;
   flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -150,15 +188,12 @@ const RectArea = styled.div`
 `;
 
 const RectImage = styled.img`
-  /* background: linear-gradient(
-    180deg,
-    rgba(246, 246, 246, 0.9) 6%,
-    rgba(246, 246, 246, 0) 100%*/
   backdrop-filter: blur(30px);
   z-index: 0;
   border-radius: 103px;
- 
+  transition: all 0.5s ease;
 `;
+
 const CharImage = styled.img`
   position: absolute;
   margin-top: 800px;
@@ -196,6 +231,7 @@ const Arrow = styled.img`
   margin-top: 750px;
   align-self: center;
   cursor: pointer;
+  transform: translateY(-40px);
 `;
 
 const GradientText = styled.div`
@@ -229,6 +265,22 @@ const BubbleImage = styled.img`
   margin-top: 800px;
   margin-left: 450px;
   z-index: 1;
+`;
+
+const Ellipse5Image = styled.img` //작은 원
+  position: absolute;
+  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
+  left: 0%; /* 원하는 가로 위치로 조절 */
+  width: 100%;
+  height: 76%; /* 이미지가 70%의 높이를 차지하도록 설정 */
+`;
+
+const Ellipse7Image = styled.img` //큰 원
+  position: absolute;
+  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
+  left: 0%; /* 원하는 가로 위치로 조절 */
+  width: 100%;
+  height: 83%; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 
 export default WebOnBoarding;

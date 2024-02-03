@@ -24,17 +24,17 @@ const FooterContainer = styled.div`
 `;
 
 const Menu = styled.div`
-cursor: pointer;
-color: white;
-font-family: "Pretendard Variable";
-font-style: normal;
-line-height: 50px;
-margin-left: 5px;
-margin-right: 5px;
-font-size: 12px;
-display: flex;
-align-items: center; /* 수직으로 가운데 정렬 */
-justify-content: center; /* 수평으로 가운데 정렬 */
+    cursor: pointer;
+    color: white;
+    font-family: "Pretendard Variable";
+    font-style: normal;
+    line-height: 50px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 12px;
+    display: flex;
+    align-items: center; /* 수직으로 가운데 정렬 */
+    justify-content: center; /* 수평으로 가운데 정렬 */
 `;
 
 export default WebFooter;

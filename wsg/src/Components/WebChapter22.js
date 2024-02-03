@@ -128,7 +128,7 @@ const Conversation = styled.div`
 `;
 
 const ContentInput = styled.input`
-  width: 58%;
+  width: 56%;
   margin-left: 6%;
   position: absolute;
   bottom: 24%;
@@ -232,10 +232,10 @@ const Group90ImagePerson = styled.img` //사람 마이크
 `;
 
 const SendButton = styled.button`
-  margin-left: 67%;
+  margin-left: 65%;
   position: absolute;
-  bottom: 24.5%;
-  padding: 10px 20px;
+  bottom: 24.1%;
+  padding: 10px 40px;
   background-color: rgba(255, 198, 52, 0.7);
   color: white;
   border: 2px solid #FFC634; /* 테두리 색상 및 두께 설정 */

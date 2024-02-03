@@ -4,37 +4,36 @@ import GlobalStyle from "./GlobalStyle";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import Group55 from "../Assets/Group 55.svg";
-import Group63 from "../Assets/Group 63.svg";
+import Group75 from "../Assets/Group 75.svg";
 import Ellipse5 from "../Assets/Ellipse 5.svg";
 import Ellipse7 from "../Assets/Ellipse 7.svg";
 
-const WebMain = () => {
+const WebChapter3 = () => {
   const navigate = useNavigate();
   const moveToNext = () => {
-    navigate("/chapter12");
+    navigate("/chapter33");
   };
   return (
     <>
       <GlobalStyle />
-      <Ellipse5Image src={Ellipse5} alt="Main Ellipse5" />
-      <Ellipse7Image src={Ellipse7} alt="Main Ellipse7" />
-      <ChapTitle>Chapter 1.</ChapTitle>
-      <Title>법안 발의</Title>
+      <Ellipse5Image src={Ellipse5} alt="Chapter 3 Ellipse5" />
+      <Ellipse7Image src={Ellipse7} alt="Chapter 3 Ellipse7" />
+      <ChapTitle>Chapter 3.</ChapTitle>
+      <Title>투표 진행</Title>
       <BalloonContainer>
         <BalloonContent>
-          <Group55Image src={Group55} alt="Main Group55" />
+          <Group55Image src={Group55} alt="Chapter 3 Group55" />
           <BalloonText>
-            가상의 국회 의원이 되어<br />
-            <strong>첫 번째 법안을 발의해보세요.</strong><br /><br />
-            주제 선택 후 내용을 작성하면,<br /> 
-            저 빵긋이가 법안 완성하는 것을<br /> 
-            쉽게 도와줄게요!
+            토론과 투표 결과는 <strong>실제로<br />
+            가상 국회에 영향을 미친답니다.</strong><br /><br />
+            결과를 확인한 뒤<br /> 
+            다음 법안에 꼭 참여해보세요!
           </BalloonText>
         </BalloonContent>
       </BalloonContainer>
       <SubText>
       </SubText>
-      <Group63Image src={Group63} alt="Main Group63" />
+      <Group75Image src={Group75} alt="Chapter 3 Group75" />
       <Button onClick={moveToNext}>다음으로 넘어가기</Button>
     </>
   );
@@ -110,17 +109,17 @@ const Button = styled.div`
   cursor: pointer;
 `;
 
-const Group63Image = styled.img` //호버
+const Group75Image = styled.img`
   position: absolute;
-  top: 150px;
-  right: 230px;
-  width: 300px;
-  height: 500px;
+  top: 30%;
+  right: 11%;
+  width: 25%;
+  height: 45%;
 `;
 
 const BalloonContainer = styled.div`
   position: absolute;
-  top: 16%;
+  top: 18%;
   right: 37%;
   width: 38%;
   height: 60%;
@@ -148,13 +147,14 @@ const Group55Image = styled.img`
 
 const BalloonText = styled.span`
   position: absolute; /* 절대 위치 설정 */
-  bottom: 39%; /* 이미지 아래에 간격 추가 */
-  right : 0;
+  bottom: 42%; /* 이미지 아래에 간격 추가 */
+  right : 5%;
   color: black;
   font-size: 20px;
   font-family: "Pretendard Variable";
-  width : 70%;
+  width : 65%;
   white-space: pre-line;
+
   strong {
     font-weight: bold;
   }
@@ -178,4 +178,4 @@ const Ellipse7Image = styled.img` //큰 원
 
 export { Button };
 
-export default WebMain;
+export default WebChapter3;

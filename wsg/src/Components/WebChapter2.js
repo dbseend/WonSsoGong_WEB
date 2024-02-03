@@ -118,7 +118,7 @@ const Group68Image = styled.img`
 
 const BalloonContainer = styled.div`
   position: absolute;
-  top: 15%;
+  top: 16%;
   right: 37%;
   width: 38%;
   height: 60%;
@@ -146,7 +146,7 @@ const Group55Image = styled.img`
 
 const BalloonText = styled.span`
   position: absolute; /* 절대 위치 설정 */
-  bottom: 45%; /* 이미지 아래에 간격 추가 */
+  bottom: 44%; /* 이미지 아래에 간격 추가 */
   right : 5%;
   color: black;
   font-size: 20px;

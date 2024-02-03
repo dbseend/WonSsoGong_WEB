@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import FluentArrow from "../Assets/FluentArrow.svg";
@@ -18,6 +18,9 @@ import HoverCharBubble from "../Assets/HoverCharBubble.svg";
 import flower from "../Assets/flower.svg";
 import diamond from "../Assets/diamond.svg";
 import circle from "../Assets/circle.svg";
+import Ellipse5 from "../Assets/Ellipse 5.svg";
+import Ellipse7 from "../Assets/Ellipse 7.svg";
+
 
 
 const WebOnBoarding = () => {
@@ -26,6 +29,7 @@ const WebOnBoarding = () => {
   const [rectHoverd3, setRectHovered3] = useState(false);
   const [rectHoverd4, setRectHovered4] = useState(false);
   const [charHovered, setCharHovered] = useState(false);
+  const [showFooter, setShowFooter] = useState(false);
   const navigate = useNavigate();
   const moveToMain = () => {
     navigate("/main");
@@ -37,9 +41,28 @@ const WebOnBoarding = () => {
     });
   };
 
+  useEffect(() => { // 스크롤 이벤트 리스너 등록
+    const handleScroll = () => {
+      const scrolledHeight = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      if (scrolledHeight + windowHeight >= documentHeight) { // 스크롤이 일정 높이 이상 내려갔을 때 Footer 표시
+        setShowFooter(true);
+      } else {
+        setShowFooter(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll); // 스크롤 이벤트 리스너 등록
+    return () => { // 컴포넌트 언마운트 시 이벤트 리스너 제거
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <Div>
       <GlobalStyle />
+      <Ellipse5Image src={Ellipse5} alt="Chapter 2 Ellipse5" />
+      <Ellipse7Image src={Ellipse7} alt="Chapter 2 Ellipse7" />
       <Top>
         <div>
           <WhiteText>국회의 일부가 되어 국회 의원이 되어보는 경험,</WhiteText>{" "}
@@ -94,8 +117,7 @@ const WebOnBoarding = () => {
       <Img3 src={diamond} />
       <Img4 src={circle} />
       <Arrow src={FluentArrow} onClick={handleScrollToTop} />
-      <WebFooter />
-      <WebFooter />
+      {showFooter && <WebFooter />}
     </Div>
   );
 };
@@ -128,6 +150,7 @@ const SubT = styled.div`
 `;
 
 const Button = styled.div`
+  z-index: 1000;
   width: 240px;
   height: 40px;
   flex-shrink: 0;
@@ -210,6 +233,7 @@ const Arrow = styled.img`
   margin-top: 750px;
   align-self: center;
   cursor: pointer;
+  transform: translateY(-40px);
 `;
 
 const GradientText = styled.div`
@@ -245,5 +269,20 @@ const BubbleImage = styled.img`
   z-index: 1;
 `;
 
+const Ellipse5Image = styled.img` //작은 원
+  position: absolute;
+  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
+  left: 0%; /* 원하는 가로 위치로 조절 */
+  width: 100%;
+  height: 76%; /* 이미지가 70%의 높이를 차지하도록 설정 */
+`;
+
+const Ellipse7Image = styled.img` //큰 원
+  position: absolute;
+  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
+  left: 0%; /* 원하는 가로 위치로 조절 */
+  width: 100%;
+  height: 83%; /* 이미지가 70%의 높이를 차지하도록 설정 */
+`;
 
 export default WebOnBoarding;

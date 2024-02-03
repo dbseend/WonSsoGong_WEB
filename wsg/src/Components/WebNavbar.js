@@ -26,9 +26,9 @@ const WebNavbar = () => {
     return (
         <NavbarContainer>
             <Logo>로고</Logo>
-            <ColorMenu onClick={handleGoRoot}>홈</ColorMenu>
+            <Menu onClick={handleGoRoot}>홈</Menu>
             <Menu onClick={handleTutorial}>튜토리얼</Menu>
-            <Menu>방방국국</Menu>
+            <ColorMenu>방방국국</ColorMenu>
             <Menu>법안 분석</Menu>
         </NavbarContainer>
     );
@@ -47,6 +47,7 @@ const NavbarContainer = styled.div`
     top: 0;
     left: 0;
     right: 0;
+    z-index: 1000;
 `;
 
 const Menu = styled.div`

@@ -22,6 +22,7 @@ import Ellipse5 from "../Assets/Ellipse 5.svg";
 import Ellipse7 from "../Assets/Ellipse 7.svg";
 
 
+
 const WebOnBoarding = () => {
   const [rectHoverd1, setRectHovered1] = useState(false);
   const [rectHoverd2, setRectHovered2] = useState(false);
@@ -149,7 +150,7 @@ const SubT = styled.div`
 `;
 
 const Button = styled.div`
-  z-index: 1000;
+  z-index: 2;
   width: 240px;
   height: 40px;
   flex-shrink: 0;
@@ -226,6 +227,7 @@ const Img4 = styled.img`
   height: 322px;
   z-index: -1;
 `;
+
 
 const Arrow = styled.img`
   margin-top: 750px;

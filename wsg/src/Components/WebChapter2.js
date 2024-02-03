@@ -3,10 +3,12 @@ import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
-import Chapter2Hovor from "../Assets/Chapter2Hovor.svg";
-import Balloon from "../Assets/Balloon.svg";
+import Group55 from "../Assets/Group 55.svg";
+import Group68 from "../Assets/Group 68.svg";
+import Ellipse5 from "../Assets/Ellipse 5.svg";
+import Ellipse7 from "../Assets/Ellipse 7.svg";
 
-const WebMain = () => {
+const WebChapter2 = () => {
   const navigate = useNavigate();
   const moveToNext = () => {
     navigate("/chapter22");
@@ -14,17 +16,15 @@ const WebMain = () => {
   return (
     <>
       <GlobalStyle />
-      <StyledCircleWrapper>
-        <StyledSecondCircle/> {/* 그 위에 원 */}
-        <StyledCircle /> {/* 맨 아래 원 */}
-      </StyledCircleWrapper>
+      <Ellipse5Image src={Ellipse5} alt="Chapter 2 Ellipse5" />
+      <Ellipse7Image src={Ellipse7} alt="Chapter 2 Ellipse7" />
       <ChapTitle>Chapter 2.</ChapTitle>
       <Title>토론 참여</Title>
       <BalloonContainer>
         <BalloonContent>
-          <BalloonImage src={Balloon} alt="Chapter 2 Balloon" />
+          <Group55Image src={Group55} alt="Chapter 2 Group55" />
           <BalloonText>
-            이제 발의된 법안에 대한 토론을 진행해볼까요?<br /><br />
+            이제 <strong>발의된 법안에 대한 토론을 진행</strong>해볼까요?<br /><br />
             AI 가상 의원과 자유롭게 의견을 나누어보세요.<br /> 
             토론이 끝난 후엔 투표로 의견을 표현해요.
           </BalloonText>
@@ -32,7 +32,7 @@ const WebMain = () => {
       </BalloonContainer>
       <SubText>
       </SubText>
-      <HoverImage src={Chapter2Hovor} alt="Chapter 2 Hover" />
+      <Group68Image src={Group68} alt="Chapter 2 Group68" />
       <Button onClick={moveToNext}>다음으로 넘어가기</Button>
     </>
   );
@@ -47,16 +47,17 @@ font-weight: 500; /* You can adjust the font weight here */
 line-height: normal;
 margin-bottom: 10px;
 margin-top: 0;
+text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.20);
 `;
 
 const Title = styled.div`
 background: linear-gradient(
     90deg,
     #FFC634 0%,
-    #FFD34A 10%,
-    #FFEA5F 30%,
-    #FFF275 50%,
-    #D8F5DD 100%
+    #FFD34A 3%,
+    #FFEA5F 8%,
+    #FFF275 17%,
+    #D8F5DD 24%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -82,7 +83,7 @@ const SubText = styled.div`
 
 const Button = styled.div`
   position: absolute;
-  bottom: 26%;
+  bottom: 18%;
   left: 50%;
   transform: translateX(-50%);
   width: 1050px;
@@ -107,41 +108,9 @@ const Button = styled.div`
   cursor: pointer;
 `;
 
-const StyledCircle = styled.div`
-  position: relative;
-  width: 1500px;
-  height: 500px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  opacity: 0.4;
-  background: linear-gradient(180deg, rgba(246, 246, 246, 0.00) 54%, #F6F6F6 100%);
-`;
-
-const StyledCircleWrapper = styled.div`
+const Group68Image = styled.img`
   position: absolute;
-  top: 50%; /* 중앙 정렬을 위해 top 50% 설정 */
-  left: 50%; /* 중앙 정렬을 위해 left 50% 설정 */
-  transform: translate(-50%, -50%); /* 중앙 정렬을 위한 transform 설정 */
-  z-index: -1; /* 다른 요소보다 뒤에 위치하도록 설정 */
-`;
-
-const StyledSecondCircle = styled.div`
-  position: absolute;
-  top: calc(50% - 50px); /* 중앙에서 100px 위로 이동 */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1500px;
-  height: 470px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  opacity: 0.4;
-  background: linear-gradient(180deg, rgba(246, 246, 246, 0.00) 54%, #F6F6F6 100%);
-  z-index: -2; /* 다른 요소보다 뒤에 위치하도록 설정 */
-`;
-
-const HoverImage = styled.img`
-  position: absolute;
-  top: 120px;
+  top: 170px;
   right: 230px;
   width: 300px;
   height: 500px;
@@ -149,10 +118,10 @@ const HoverImage = styled.img`
 
 const BalloonContainer = styled.div`
   position: absolute;
-  top: 80px;
+  top: 15%;
   right: 37%;
-  width: 35%;
-  height: 65%;
+  width: 38%;
+  height: 60%;
   z-index: 1;
   display: flex;
   flex-direction: column; /* 이미지와 텍스트를 세로로 배치 */
@@ -170,7 +139,7 @@ const BalloonContent = styled.div`
   align-items: center;
 `;
 
-const BalloonImage = styled.img`
+const Group55Image = styled.img`
   width: 100%;
   height: 70%; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
@@ -178,13 +147,34 @@ const BalloonImage = styled.img`
 const BalloonText = styled.span`
   position: absolute; /* 절대 위치 설정 */
   bottom: 45%; /* 이미지 아래에 간격 추가 */
-  right : 7%;
+  right : 5%;
   color: black;
   font-size: 20px;
   font-family: "Pretendard Variable";
   width : 80%;
   white-space: pre-line;
+
+  strong {
+    font-weight: bold;
+  }
 `;
 
+const Ellipse5Image = styled.img` //작은 원
+  position: absolute;
+  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
+  left: 0%; /* 원하는 가로 위치로 조절 */
+  width: 100%;
+  height: 76%; /* 이미지가 70%의 높이를 차지하도록 설정 */
+`;
 
-export default WebMain;
+const Ellipse7Image = styled.img` //큰 원
+  position: absolute;
+  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
+  left: 0%; /* 원하는 가로 위치로 조절 */
+  width: 100%;
+  height: 83%; /* 이미지가 70%의 높이를 차지하도록 설정 */
+`;
+
+export { Button };
+
+export default WebChapter2;

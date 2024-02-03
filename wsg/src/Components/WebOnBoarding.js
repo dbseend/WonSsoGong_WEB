@@ -150,7 +150,7 @@ const SubT = styled.div`
 `;
 
 const Button = styled.div`
-  z-index: 1000;
+  z-index: 2;
   width: 240px;
   height: 40px;
   flex-shrink: 0;

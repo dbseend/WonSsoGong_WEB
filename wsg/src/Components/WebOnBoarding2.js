@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import FluentArrow from "../Assets/FluentArrow.svg";
@@ -8,12 +8,15 @@ import Group1 from "../Assets/Group 50.svg";
 import Group2 from "../Assets/Group 51.svg";
 import Group3 from "../Assets/Group 52.svg";
 import Group4 from "../Assets/Group 53.svg";
-import onBoardingChar from "../Assets/onBoardingChar.svg";
+import BasicChar from "../Assets/BasicChar.svg";
+import HoverChar from "../Assets/HoverChar.svg";
+import HoverCharBubble from "../Assets/HoverCharBubble.svg";
 import flower from "../Assets/flower.svg";
 import diamond from "../Assets/diamond.svg";
 import circle from "../Assets/circle.svg";
+
 const WebOnBoarding2 = () => {
-  const [showFooter, setShowFooter] = useState(false);
+  const [charHovered, setCharHovered] = useState(false);
   const navigate = useNavigate();
   const moveToMain = () => {
     navigate("/main");
@@ -25,53 +28,41 @@ const WebOnBoarding2 = () => {
     });
   };
 
-  useEffect(() => {
-    // 스크롤 이벤트 리스너 등록
-    const handleScroll = () => {
-      const scrolledHeight = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      if (scrolledHeight + windowHeight >= documentHeight) {
-        // 스크롤이 일정 높이 이상 내려갔을 때 Footer 표시
-        setShowFooter(true);
-      } else {
-        setShowFooter(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll); // 스크롤 이벤트 리스너 등록
-    return () => {
-      // 컴포넌트 언마운트 시 이벤트 리스너 제거
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <Div>
       <GlobalStyle />
       <Top>
         <div>
-          <WhiteText>국회의 일부가 되어 국회 의원이 되어보는 경험,</WhiteText>{" "}
+          <WhiteText>
+            국회의 일부가 되어 국회 의원이 되어보는 경험,
+          </WhiteText>{" "}
           <GradientText> 방방국국!</GradientText>
           <SubT>
-            가상 국회 의원으로서 법안을 발의하고, 토론에 참여하며, 투표하는 등의
+            가상 국회 의원으로서 법안을 발의하고, 토론에 참여하며, 투표하는
+            등의
           </SubT>
           <SubT>다양한 활동을 체험할 수 있습니다.</SubT>
         </div>
         <Button onClick={moveToMain}>시작하기</Button>
       </Top>
-        <RectArea>
+      <RectArea>
         <StyledRect image={Group1}></StyledRect>
         <StyledRect image={Group2}></StyledRect>
         <StyledRect image={Group3}></StyledRect>
         <StyledRect image={Group4}></StyledRect>
       </RectArea>
 
-      <img src="onBoardingChar" alt="빵긋이"></img>
-      <img src="flower" />
-      <img src="diamond" />
-      <img src="circle" />
+      <CharImage
+        src={charHovered ? HoverChar : BasicChar}
+        onMouseEnter={() => setCharHovered(true)}
+        onMouseLeave={() => setCharHovered(false)}
+      />
+      {charHovered && <BubbleImage src={HoverCharBubble} />}
+      <Img2 src={flower} />
+      <Img3 src={diamond} />
+      <Img4 src={circle} />
       <Arrow src={FluentArrow} onClick={handleScrollToTop} />
-      {showFooter && <WebFooter />}
+      <WebFooter />
     </Div>
   );
 };
@@ -79,7 +70,6 @@ const WebOnBoarding2 = () => {
 const Div = styled.div`
   display: flex;
   flex-direction: column;
-  /* overflow: scroll; */
   align-items: center;
 `;
 
@@ -91,18 +81,9 @@ const Top = styled.div`
   text-align: center;
 `;
 
-const Title = styled.div`
-  color: #fff;
-  font-family: "Pretendard Variable";
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: normal;
-`;
-
 const SubT = styled.div`
   width: 887px;
-  height: auto; /* 높이를 자동으로 조절하도록 변경 */
+  height: auto;
   flex-shrink: 0;
   color: #fff;
   font-family: "Pretendard Variable";
@@ -110,16 +91,15 @@ const SubT = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  /* margin-top: 32px; */
 `;
 
 const Button = styled.div`
   width: 240px;
   height: 40px;
   flex-shrink: 0;
-  display: flex; /* 수평 가운데 정렬을 위한 설정 */
-  justify-content: center; /* 수평 가운데 정렬을 위한 설정 */
-  align-items: center; /* 수직 가운데 정렬을 위한 설정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 84px;
   background: linear-gradient(
     90deg,
@@ -132,7 +112,6 @@ const Button = styled.div`
   color: #5379c2;
   font-family: "Pretendard Variable";
   font-size: 25.2px;
-  font-style: normal;
   font-weight: 800;
   line-height: 40px;
   text-align: center;
@@ -149,8 +128,6 @@ const RectArea = styled.div`
 `;
 
 const StyledRect = styled.div`
-  /* 기존 스타일 */
-  /* ... */
   position: relative;
   width: 206px;
   height: 612px;
@@ -167,7 +144,6 @@ const StyledRect = styled.div`
   color: #0e0e0e;
   font-family: "Pretendard Variable";
   font-size: 24px;
-  font-style: normal;
   font-weight: 500;
   line-height: 150px;
   cursor: pointer;
@@ -175,7 +151,6 @@ const StyledRect = styled.div`
     backdrop-filter 0.3s ease;
 
   &:hover {
-    /* 호버 상태일 때의 스타일 */
     border-radius: 103px;
     background: linear-gradient(
       180deg,
@@ -184,56 +159,42 @@ const StyledRect = styled.div`
     );
     box-shadow: 0px 3.6px 3.6px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(4.5px);
-
-    /* 호버 상태일 때 이미지 변경 */
-    &::before {
-      content: url(${(props) => props.image});
-      display: block;
-      position: absolute;
-      top: 25%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 1;
-      transition: opacity 0.5s ease;
-    }
-  }
-
-  /* 호버가 아닌 상태에서 이미지는 표시되지 않도록 함 */
-  &::before {
-    content: url(${(props) => props.image});
-    display: block;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
   }
 `;
-// const StyledRect = styled.div`
-  
-//   &::before {
-//     /* content: url(${(props) => props.image});
-//     display: block;
-//     position: absolute;
-//     top: 25%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-//     opacity: 0;
-//     transition: opacity 0.5s ease; */
-//   }
 
-//   &:hover {
-//     border-radius: 103px;
-//     background: linear-gradient(
-//       180deg,
-//       rgba(246, 246, 246, 0.72) 6%,
-//       rgba(0, 0, 0, 0) 100%
-//     );
-//     box-shadow: 0px 3.6px 3.6px 0px rgba(0, 0, 0, 0.25);
-//     backdrop-filter: blur(4.5px);
-//   }
-// `;
+const CharImage = styled.img`
+  position: absolute;
+  margin-top: 800px;
+  margin-left: 1110px;
+  z-index: 0;
+`;
+
+const Img2 = styled.img`
+  position: absolute;
+  margin-top: 20px;
+  margin-left: -930px;
+  width: 329px;
+  height: 322px;
+  z-index: -1;
+`;
+
+const Img3 = styled.img`
+  position: absolute;
+  margin-top: 650px;
+  margin-left: -850px;
+  width: 500.47px;
+  height: 500.47px;
+  z-index: -1;
+`;
+
+const Img4 = styled.img`
+  position: absolute;
+  margin-top: 150px;
+  margin-left: 890px;
+  width: 329px;
+  height: 322px;
+  z-index: -1;
+`;
 
 const Arrow = styled.img`
   margin-top: 750px;
@@ -260,12 +221,18 @@ const GradientText = styled.div`
   margin-bottom: 40px;
 `;
 
-
 const WhiteText = styled.span`
   color: white;
   font-family: "Pretendard Variable";
   font-size: 40px;
   font-weight: 800;
+`;
+
+const BubbleImage = styled.img`
+  position: absolute;
+  margin-top: 800px;
+  margin-left: 450px;
+  z-index: 1;
 `;
 
 export default WebOnBoarding2;

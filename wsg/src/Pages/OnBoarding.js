@@ -1,12 +1,12 @@
 import React from "react";
 import WebNavbar from "../Components/WebNavbar";
-import WebOnBoarding from "../Components/WebOnBoarding";
+import WebOnBoarding2 from "../Components/WebOnBoarding2";
 
 const OnBoarding = () => {
   return (
     <div>
       <WebNavbar />
-      <WebOnBoarding />
+      <WebOnBoarding2 />
     </div>
   );
 };

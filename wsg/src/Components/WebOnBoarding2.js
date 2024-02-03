@@ -4,8 +4,15 @@ import GlobalStyle from "./GlobalStyle";
 import FluentArrow from "../Assets/FluentArrow.svg";
 import WebFooter from "./WebFooter";
 import { useNavigate } from "react-router-dom";
-
-const WebOnBoarding = () => {
+import Group1 from "../Assets/Group 50.svg";
+import Group2 from "../Assets/Group 51.svg";
+import Group3 from "../Assets/Group 52.svg";
+import Group4 from "../Assets/Group 53.svg";
+import onBoardingChar from "../Assets/onBoardingChar.svg";
+import flower from "../Assets/flower.svg";
+import diamond from "../Assets/diamond.svg";
+import circle from "../Assets/circle.svg";
+const WebOnBoarding2 = () => {
   const [showFooter, setShowFooter] = useState(false);
   const navigate = useNavigate();
   const moveToMain = () => {
@@ -17,28 +24,6 @@ const WebOnBoarding = () => {
       behavior: "smooth",
     });
   };
-
-  const rectData = [
-    {
-      title: "법안 발의",
-      content: "가상의 국회의원이 되어보는 시간! AI 도우미 빵긋이와 쉽고 재미있게 법안을 발의해봐요."
-    },
-    {
-      title: "토론 참여",
-      content: "AI 가상 의원들과 발의한 법안에 대해 자유롭게 토론을 나누어보아요.",
-    },
-    {
-      title: "투표 진행",
-      content:
-        "토론과 투표 결과는 실제로 가상 국회에 영향을 미친답니다.",
-    },
-    {
-      title: "법안 분석",
-      content:
-        "현재 우리 국회에 어떤 법안들이 존재하는지 AI 도우미 빵긋이와 알아봐요",
-    },
-    // Add more data for other Rects
-  ];
 
   useEffect(() => {
     // 스크롤 이벤트 리스너 등록
@@ -64,10 +49,6 @@ const WebOnBoarding = () => {
     <Div>
       <GlobalStyle />
       <Top>
-        {/* <StyledCircleWrapper> */}
-        {/* <StyledSecondCircle/> 그 위에 원 */}
-        {/* <StyledCircle /> 맨 아래 원 */}
-        {/* </StyledCircleWrapper> */}
         <div>
           <WhiteText>국회의 일부가 되어 국회 의원이 되어보는 경험,</WhiteText>{" "}
           <GradientText> 방방국국!</GradientText>
@@ -78,52 +59,20 @@ const WebOnBoarding = () => {
         </div>
         <Button onClick={moveToMain}>시작하기</Button>
       </Top>
-      <RectArea>
-        {rectData.map((data, index) => (
-          <Rect
-            key={index}
-            title={data.title}
-            content={data.content}
-          />
-        ))}
+        <RectArea>
+        <StyledRect image={Group1}></StyledRect>
+        <StyledRect image={Group2}></StyledRect>
+        <StyledRect image={Group3}></StyledRect>
+        <StyledRect image={Group4}></StyledRect>
       </RectArea>
+
+      <img src="onBoardingChar" alt="빵긋이"></img>
+      <img src="flower" />
+      <img src="diamond" />
+      <img src="circle" />
       <Arrow src={FluentArrow} onClick={handleScrollToTop} />
       {showFooter && <WebFooter />}
     </Div>
-  );
-};
-function splitBoldText(content, boldText) {
-  const parts = [];
-  let currentIndex = 0;
-
-  while (true) {
-    const boldStartIndex = content.indexOf(boldText, currentIndex);
-    if (boldStartIndex === -1) {
-      parts.push(content.slice(currentIndex));
-      break;
-    }
-
-    const beforeBoldText = content.slice(currentIndex, boldStartIndex);
-    parts.push(beforeBoldText);
-
-    parts.push(boldText);
-    currentIndex = boldStartIndex + boldText.length;
-  }
-
-  return parts;
-}
-
-
-const Rect = ({ title, content }) => {
-  const [boldText, normalText] = splitBoldText(content, "쉽고 재미있게");
-
-  return (
-    <StyledRect>
-      <BillText className="bill-text">{title}</BillText>
-      <NewText className="new-text">{title}</NewText>
-      <NewSubText className="newSub-text1">{normalText}</NewSubText>
-      <NewSubTextBold className="newSub-text-bold">{boldText}</NewSubTextBold>
-    </StyledRect>
   );
 };
 
@@ -200,6 +149,8 @@ const RectArea = styled.div`
 `;
 
 const StyledRect = styled.div`
+  /* 기존 스타일 */
+  /* ... */
   position: relative;
   width: 206px;
   height: 612px;
@@ -223,18 +174,8 @@ const StyledRect = styled.div`
   transition: background 0.3s ease, box-shadow 0.3s ease,
     backdrop-filter 0.3s ease;
 
-  &::before {
-    /* content: url(${(props) => props.image});
-    display: block;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.5s ease; */
-  }
-
   &:hover {
+    /* 호버 상태일 때의 스타일 */
     border-radius: 103px;
     background: linear-gradient(
       180deg,
@@ -244,111 +185,56 @@ const StyledRect = styled.div`
     box-shadow: 0px 3.6px 3.6px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(4.5px);
 
+    /* 호버 상태일 때 이미지 변경 */
     &::before {
+      content: url(${(props) => props.image});
+      display: block;
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       opacity: 1;
-    }
-    .bill-text {
-      opacity: 0;
-    }
-    .new-text {
-      opacity: 1;
-    }
-    .newSub-text {
-      opacity: 1;
-    }
-
-    .newSub-text-bold {
-      opacity: 1;
+      transition: opacity 0.5s ease;
     }
   }
-`;
 
-const StyledCircle = styled.div`
-  position: relative;
-  width: 2290px;
-  height: 1000px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  opacity: 0.4;
-  background: linear-gradient(180deg, rgba(246, 246, 246, 0) 54%, #f6f6f6 100%);
+  /* 호버가 아닌 상태에서 이미지는 표시되지 않도록 함 */
+  &::before {
+    content: url(${(props) => props.image});
+    display: block;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
 `;
+// const StyledRect = styled.div`
+  
+//   &::before {
+//     /* content: url(${(props) => props.image});
+//     display: block;
+//     position: absolute;
+//     top: 25%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     opacity: 0;
+//     transition: opacity 0.5s ease; */
+//   }
 
-const StyledCircleWrapper = styled.div`
-  position: absolute;
-  top: 50%; /* 중앙 정렬을 위해 top 50% 설정 */
-  left: 50%; /* 중앙 정렬을 위해 left 50% 설정 */
-  transform: translate(-50%, -50%); /* 중앙 정렬을 위한 transform 설정 */
-  z-index: -1; /* 다른 요소보다 뒤에 위치하도록 설정 */
-`;
+//   &:hover {
+//     border-radius: 103px;
+//     background: linear-gradient(
+//       180deg,
+//       rgba(246, 246, 246, 0.72) 6%,
+//       rgba(0, 0, 0, 0) 100%
+//     );
+//     box-shadow: 0px 3.6px 3.6px 0px rgba(0, 0, 0, 0.25);
+//     backdrop-filter: blur(4.5px);
+//   }
+// `;
 
-const StyledSecondCircle = styled.div`
-  position: absolute;
-  top: calc(50% - 50px); /* 중앙에서 100px 위로 이동 */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  /* width: 2290px;
-  height: 1000px; */
-  flex-shrink: 0;
-  border-radius: 50%;
-  opacity: 0.4;
-  background: linear-gradient(180deg, rgba(246, 246, 246, 0) 54%, #f6f6f6 100%);
-  z-index: -2; /* 다른 요소보다 뒤에 위치하도록 설정 */
-`;
-
-const BillText = styled.div`
-  opacity: 1;
-  /* transition: opacity 1s ease; */
-`;
-
-const NewText = styled.div`
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  position: absolute;
-  top: 12%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--Primary, #F6F6F6);
-  text-shadow: 1px 1px 1px #000;
-  font-family: "Pretendard Variable";
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 900;
-  line-height: normal;
-  z-index: 2;
-`;
-
-const NewSubText = styled.div`
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  position: absolute;
-  top: 45.5%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 152px;
-  color: #000;
-  font-family: "Pretendard Variable";
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-`;
-const NewSubTextBold = styled.div`
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  position: absolute;
-  top: 45.5%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 152px;
-  color: #000;
-  font-family: "Pretendard Variable";
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: normal;
-`;
 const Arrow = styled.img`
   margin-top: 750px;
   align-self: center;
@@ -374,6 +260,7 @@ const GradientText = styled.div`
   margin-bottom: 40px;
 `;
 
+
 const WhiteText = styled.span`
   color: white;
   font-family: "Pretendard Variable";
@@ -381,4 +268,4 @@ const WhiteText = styled.span`
   font-weight: 800;
 `;
 
-export default WebOnBoarding;
+export default WebOnBoarding2;

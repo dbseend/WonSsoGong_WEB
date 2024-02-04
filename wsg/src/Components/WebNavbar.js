@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate, useLocation } from  "react-router-dom";
 import GlobalStyle from "./GlobalStyle";
+import Logo from "../Assets/Logo.png";
 
 const WebNavbar = () => {
     const navigate = useNavigate();
@@ -25,17 +26,18 @@ const WebNavbar = () => {
 
     return (
         <NavbarContainer>
-            <Logo>로고</Logo>
+            <LogoImage src={Logo} alt="Navbar Logo" />
             <Menu onClick={handleGoRoot}>홈</Menu>
             <Menu onClick={handleTutorial}>튜토리얼</Menu>
-            <ColorMenu>방방국국</ColorMenu>
             <Menu>법안 분석</Menu>
+            <ColorMenu>시작하기</ColorMenu>
         </NavbarContainer>
     );
 }
 
 const NavbarContainer = styled.div`
     display: flex;
+    position: relative;
     justify-content: flex-end;
     align-items: center;
     height: 50px;
@@ -64,13 +66,11 @@ const ColorMenu = styled(Menu)`
     color: #FFA438;
 `;
 
-const Logo = styled.div`
-  color: #FFA438;
-  font-family: "Pretendard Variable";
-  font-size: 20px;
-  font-weight: bold;
-  margin-right: auto;
-  margin-left: 50px; /* 각 메뉴 사이의 간격 조정 */
+const LogoImage = styled.img`
+position: absolute; /* 상대적 위치 설정을 위해 */
+left: 2.5%; /* 왼쪽으로 10px 이동 */
+width: 10%;
+height: 80%;
 `;
 
 export default WebNavbar;

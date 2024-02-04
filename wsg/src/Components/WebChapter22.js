@@ -10,9 +10,10 @@ import Group82 from "../Assets/Group 82.svg";
 import Group81 from "../Assets/Group 81.svg";
 import Group84 from "../Assets/Group 84.svg";
 import Group63 from "../Assets/Group 63.svg";
+import Group125 from "../Assets/Group 125.png";
+import Group126 from "../Assets/Group 126.png";
 import Rectangle24 from "../Assets/Rectangle 24.svg";
 import Rectangle10 from "../Assets/Rectangle 10.svg";
-
 
 const WebChapter22 = () => {
 
@@ -36,11 +37,9 @@ const WebChapter22 = () => {
         <Title>토론 참여</Title>
       </Part0>
       <Hr />
-      <Group89Image src={Group89} alt="Chapter 22 Group89" />
-      <Group82Image src={Group82} alt="Chapter 22 Group82" />
-      <Group90ImagePerson src={Group90} alt="Chapter 22 Group90" />
-      <Group81ImageMachine src={Group81} alt="Chapter 22 Group81" />
-      <Group84ImageMachine src={Group84} alt="Chapter 22 Group81" />
+      <Group125Image src={Group125} alt="Chapter 22 Group125" />
+      <Group126Image src={Group126} alt="Chapter 22 Group126" />
+      
       
       <CurveHr />
       {messages.map((message, index) => (
@@ -123,8 +122,20 @@ const CurveHr = styled.hr`
   bottom: 30%;
 `;
 
-const Conversation = styled.div`
-  margin-top: 20px;
+const Group125Image = styled.img`
+  width: 13%;
+  height: 35%; /* 이미지가 70%의 높이를 차지하도록 설정 */
+  position: absolute;
+  right: 72%;
+  top: 33%;
+`;
+
+const Group126Image = styled.img`
+  width: 13%;
+  height: 35%; /* 이미지가 70%의 높이를 차지하도록 설정 */
+  position: absolute;
+  right: 15%;
+  top: 33%;
 `;
 
 const ContentInput = styled.input`
@@ -146,89 +157,12 @@ const MessageBubble = styled.div`
   margin-bottom: 10px;
 `;
 
-const AssistantMessage = styled(MessageBubble)`
-  color: #fff;
-  font-family: "Pretendard Variable";
-  font-size: 16px;
-  position: absolute;
-  left: 5%;
-`;
-
-const UserMessage = styled(MessageBubble)`
-  color: #fff;
-  font-family: "Pretendard Variable";
-  font-size: 16px;
-  text-align: right;
-  position: absolute;
-  right: 5%;
-`;
-
 const Ellipse7Image = styled.img` //큰 원
   position: absolute;
   top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
   left: 0%; /* 원하는 가로 위치로 조절 */
   width: 100%;
   height: 83%; /* 이미지가 70%의 높이를 차지하도록 설정 */
-`;
-
-const Group89Image = styled.img` //사람
-  position: absolute;
-  right: 17%;
-  width: 10%;
-  height: 30%;
-  bottom : 35%;
-`;
-
-const Group82Image = styled.img` //기계
-  position: absolute;
-  right: 70%;
-  width: 12%;
-  height: 30%;
-  bottom : 37%;
-`;
-
-const Group81ImageMachine = styled.img` //기계 테이블
-  position: absolute;
-  right: 70%;
-  bottom : 32%;
-  width: 14%;
-  height: 11%;
-  opacity: 1;
-`;
-
-const Group84ImagePerson = styled.img` //사람 마이크
-  position: absolute;
-  right: 20%;
-  bottom : 40%;
-  width: 5%;
-  height: 10%;
-  transform: scaleX(-1); /* 좌우 반전 */
-`;
-
-const Group84ImageMachine = styled.img` //기계 마이크
-  position: absolute;
-  right: 71%;
-  bottom : 41%;
-  width: 5%;
-  height: 12%;
-`;
-
-const Rectangle24ImagePerson = styled.img` //사람 마이크
-  position: absolute;
-  right: 20%;
-  bottom : 40%;
-  width: 5%;
-  height: 10%;
-  opacity: 1;
-`;
-
-const Group90ImagePerson = styled.img` //사람 마이크
-  position: absolute;
-  right: 12%;
-  bottom : 33%;
-  width: 20%;
-  height: 20%;
-  opacity: 1;
 `;
 
 const SendButton = styled.button`

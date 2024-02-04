@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import { useRecoilState } from "recoil";
@@ -12,24 +13,17 @@ import Group84 from "../Assets/Group 84.svg";
 import Group63 from "../Assets/Group 63.svg";
 import Group125 from "../Assets/Group 125.png";
 import Group126 from "../Assets/Group 126.png";
+import ChatAi from "../Assets/ChatAi.png";
+import ChatPerson from "../Assets/ChatPerson.png";
 import Rectangle24 from "../Assets/Rectangle 24.svg";
 import Rectangle10 from "../Assets/Rectangle 10.svg";
 
 const WebChapter22 = () => {
-
   const [content, setContent] = useState("");
-  const [messages, setMessages] = useState([]);
-
-  const addMessage = () => {
-    if (content.trim() !== "") {
-      setMessages((prevMessages) => [...prevMessages, content]);
-      setContent("");
-    }
-  };
 
   return (
     <>
-      <GlobalStyle />
+      <Container />
       <Ellipse7Image src={Ellipse7} alt="Chapter 22 Ellipse7" />
       <Button>토론 끝내기</Button>
       <Part0>
@@ -39,22 +33,33 @@ const WebChapter22 = () => {
       <Hr />
       <Group125Image src={Group125} alt="Chapter 22 Group125" />
       <Group126Image src={Group126} alt="Chapter 22 Group126" />
-      
-      
+      <ChatAiImage src={ChatAi} alt="Chapter 22 ChatAi" />
+      <ChatPersonImage src={ChatPerson} alt="Chapter 22 ChatPerson" />
       <CurveHr />
-      {messages.map((message, index) => (
-        <Balloon key={index}>{message}</Balloon>
-      ))}
+      
       <ContentInput
         type="text"
         placeholder="발언을 입력하세요."
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
-      <SendButton onClick={addMessage}>전송</SendButton>
+      <SendButton>전송</SendButton>
     </>
   );
 };
+const Container = createGlobalStyle`
+body {
+  margin: 0;
+  margin-top : 6.5%;
+  padding: 0;
+  background: var(--secondary-bg, #77A1F5);
+  /* z-index: auto; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+`;
 
 const Part0 = styled.div`
   margin-left: 6%;
@@ -119,7 +124,7 @@ const CurveHr = styled.hr`
   background: #fff;
   margin-top: 18px;
   position: absolute;
-  bottom: 30%;
+  bottom: 32%;
 `;
 
 const Group125Image = styled.img`
@@ -127,7 +132,7 @@ const Group125Image = styled.img`
   height: 35%; /* 이미지가 70%의 높이를 차지하도록 설정 */
   position: absolute;
   right: 72%;
-  top: 33%;
+  top: 31%;
 `;
 
 const Group126Image = styled.img`
@@ -135,26 +140,35 @@ const Group126Image = styled.img`
   height: 35%; /* 이미지가 70%의 높이를 차지하도록 설정 */
   position: absolute;
   right: 15%;
-  top: 33%;
+  top: 31%;
 `;
 
 const ContentInput = styled.input`
   width: 56%;
   margin-left: 6%;
   position: absolute;
-  bottom: 24%;
+  bottom: 26%;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid var(--white-text, #F6F6F6);
-  background: rgba(246, 246, 246, 0.30);  
+  border: none;
+  background: rgba(246, 246, 246, 0.30); 
+  box-shadow: 0px 10px 100px rgba(0, 0, 0, 0.1); /* 그림자 추가 */ 
 `;
 
-const MessageBubble = styled.div`
-  background: rgba(246, 246, 246, 0.30);
-  width: 505.156px;
-  height: 44px;
-  padding: 10px;
-  margin-bottom: 10px;
+const ChatAiImage = styled.img`
+  width: 13%;
+  height: 10%; /* 이미지가 70%의 높이를 차지하도록 설정 */
+  position: absolute;
+  right: 57%;
+  top: 31%;
+`;
+
+const ChatPersonImage = styled.img`
+  width: 13%;
+  height: 10%; /* 이미지가 70%의 높이를 차지하도록 설정 */
+  position: absolute;
+  right: 31%;
+  top: 31%;
 `;
 
 const Ellipse7Image = styled.img` //큰 원
@@ -166,39 +180,19 @@ const Ellipse7Image = styled.img` //큰 원
 `;
 
 const SendButton = styled.button`
+  width: 8%;
   margin-left: 65%;
   position: absolute;
-  bottom: 24.1%;
+  bottom: 26.1%;
   padding: 10px 40px;
-  background-color: rgba(255, 198, 52, 0.7);
+  background-color: rgba(255, 198, 52, 0.8);
   color: white;
-  border: 2px solid #FFC634; /* 테두리 색상 및 두께 설정 */
+  border: none;
   border-radius: 84px 84px 84px 84px; /* 상단 양쪽 모서리만 84픽셀 radius */
   cursor: pointer;
   flex-shrink: 0;
-`;
-
-const Balloon = styled.div`
-display: inline-block;
-  position: absolute;
-  top: 35%;
-  left: 60%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 198, 52, 0.7);
-  height: 60px;
-  width: 200px;
-  margin: 0 auto 10px;
-  border: 2px solid #FFC634;
-
-  &:after {
-    content: '';
-    position: absolute;
-    border-bottom: 20px solid transparent;
-    border-left: 20px solid rgba(255, 198, 52, 0.7);  /* 꼬리의 색상 설정 */
-    right: -20px;  /* 말풍선에서 오른쪽으로 얼마나 떨어질지 설정 */
-    top: 9px;  /* 말풍선의 중앙에서 시작되도록 설정 */
-    transform: translateY(-50%);
-  }
+  font-weight: bold; /* 볼드체로 설정 */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
 `;
 
 export default WebChapter22;

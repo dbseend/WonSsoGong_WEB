@@ -3,10 +3,11 @@ import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
-import Group55 from "../Assets/Group 55.svg";
-import Group63 from "../Assets/Group 63.svg";
+import Group118 from "../Assets/Group 118.svg";
+import Group63 from "../Assets/Group 63.png";
 import Ellipse5 from "../Assets/Ellipse 5.svg";
 import Ellipse7 from "../Assets/Ellipse 7.svg";
+import Balloon1 from "../Assets/Balloon1.png";
 import Test from "../Assets/test.png";
 
 const WebMain = () => {
@@ -24,14 +25,7 @@ const WebMain = () => {
 
       <BalloonContainer>
         <BalloonContent>
-          <Group55Image src={Group55} alt="Main Group55" />
-          <BalloonText>
-            가상의 국회 의원이 되어<br />
-            <strong>첫 번째 법안을 발의해보세요.</strong><br /><br />
-            주제 선택 후 내용을 작성하면,<br /> 
-            저 빵긋이가 법안 완성하는 것을<br /> 
-            쉽게 도와줄게요!
-          </BalloonText>
+          <Group118Image src={Group118} alt="Main Group118" />
         </BalloonContent>
       </BalloonContainer>
       <SubText>
@@ -115,16 +109,16 @@ const Button = styled.div`
 
 const Group63Image = styled.img` //호버
   position: absolute;
-  top: 150px;
-  right: 230px;
-  width: 300px;
-  height: 500px;
+  top: 24%;
+  right: 22%;
+  width: 22%;
+  height: 50%;
 `;
 
 const BalloonContainer = styled.div`
   position: absolute;
-  top: 16%;
-  right: 37%;
+  top: 15%;
+  right: 42%;
   width: 38%;
   height: 60%;
   z-index: 1;
@@ -144,8 +138,8 @@ const BalloonContent = styled.div`
   align-items: center;
 `;
 
-const Group55Image = styled.img`
-  width: 100%;
+const Group118Image = styled.img`
+  width: 90%;
   height: 70%; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 

@@ -3,8 +3,8 @@ import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
-import Group55 from "../Assets/Group 55.svg";
-import Group75 from "../Assets/Group 75.svg";
+import Group121 from "../Assets/Group 121.svg";
+import Group75 from "../Assets/Group 75.png";
 import Ellipse5 from "../Assets/Ellipse 5.svg";
 import Ellipse7 from "../Assets/Ellipse 7.svg";
 
@@ -22,13 +22,7 @@ const WebChapter3 = () => {
       <Title>투표 진행</Title>
       <BalloonContainer>
         <BalloonContent>
-          <Group55Image src={Group55} alt="Chapter 3 Group55" />
-          <BalloonText>
-            토론과 투표 결과는 <strong>실제로<br />
-            가상 국회에 영향을 미친답니다.</strong><br /><br />
-            결과를 확인한 뒤<br /> 
-            다음 법안에 꼭 참여해보세요!
-          </BalloonText>
+          <Group121Image src={Group121} alt="Chapter 3 Group121" />
         </BalloonContent>
       </BalloonContainer>
       <SubText>
@@ -110,17 +104,17 @@ const Button = styled.div`
 `;
 
 const Group75Image = styled.img`
-  position: absolute;
-  top: 30%;
-  right: 11%;
-  width: 25%;
-  height: 45%;
+    position: absolute;
+    top: 25%;
+    right: 15%;
+    width: 28%;
+    height: 50%;
 `;
 
 const BalloonContainer = styled.div`
   position: absolute;
-  top: 18%;
-  right: 37%;
+  top: 15%;
+  right: 42%;
   width: 38%;
   height: 60%;
   z-index: 1;
@@ -140,8 +134,8 @@ const BalloonContent = styled.div`
   align-items: center;
 `;
 
-const Group55Image = styled.img`
-  width: 100%;
+const Group121Image = styled.img`
+  width: 90%;
   height: 70%; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 

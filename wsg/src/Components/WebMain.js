@@ -7,6 +7,7 @@ import Group55 from "../Assets/Group 55.svg";
 import Group63 from "../Assets/Group 63.svg";
 import Ellipse5 from "../Assets/Ellipse 5.svg";
 import Ellipse7 from "../Assets/Ellipse 7.svg";
+import Test from "../Assets/test.png";
 
 const WebMain = () => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const WebMain = () => {
       <Ellipse7Image src={Ellipse7} alt="Main Ellipse7" />
       <ChapTitle>Chapter 1.</ChapTitle>
       <Title>법안 발의</Title>
+
       <BalloonContainer>
         <BalloonContent>
           <Group55Image src={Group55} alt="Main Group55" />
@@ -35,6 +37,7 @@ const WebMain = () => {
       <SubText>
       </SubText>
       <Group63Image src={Group63} alt="Main Group63" />
+      <img src ={Test} />
       <Button onClick={moveToNext}>다음으로 넘어가기</Button>
     </>
   );

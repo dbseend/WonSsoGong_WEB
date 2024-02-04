@@ -22,6 +22,7 @@ const WebMain = () => {
       <Ellipse7Image src={Ellipse7} alt="Main Ellipse7" />
       <ChapTitle>Chapter 1.</ChapTitle>
       <Title>법안 발의</Title>
+
       <BalloonContainer>
         <BalloonContent>
           <Group118Image src={Group118} alt="Main Group118" />
@@ -30,6 +31,7 @@ const WebMain = () => {
       <SubText>
       </SubText>
       <Group63Image src={Group63} alt="Main Group63" />
+      <img src ={Test} />
       <Button onClick={moveToNext}>다음으로 넘어가기</Button>
     </>
   );

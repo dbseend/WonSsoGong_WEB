@@ -139,9 +139,9 @@ const BalloonContent = styled.div`
 `;
 
 const Group118Image = styled.img`
-  width: 90%;
-  height: 70%; /* 이미지가 70%의 높이를 차지하도록 설정 */
-`;
+  // width: 90%;
+  // height: 70%
+  `;
 
 const BalloonText = styled.span`
   position: absolute; /* 절대 위치 설정 */

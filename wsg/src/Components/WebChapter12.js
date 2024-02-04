@@ -60,7 +60,7 @@ const WebChapter12 = () => {
       setUserBill({
         keyWord: "",
         title: "",
-        content: ""
+        content: "",
       });
       setSelectedType(null);
       console.log(response);
@@ -145,7 +145,7 @@ const WebChapter12 = () => {
           />
         </Part2>
         <ButtonContainer>
-          <Button type = "submit" onClick={addBill}>
+          <Button type="submit" onClick={addBill}>
             <StyledTwinkle src={Twinkle} />
             <div>AI로 완성하기</div>
           </Button>

@@ -3,27 +3,75 @@ import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
-import Twinkle from "../Assets/Twinkle.svg"
+import Twinkle from "../Assets/Twinkle.svg";
 import { createBill } from "../Api/Api";
+import Ellipse7 from "../Assets/Ellipse 7.svg";
 
 const WebChapter12 = () => {
+  const [selectedType, setSelectedType] = useState(null);
+  const [userBill, setUserBill] = useState({
+    keyWord: "",
+    title: "",
+    content: "",
+  });
+
   const navigate = useNavigate();
   const moveToNext = () => {
     navigate("/");
   };
 
-  const [selectedType, setSelectedType] = useState(null);
-
   const handleClick = (type) => {
     setSelectedType(type);
+    setUserBill((prev) => ({
+      ...prev,
+      keyWord: type,
+    }));
   };
 
-  const addBill = () => {
-    createBill();
-  }
+  const addBill = async (e) => {
+    try {
+      e.preventDefault();
+      // 입력했는지 확인
+      if (userBill.keyWord.trim() === "") {
+        alert("주제를 선택해 주세요.");
+        return;
+      }
+      if (userBill.title.trim() === "") {
+        alert("법안 주제를 입력해 주세요.");
+        return;
+      }
+      if (userBill.content.trim() === "") {
+        alert("법안 주제를 설명해 주세요.");
+        return;
+      }
+
+      const billData = {
+        keyWord: userBill.keyWord,
+        title: userBill.title,
+        content: userBill.content,
+      };
+
+      console.log("전송 데이터: ", billData);
+
+      const response = await createBill(billData);
+      alert("법안 주제가 입력되었습니다.");
+
+      // 입력 내용 초기화
+      setUserBill({
+        keyWord: "",
+        title: "",
+        content: ""
+      });
+      setSelectedType(null);
+      console.log(response);
+    } catch (error) {
+      console.error("법안 생성 중 오류 발생: ", error);
+    }
+  };
   return (
     <>
       <GlobalStyle />
+      <Ellipse7Image src={Ellipse7} alt="Chapter 2 Ellipse7" />
       <Part0>
         <ChapTitle>Chapter 1.</ChapTitle>
         <Title>법안 발의</Title>
@@ -71,22 +119,51 @@ const WebChapter12 = () => {
                 법률
               </Type>
             </TypeArea>
-            <Form1 placeholder="법안 주제를 입력해주세요." />
+            <Form1
+              value={userBill.title}
+              placeholder="법안 주제를 입력해주세요."
+              onChange={(e) =>
+                setUserBill((prev) => ({
+                  ...prev,
+                  title: e.target.value,
+                }))
+              }
+            />
           </Container>
         </Part1>
         <Part2>
           <SubTitle>법안 설명</SubTitle>
-          <Form2 placeholder="작성한 법안 주제를 설명해주세요." />
+          <Form2
+            value={userBill.content}
+            placeholder="작성한 법안 주제를 설명해주세요."
+            onChange={(e) =>
+              setUserBill((prev) => ({
+                ...prev,
+                content: e.target.value,
+              }))
+            }
+          />
         </Part2>
         <ButtonContainer>
-            {/* <img src ={Twinkle} /> */}
-          <Button onClick={addBill}>AI로 완성하기</Button>
+          <Button type = "submit" onClick={addBill}>
+            <StyledTwinkle src={Twinkle} />
+            <div>AI로 완성하기</div>
+          </Button>
         </ButtonContainer>
       </Body>
     </>
   );
 };
 
+const Ellipse7Image = styled.img`
+  overflow: hidden; //큰 원
+  position: fixed;
+  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
+  left: 0%; /* 원하는 가로 위치로 조절 */
+  width: 100%;
+  height: 83%;
+  z-index: -1;
+`;
 const Part0 = styled.div`
   margin-left: 5%;
   margin-top: 30px;
@@ -131,7 +208,7 @@ const Part1 = styled.div`
 `;
 
 const SubTitle = styled.div`
-  color: var(--Primary, #ffa130);
+  color: var(--Primary, #ffc634);
   font-family: "Pretendard Variable";
   font-size: 28px;
   font-style: normal;
@@ -156,37 +233,26 @@ const Type = styled.div`
   height: 32px;
   flex-shrink: 0;
   border-radius: 52px;
-  border: 1px solid var(--white-text, #f6f6f6);
   background: ${(props) =>
-    props.selected ? "rgba(255, 161, 48, 0.70)" : "rgba(246, 246, 246, 0.3)"};
+    props.selected ? "rgba(255, 198, 52, 0.7)" : "rgba(246, 246, 246, 0.3)"};
   text-align: center;
   line-height: 32px;
-  color: ${(props) => (props.selected ? "#5379c2" : "#fff")};
+  color: ${(props) => (props.selected ? "#fff" : "#fff")};
   font-family: "Pretendard Variable";
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.3s ease, border 0.3s ease;
-
-  &:hover {
-    border: 2px solid var(--Primary, #ffa130);
-    background: rgba(255, 161, 48, 0.7);
-  }
-
-  &:active {
-    outline: none;
-    border: 2px solid var(--Primary, #ffa130);
-    background: rgba(255, 161, 48, 0.7);
-  }
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 `;
 
-const Form1 = styled.input`
-  width: 877px;
-  height: 44px;
+const Form1 = styled.textarea`
+  width: 857px;
+  height: 34px;
   flex-shrink: 0;
   border-radius: 2px;
-  border: 1px solid var(--white-text, #f6f6f6);
+  border: transparent;
   background: rgba(246, 246, 246, 0.3);
   margin-top: 18px;
   color: #fff;
@@ -195,12 +261,13 @@ const Form1 = styled.input`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  padding-left: 20px;
+  padding-top: 12px;
   &::placeholder {
     color: #e7e7e7;
-    position: absolute;
-    top: 12px;
-    left: 20px; 
   }
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  resize: none;
 `;
 
 const Part2 = styled.div`
@@ -218,11 +285,22 @@ const ButtonContainer = styled.div`
 `;
 
 const Button = styled.div`
-  width: 1016px;
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1050px;
   height: 40px;
   flex-shrink: 0;
   border-radius: 84px;
-  background: #ffa438;
+  background: linear-gradient(
+    90deg,
+    #ffc634 0%,
+    #ffd34a 10%,
+    #ffea5f 30%,
+    #fff275 50%,
+    #d8f5dd 100%
+  );
   color: #5379c2;
   font-family: "Pretendard Variable";
   font-size: 20px;
@@ -231,27 +309,37 @@ const Button = styled.div`
   line-height: 40px;
   text-align: center;
   cursor: pointer;
-  margin-top: 74px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
 `;
 
-const Form2 = styled.input`
-  width: 877px;
-  height: 302px;
+const StyledTwinkle = styled.img`
+  width: 30px;
+  height: 30px;
+  padding-top: 3px;
+`;
+const Form2 = styled.textarea`
+  width: 857px;
+  height: 292px;
   flex-shrink: 0;
   border-radius: 2px;
-  border: 1px solid var(--white-text, #f6f6f6);
+  border: transparent;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   background: rgba(246, 246, 246, 0.3);
   color: #e7e7e7;
   &::placeholder {
     color: #e7e7e7;
-    position: absolute;
-    top: 12px;
-    left: 20px; 
   }
   font-family: "Pretendard Variable";
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
+  padding-left: 20px;
+  padding-top: 12px;
+  resize: none;
 `;
 
 export default WebChapter12;

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import Twinkle from "../Assets/Twinkle.svg";
 import { createBill } from "../Api/Api";
-import Ellipse7 from "../Assets/Ellipse 7.svg";
+import smallBg from "../Assets/bg1.svg";
 
 const WebChapter12 = () => {
   const [selectedType, setSelectedType] = useState(null);
@@ -17,9 +17,6 @@ const WebChapter12 = () => {
   });
 
   const navigate = useNavigate();
-  const moveToNext = () => {
-    navigate("/");
-  };
 
   const handleClick = (type) => {
     setSelectedType(type);
@@ -71,116 +68,118 @@ const WebChapter12 = () => {
   };
   return (
     <>
-      <EntireContainer />
-      <Ellipse7Image src={Ellipse7} alt="Chapter 2 Ellipse7" />
-      <Part0>
-        <ChapTitle>Chapter 1.</ChapTitle>
-        <Title>법안 발의</Title>
-      </Part0>
-      <Hr />
-      <Body>
-        <Part1>
-          <SubTitle>법안 주제</SubTitle>
-          <Container>
-            <TypeArea>
-              <Type
-                selected={selectedType === "생활"}
-                onClick={() => handleClick("생활")}
-              >
-                생활
-              </Type>
-              <Type
-                selected={selectedType === "안전"}
-                onClick={() => handleClick("안전")}
-              >
-                안전
-              </Type>
-              <Type
-                selected={selectedType === "도시"}
-                onClick={() => handleClick("도시")}
-              >
-                도시
-              </Type>
-              <Type
-                selected={selectedType === "교통"}
-                onClick={() => handleClick("교통")}
-              >
-                교통
-              </Type>
-              <Type
-                selected={selectedType === "주민"}
-                onClick={() => handleClick("주민")}
-              >
-                주민
-              </Type>
-              <Type
-                selected={selectedType === "법률"}
-                onClick={() => handleClick("법률")}
-              >
-                법률
-              </Type>
-            </TypeArea>
-            <Form1
-              value={userBill.title}
-              placeholder="법안 주제를 입력해주세요."
+      <GlobalStyle />
+      <Div>
+        <SmallBackground src={smallBg} />
+        <Part0>
+          <ChapTitle>Chapter 1.</ChapTitle>
+          <Title>법안 발의</Title>
+        </Part0>
+        <Hr />
+        <Body>
+          <Part1>
+            <SubTitle>법안 주제</SubTitle>
+            <Container>
+              <TypeArea>
+                <Type
+                  selected={selectedType === "생활"}
+                  onClick={() => handleClick("생활")}
+                >
+                  생활
+                </Type>
+                <Type
+                  selected={selectedType === "안전"}
+                  onClick={() => handleClick("안전")}
+                >
+                  안전
+                </Type>
+                <Type
+                  selected={selectedType === "도시"}
+                  onClick={() => handleClick("도시")}
+                >
+                  도시
+                </Type>
+                <Type
+                  selected={selectedType === "교통"}
+                  onClick={() => handleClick("교통")}
+                >
+                  교통
+                </Type>
+                <Type
+                  selected={selectedType === "주민"}
+                  onClick={() => handleClick("주민")}
+                >
+                  주민
+                </Type>
+                <Type
+                  selected={selectedType === "법률"}
+                  onClick={() => handleClick("법률")}
+                >
+                  법률
+                </Type>
+              </TypeArea>
+              <Form1
+                value={userBill.title}
+                placeholder="법안 주제를 입력해주세요."
+                onChange={(e) =>
+                  setUserBill((prev) => ({
+                    ...prev,
+                    title: e.target.value,
+                  }))
+                }
+              />
+            </Container>
+          </Part1>
+          <Part2>
+            <SubTitle>법안 설명</SubTitle>
+            <Form2
+              value={userBill.content}
+              placeholder="작성한 법안 주제를 설명해주세요."
               onChange={(e) =>
                 setUserBill((prev) => ({
                   ...prev,
-                  title: e.target.value,
+                  content: e.target.value,
                 }))
               }
             />
-          </Container>
-        </Part1>
-        <Part2>
-          <SubTitle>법안 설명</SubTitle>
-          <Form2
-            value={userBill.content}
-            placeholder="작성한 법안 주제를 설명해주세요."
-            onChange={(e) =>
-              setUserBill((prev) => ({
-                ...prev,
-                content: e.target.value,
-              }))
-            }
-          />
-        </Part2>
-        <ButtonContainer>
-          <Button type="submit" onClick={addBill}>
-            <StyledTwinkle src={Twinkle} />
-            <div>AI로 완성하기</div>
-          </Button>
-        </ButtonContainer>
-      </Body>
+          </Part2>
+          <ButtonContainer>
+            <Button type="submit" onClick={addBill}>
+              <StyledTwinkle src={Twinkle} />
+              <div>AI로 완성하기</div>
+            </Button>
+          </ButtonContainer>
+        </Body>
+      </Div>
     </>
   );
 };
 
-const Ellipse7Image = styled.img` //큰 원
-  position: absolute;
-  top: 40px; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0; /* 원하는 가로 위치로 조절 */
-  width: 1450px;
-  height: 680px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-`;
-
-const EntireContainer = createGlobalStyle`
-body {
-  margin: 0;
-  margin-top : 50px;
-  padding: 0;
-  background: var(--secondary-bg, #77A1F5);
-  /* z-index: auto; */
+const Div = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-}
+`;
+const SmallBackground = styled.img`
+  position: absolute;
+  overflow: hidden;
+  width: 1512px;
+  min-height: 852px;
+  height: 70%;
+  z-index: -2;
+  top: 0px;
+
+  @media (min-width: 1512px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const Part0 = styled.div`
   margin-left: 55px;
   margin-top: 30px;
+  z-index: 2;
+  margin-left: -75%;
 `;
 
 const ChapTitle = styled.div`
@@ -203,7 +202,6 @@ const Title = styled.div`
 
 const Hr = styled.hr`
   width: 1131px;
-  height: 0.5px;
   background: #fff;
   margin-top: 18px;
 `;
@@ -212,6 +210,7 @@ const Body = styled.div`
   /* margin-left: 5%; */
   display: flex;
   flex-direction: column;
+  z-index: 2;
 `;
 
 const Part1 = styled.div`
@@ -290,6 +289,7 @@ const Part2 = styled.div`
   gap: 37px;
   margin-top: 32px;
   justify-content: center;
+  margin-bottom: 60px;
 `;
 
 const ButtonContainer = styled.div`
@@ -300,9 +300,6 @@ const ButtonContainer = styled.div`
 
 const Button = styled.div`
   position: absolute;
-  bottom: 120px;
-  left: 715px;
-  transform: translateX(-520px);
   width: 1050px;
   height: 40px;
   flex-shrink: 0;
@@ -343,7 +340,7 @@ const Form2 = styled.textarea`
   border: transparent;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   background: rgba(246, 246, 246, 0.3);
-  color: #e7e7e7;
+  color: #ffffff;
   &::placeholder {
     color: #e7e7e7;
   }
@@ -356,4 +353,5 @@ const Form2 = styled.textarea`
   resize: none;
 `;
 
+export { Button, SmallBackground, Hr };
 export default WebChapter12;

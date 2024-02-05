@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import Ellipse7 from "../../Assets/Ellipse 7.svg";
 import Note from "../../Assets/WebChapter32 Note.png";
+import GlobalStyle from "../Etc/GlobalStyle";
 
 const WebChapter32 = () => {
   const [content, setContent] = useState("");
@@ -11,10 +12,9 @@ const WebChapter32 = () => {
     navigate("/chapter33");
   };
   return (
-    <>
-      <Container />
+    <Div>
+      <GlobalStyle />
       <Ellipse7Image src={Ellipse7} alt="Chapter 22 Ellipse7" />
-      <Button onClick={moveToNext}>다음으로 넘어가기</Button>
       <Part0>
         <ChapTitle>Chapter 3.</ChapTitle>
         <ChapTitle>
@@ -24,26 +24,19 @@ const WebChapter32 = () => {
       </Part0>
       <Hr />
       <NoteImage src={Note} alt="Chapter 32 Note" />
-    </>
+      <Button onClick={moveToNext}>다음으로 넘어가기</Button>
+    </Div>
   );
 };
 
-const Container = createGlobalStyle`
-body {
-  margin: 0;
-  margin-top : 90px;
-  padding: 0;
-  background: var(--secondary-bg, #77A1F5);
-  /* z-index: auto; */
+const Div = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-}
 `;
 
 const Part0 = styled.div`
-  margin-left: 80px;
+  margin-left: -63%;
   margin-top: 0;
 `;
 
@@ -64,15 +57,15 @@ const Title = styled.span`
 const Hr = styled.hr`
   width: 1131px;
   background: #fff;
-  margin-top: 18px;
+  margin-top: 20px;
   position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 const Button = styled.div`
-  position: absolute;
-  bottom: 120px;
-  left: 715px;
-  transform: translateX(-520px);
+  margin-top: 28%;
+  left: 50%;
   width: 1050px;
   height: 40px;
   flex-shrink: 0;
@@ -98,8 +91,7 @@ const Button = styled.div`
 const NoteImage = styled.img`
   width: 366px;
   height: 332px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-  position: absolute;
-  right: 220px;
+  right: 700px;
   top: 270px;
 `;
 

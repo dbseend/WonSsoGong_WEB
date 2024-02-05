@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
-import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import Group121 from "../../Assets/Group 121.svg";
 import Group75 from "../../Assets/Group 75.png";

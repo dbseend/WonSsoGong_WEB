@@ -3,8 +3,8 @@ import styled from "styled-components";
 import GlobalStyle from "../Etc/GlobalStyle";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
-import Group117 from "../Assets/Group 117.svg";
-import Group68 from "../Assets/Group 68.png";
+import Group117 from "../../Assets/Group 117.svg";
+import Group68 from "../../Assets/Group 68.png";
 import { Background } from "../Main/WebOnBoarding";
 import {
   Div,

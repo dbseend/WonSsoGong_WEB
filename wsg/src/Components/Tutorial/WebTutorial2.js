@@ -3,11 +3,11 @@ import styled from "styled-components";
 import GlobalStyle from "../Etc/GlobalStyle";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
-import Group154 from "../Assets/Group 154.png";
-import Group36 from "../Assets/Group 36.png";
-import Group155 from "../Assets/Group 155.png";
-import Ellipse5 from "../Assets/Ellipse 5.svg";
-import Ellipse7 from "../Assets/Ellipse 7.svg";
+import Group154 from "../../Assets/Group 154.png";
+import Group36 from "../../Assets/Group 36.png";
+import Group155 from "../../Assets/Group 155.png";
+import Ellipse5 from "../../Assets/Ellipse 5.svg";
+import Ellipse7 from "../../Assets/Ellipse 7.svg";
 
 const WebTutorial2 = () => {
   const navigate = useNavigate();

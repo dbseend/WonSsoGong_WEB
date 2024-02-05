@@ -1,13 +1,11 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import GlobalStyle from "./GlobalStyle";
-import { useRecoilState } from "recoil";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import Tutorial4 from "../../Assets/Tutorial4.png";
+import styled from "styled-components";
+import Ellipse5 from "../../Assets/Ellipse 5.svg";
 import Group156 from "../../Assets/Group 156.png";
 import Group159 from "../../Assets/Group 159.png";
-import Ellipse5 from "../../Assets/Ellipse 5.svg";
-import Ellipse7 from "../../Assets/Ellipse 7.svg";
+import Tutorial4 from "../../Assets/Tutorial4.png";
+import GlobalStyle from "../Etc/GlobalStyle";
 
 const WebTutorial4 = () => {
   const navigate = useNavigate();

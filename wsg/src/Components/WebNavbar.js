@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useNavigate, useLocation } from  "react-router-dom";
-import GlobalStyle from "./GlobalStyle";
 import Logo from "../../Assets/Logo.png";
 
 const WebNavbar = () => {
@@ -77,8 +76,8 @@ const ColorMenu = styled(Menu)`
 const LogoImage = styled.img`
     position: absolute; /* 상대적 위치 설정을 위해 */
     left: 2.5%; /* 왼쪽으로 10px 이동 */
-    width: 10%;
-    height: 80%;
+    width: 150px;
+    height: 45px;
 `;
 
 export default WebNavbar;

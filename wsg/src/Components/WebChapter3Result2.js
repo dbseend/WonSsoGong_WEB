@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
-import GlobalStyle from "./GlobalStyle";
-import { useRecoilState } from "recoil";
+import GlobalStyle from "../Etc/GlobalStyle";
 import { useNavigate, useLocation } from "react-router-dom";
 import Ellipse7 from "../../Assets/Ellipse 7.svg";
 import Group151 from "../../Assets/Group 151.png";

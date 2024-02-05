@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import GlobalStyle from "./GlobalStyle";
-import { useRecoilState } from "recoil";
+import GlobalStyle from "../Etc/GlobalStyle";
 import { useNavigate } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
-import Twinkle from "../Assets/Twinkle.svg";
-import { createBill } from "../Api/Api";
-import smallBg from "../Assets/bg1.svg";
+import Twinkle from "../../Assets/Twinkle.svg";
+import { createBill } from "../../Api/Api";
+import smallBg from "../../Assets/bg1.svg";
 
 const WebChapter12 = () => {
   const [selectedType, setSelectedType] = useState(null);

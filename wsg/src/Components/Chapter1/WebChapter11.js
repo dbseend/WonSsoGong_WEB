@@ -4,9 +4,9 @@ import GlobalStyle from "../Etc/GlobalStyle";
 import { useNavigate } from "react-router-dom";
 import Group118 from "../../Assets/Group 118.svg";
 import Group63 from "../../Assets/Group 63.png";
+import { Button } from "../Chapter1/WebChapter12";
 import BG from "../../Assets/BG.svg";
 import { Background } from "../Main/WebOnBoarding";
-import { Button } from "./WebChapter12";
 
 const WebMain = () => {
   const navigate = useNavigate();

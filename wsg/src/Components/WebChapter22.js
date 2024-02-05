@@ -17,7 +17,7 @@ import ChatAi from "../Assets/ChatAi.png";
 import ChatPerson from "../Assets/ChatPerson.png";
 import Rectangle24 from "../Assets/Rectangle 24.svg";
 import Rectangle10 from "../Assets/Rectangle 10.svg";
-
+import { Button } from "./WebChapter2";
 const WebChapter22 = () => {
   const [content, setContent] = useState("");
 
@@ -93,37 +93,6 @@ const Hr = styled.hr`
   position: relative;
 `;
 
-const Button = styled.div`
-  position: absolute;
-  bottom: 120px;
-  left: 715px;
-  transform: translateX(-520px);
-  width: 1050px;
-  height: 40px;
-  flex-shrink: 0;
-  border-radius: 84px;
-  background: linear-gradient(
-    90deg,
-    #ffc634 0%,
-    #ffd34a 10%,
-    #ffea5f 30%,
-    #fff275 50%,
-    #d8f5dd 100%
-  );
-  color: #5379c2;
-  font-family: "Pretendard Variable";
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 40px;
-  text-align: center;
-  cursor: pointer;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 10px;
-`;
 
 const CurveHr = styled.hr`
   width: 1131px;

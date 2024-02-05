@@ -13,6 +13,11 @@ import Chapter33 from "./Pages/Chapter33";
 import Chapter3Result1 from "./Pages/Chapter3Result1";
 import Chapter3Result2 from "./Pages/Chapter3Result2";
 import Chapter3Result3 from "./Pages/Chapter3Result3";
+import Tutorial from "./Pages/Tutorial";
+import Tutorial2 from "./Pages/Tutorial2";
+import Tutorial3 from "./Pages/Tutorial3";
+import Tutorial4 from "./Pages/Tutorial4";
+import Tutorial5 from "./Pages/Tutorial5";
 
 function App() {
   return (
@@ -30,6 +35,11 @@ function App() {
         <Route path="/chapter3Result1" element={<Chapter3Result1 />} />
         <Route path="/chapter3Result2" element={<Chapter3Result2 />} />
         <Route path="/chapter3Result3" element={<Chapter3Result3 />} />
+        <Route path="/tutorial" element={<Tutorial />} />
+        <Route path="/tutorial2" element={<Tutorial2 />} />
+        <Route path="/tutorial3" element={<Tutorial3 />} />
+        <Route path="/tutorial4" element={<Tutorial4 />} />
+        <Route path="/tutorial5" element={<Tutorial5 />} />
       </Routes>
     </Router>
   );

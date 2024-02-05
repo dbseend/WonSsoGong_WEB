@@ -16,6 +16,7 @@ import {
 } from "../Chapter1/WebChapter11";
 import { Background } from "../Main/WebOnBoarding";
 
+
 const WebChapter2 = () => {
   const navigate = useNavigate();
   const moveToNext = () => {

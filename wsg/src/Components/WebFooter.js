@@ -18,7 +18,7 @@ const FooterContainer = styled.div`
     flex-shrink: 0;
     background: var(--secondary-bg, #77A1F5);
     backdrop-filter: blur(10px);
-    width: 100%;
+    width: 1450px;
     bottom: 0;
     left: 0;
 `;

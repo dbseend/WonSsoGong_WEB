@@ -47,10 +47,11 @@ const WebChapter22 = () => {
     </>
   );
 };
+
 const Container = createGlobalStyle`
 body {
   margin: 0;
-  margin-top : 6.5%;
+  margin-top : 90px;
   padding: 0;
   background: var(--secondary-bg, #77A1F5);
   /* z-index: auto; */
@@ -62,7 +63,7 @@ body {
 `;
 
 const Part0 = styled.div`
-  margin-left: 6%;
+  margin-left: 80px;
   margin-top: 0;
 `;
 
@@ -82,6 +83,7 @@ const Title = styled.div`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  margin-top: 10px;
 `;
 
 const Hr = styled.hr`
@@ -92,10 +94,10 @@ const Hr = styled.hr`
 `;
 
 const Button = styled.div`
-   position: absolute;
-  bottom: 15%;
-  left: 50%;
-  transform: translateX(-50%);
+  position: absolute;
+  bottom: 120px;
+  left: 715px;
+  transform: translateX(-520px);
   width: 1050px;
   height: 40px;
   flex-shrink: 0;
@@ -129,32 +131,30 @@ const CurveHr = styled.hr`
   background: #fff;
   margin-top: 18px;
   position: absolute;
-  bottom: 32%;
+  bottom: 260px;
 `;
 //빵긋이
 const Group125Image = styled.img`
-width: 197.47px;
-height: 290px;
-top: 346px;
-left: 324px;
-position: fixed;
-
-
+  width: 200px;
+  height: 285px; /* 이미지가 70%의 높이를 차지하도록 설정 */
+  position: absolute;
+  right: 1010px;
+  top: 255px;
 `;
-//유저
+
 const Group126Image = styled.img`
-position: absolute;
-width: 197.47px;
-height: 290px;
-top: 330px;
-left: 1069px;
+  width: 200px;
+  height: 285px; /* 이미지가 70%의 높이를 차지하도록 설정 */
+  position: absolute;
+  right: 230px;
+  top: 255px;
 `;
 
 const ContentInput = styled.input`
-  width: 56%;
-  margin-left: 6%;
+  width: 800px;
+  margin-left: 88px;
   position: absolute;
-  bottom: 26%;
+  bottom: 213px;
   padding: 10px;
   font-size: 16px;
   border: none;
@@ -163,34 +163,34 @@ const ContentInput = styled.input`
 `;
 
 const ChatAiImage = styled.img`
-  width: 13%;
-  height: 10%; /* 이미지가 70%의 높이를 차지하도록 설정 */
+  width: 200px;
+  height: 100px; /* 이미지가 70%의 높이를 차지하도록 설정 */
   position: absolute;
-  right: 57%;
-  top: 31%;
+  right: 800px;
+  top: 250px;
 `;
 
 const ChatPersonImage = styled.img`
-  width: 13%;
-  height: 10%; /* 이미지가 70%의 높이를 차지하도록 설정 */
+  width: 200px;
+  height: 100px; /* 이미지가 70%의 높이를 차지하도록 설정 */
   position: absolute;
-  right: 31%;
-  top: 31%;
+  right: 450px;
+  top: 250px;
 `;
 
 const Ellipse7Image = styled.img` //큰 원
   position: absolute;
-  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0%; /* 원하는 가로 위치로 조절 */
-  width: 100%;
-  height: 83%; /* 이미지가 70%의 높이를 차지하도록 설정 */
+  top: 40px; /* 중심을 화면 상단에 위치하도록 설정 */
+  left: 0; /* 원하는 가로 위치로 조절 */
+  width: 1450px;
+  height: 680px; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 
 const SendButton = styled.button`
-  width: 8%;
-  margin-left: 65%;
+  width: 113px;
+  margin-left: 935px;
   position: absolute;
-  bottom: 26.1%;
+  bottom: 213px;
   padding: 10px 40px;
   background-color: rgba(255, 198, 52, 0.8);
   color: white;

@@ -1,28 +1,26 @@
 import React from "react";
 import styled from "styled-components";
-import GlobalStyle from "../Etc/GlobalStyle";
+import GlobalStyle from "./GlobalStyle";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../Chapter1/WebChapter12";
 import BG from "../../Assets/BG.svg";
 import {
-  Div,
-  ChapterArea,
+  BalloonContainer,
   ChapTitle,
+  ChapterArea,
+  Div,
   Title,
   BubbleText,
-  BalloonContainer
 } from "../Main/WebMain";
 import { Background } from "../Main/WebOnBoarding";
 import Group121 from "../../Assets/Group 121.svg";
 import Group75 from "../../Assets/Group 75.png";
-import GlobalStyle from "../Etc/GlobalStyle";
 
 const WebChapter3 = () => {
   const navigate = useNavigate();
   const moveToNext = () => {
-    navigate("/chapter32");
+    navigate("/chapter3/2");
   };
-
   return (
     <Div>
       <GlobalStyle />

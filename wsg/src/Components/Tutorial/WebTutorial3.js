@@ -10,7 +10,7 @@ import GlobalStyle from "../Etc/GlobalStyle";
 const WebTutorial3 = () => {
   const navigate = useNavigate();
   const moveToNext = () => {
-    navigate("/tutorial4");
+    navigate("/tutorial/4");
   };
   return (
     <>

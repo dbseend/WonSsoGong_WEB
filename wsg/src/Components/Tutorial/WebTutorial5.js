@@ -19,7 +19,7 @@ const WebTutorial5 = () => {
   const [charHovered, setCharHovered] = useState(false);
   const navigate = useNavigate();
   const moveToNext = () => {
-    navigate("/chapter22");
+    navigate("/chapter2/2");
   };
   return (
     <>

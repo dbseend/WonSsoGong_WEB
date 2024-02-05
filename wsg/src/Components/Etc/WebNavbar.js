@@ -8,7 +8,7 @@ const WebNavbar = () => {
     const location = useLocation();
 
     const handleTutorial = () => {
-        navigate("/tutorial");  // wirte페이지로 이동
+        navigate("/tutorial/1");  // wirte페이지로 이동
     }
     const handleClick = () => {
         navigate("/board");  // board페이지로 이동

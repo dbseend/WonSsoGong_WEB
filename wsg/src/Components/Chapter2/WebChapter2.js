@@ -2,12 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import GlobalStyle from "../Etc/GlobalStyle";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import Group117 from "../../Assets/Group 117.svg";
 import Group68 from "../../Assets/Group 68.png";
 import { Button } from "../Chapter1/WebChapter12";
+import GlobalStyle from "../Etc/GlobalStyle";
 import BG from "../../Assets/BG.svg";
 import {
-  Div,
+  BalloonContainer,
+  ChapTitle,
   ChapterArea,
   ChapTitle,
   Title,
@@ -25,7 +28,8 @@ const WebChapter2 = () => {
   return (
     <Div>
       <GlobalStyle />
-      <Background src={BG} />
+      <Background />
+
       <ChapterArea>
         <ChapTitle>Chapter 2.</ChapTitle>
         <Title>토론 참여</Title>

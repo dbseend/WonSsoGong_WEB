@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import GlobalStyle from "../Etc/GlobalStyle";
+import GlobalStyle from "./GlobalStyle";
 import { useNavigate } from "react-router-dom";
+import Group117 from "../../Assets/Group 117.svg";
+import Group68 from "../../Assets/Group 68.png";
 import { Button } from "../Chapter1/WebChapter12";
 import BG from "../../Assets/BG.svg";
 import {
@@ -11,16 +13,13 @@ import {
   Title,
   BubbleText,
   BalloonContainer
-} from "../Main/WebMain";
+} from "../Chapter1/WebChapter11";
 import { Background } from "../Main/WebOnBoarding";
-import Group121 from "../../Assets/Group 121.svg";
-import Group75 from "../../Assets/Group 75.png";
-import GlobalStyle from "../Etc/GlobalStyle";
 
-const WebChapter3 = () => {
+const WebChapter2 = () => {
   const navigate = useNavigate();
   const moveToNext = () => {
-    navigate("/chapter32");
+    navigate("/chapter2/2");
   };
 
   return (
@@ -28,13 +27,13 @@ const WebChapter3 = () => {
       <GlobalStyle />
       <Background src={BG} />
       <ChapterArea>
-        <ChapTitle>Chapter3.</ChapTitle>
-        <Title>투표 진행</Title>
+        <ChapTitle>Chapter 2.</ChapTitle>
+        <Title>토론 참여</Title>
       </ChapterArea>
 
       <BalloonContainer>
-        <BubbleText src={Group121} alt="Chapter 2 Group117" />
-        <Chapter3Char src={Group75} alt="Chapter 2 Group68" />
+        <BubbleText src={Group117} alt="Chapter 2 Group117" />
+        <Chapter2Char src={Group68} alt="Chapter 2 Group68" />
       </BalloonContainer>
 
       <Button onClick={moveToNext}>다음으로 넘어가기</Button>
@@ -42,10 +41,9 @@ const WebChapter3 = () => {
   );
 };
 
-
-const Chapter3Char = styled.img`
+const Chapter2Char = styled.img`
   margin-top: 50px;
-  width: 470.18px;
-  height: 452.6px;
+  width: 359px;
+  height: 466.45px;
 `;
-export default WebChapter3;
+export default WebChapter2;

@@ -11,7 +11,7 @@ import { Background } from "../Main/WebOnBoarding";
 const WebMain = () => {
   const navigate = useNavigate();
   const moveToNext = () => {
-    navigate("/chapter12");
+    navigate("/chapter1/2");
   };
 
   return (

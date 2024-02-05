@@ -7,63 +7,54 @@ import smallBg from "../../Assets/bg1.svg";
 import GlobalStyle from "../Etc/GlobalStyle";
 
 const WebChapter12 = () => {
-  const [selectedType, setSelectedType] = useState(null);
-  const [userBill, setUserBill] = useState({
-    keyWord: "",
-    title: "",
-    content: "",
-  });
+  const [keyword, setKeyword] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setcontent] = useState("");
+  const types = ["재난", "안전", "도시", "교통", "주민", "법률"];
 
   const navigate = useNavigate();
 
-  const handleClick = (type) => {
-    setSelectedType(type);
-    setUserBill((prev) => ({
-      ...prev,
-      keyWord: type,
-    }));
-  };
-
   const addBill = async (e) => {
-    try {
       e.preventDefault();
-      // 입력했는지 확인
-      if (userBill.keyWord.trim() === "") {
-        alert("주제를 선택해 주세요.");
-        return;
-      }
-      if (userBill.title.trim() === "") {
-        alert("법안 주제를 입력해 주세요.");
-        return;
-      }
-      if (userBill.content.trim() === "") {
-        alert("법안 주제를 설명해 주세요.");
-        return;
-      }
+      validationCheck();
 
       const billData = {
-        keyWord: userBill.keyWord,
-        title: userBill.title,
-        content: userBill.content,
-      };
+        keyWord: keyword,
+        title: title,
+        content: content,
+      }
+      createBill(billData);
 
-      console.log("전송 데이터: ", billData);
-
-      const response = await createBill(billData);
-      alert("법안 주제가 입력되었습니다.");
-
-      // 입력 내용 초기화
-      setUserBill({
-        keyWord: "",
-        title: "",
-        content: "",
-      });
-      setSelectedType(null);
-      console.log(response);
-    } catch (error) {
-      console.error("법안 생성 중 오류 발생: ", error);
-    }
+      navigate("/chapter1/3");
   };
+
+  const validationCheck = () => {
+    if (keyword.trim() === "") {
+      alert("주제를 선택해 주세요.");
+      return;
+    }
+    if (title.trim() === "") {
+      alert("법안 주제를 입력해 주세요.");
+      return;
+    }
+    if (content.trim() === "") {
+      alert("법안 주제를 설명해 주세요.");
+      return;
+    }
+  }
+
+  const handleKeywordChange = (type) => {
+    setKeyword(type);
+  };
+
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleContentChange = (e) => {
+    setcontent(e.target.value);
+  };
+
   return (
     <>
       <GlobalStyle />
@@ -79,66 +70,29 @@ const WebChapter12 = () => {
             <SubTitle>법안 주제</SubTitle>
             <Container>
               <TypeArea>
-                <Type
-                  selected={selectedType === "생활"}
-                  onClick={() => handleClick("생활")}
-                >
-                  생활
-                </Type>
-                <Type
-                  selected={selectedType === "안전"}
-                  onClick={() => handleClick("안전")}
-                >
-                  안전
-                </Type>
-                <Type
-                  selected={selectedType === "도시"}
-                  onClick={() => handleClick("도시")}
-                >
-                  도시
-                </Type>
-                <Type
-                  selected={selectedType === "교통"}
-                  onClick={() => handleClick("교통")}
-                >
-                  교통
-                </Type>
-                <Type
-                  selected={selectedType === "주민"}
-                  onClick={() => handleClick("주민")}
-                >
-                  주민
-                </Type>
-                <Type
-                  selected={selectedType === "법률"}
-                  onClick={() => handleClick("법률")}
-                >
-                  법률
-                </Type>
+                {types.map((type) => (
+                  <Type
+                    key={type}
+                    selected={keyword === type}
+                    onClick={() => handleKeywordChange(type)}
+                  >
+                    {type}
+                  </Type>
+                ))}
               </TypeArea>
               <Form1
-                value={userBill.title}
+                value={title}
                 placeholder="법안 주제를 입력해주세요."
-                onChange={(e) =>
-                  setUserBill((prev) => ({
-                    ...prev,
-                    title: e.target.value,
-                  }))
-                }
+                onChange={handleTitleChange}
               />
             </Container>
           </Part1>
           <Part2>
             <SubTitle>법안 설명</SubTitle>
             <Form2
-              value={userBill.content}
+              value={content}
               placeholder="작성한 법안 주제를 설명해주세요."
-              onChange={(e) =>
-                setUserBill((prev) => ({
-                  ...prev,
-                  content: e.target.value,
-                }))
-              }
+              onChange={handleContentChange}
             />
           </Part2>
           <ButtonContainer>

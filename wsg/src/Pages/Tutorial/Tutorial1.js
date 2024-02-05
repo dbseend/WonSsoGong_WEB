@@ -1,16 +1,16 @@
 import React from "react";
 import WebFooter from "../../Components/Etc/WebFooter";
 import WebNavbar from "../../Components/Etc/WebNavbar";
-import WebMain from "../../Components/Main/WebMain";
+import WebTutorial from "../../Components/Tutorial/WebTutorial1";
 
-const Main = () => {
+const Tutorial = () => {
   return (
     <div>
       <WebNavbar />
-      <WebMain />
+      <WebTutorial />
       <WebFooter />
     </div>
   );
 };
 
-export default Main;
+export default Tutorial;

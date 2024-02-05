@@ -11,13 +11,13 @@ import {
   ChapterArea,
   Div,
   Title
-} from "../Main/WebMain";
+} from "../Chapter1/WebChapter11";
 import { Background } from "../Main/WebOnBoarding";
 
 const WebChapter2 = () => {
   const navigate = useNavigate();
   const moveToNext = () => {
-    navigate("/chapter22");
+    navigate("/chapter2/2");
   };
 
   return (

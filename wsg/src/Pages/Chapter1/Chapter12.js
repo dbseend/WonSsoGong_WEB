@@ -1,16 +1,16 @@
 import React from "react";
 import WebFooter from "../../Components/Etc/WebFooter";
 import WebNavbar from "../../Components/Etc/WebNavbar";
-import WebChapter12 from "../../Components/Chapter1/WebChapter12";
+import Chapter12 from "../../Components/Chapter1/WebChapter12";
 
-const Main = () => {
+const WebChapter12 = () => {
   return (
     <div>
       <WebNavbar />
-      <WebChapter12 />
+      <Chapter12 />
       <WebFooter />
     </div>
   );
 };
 
-export default Main;
+export default WebChapter12;

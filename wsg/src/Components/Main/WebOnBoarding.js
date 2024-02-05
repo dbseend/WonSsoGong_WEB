@@ -29,7 +29,7 @@ const WebOnBoarding = () => {
   const [showFooter, setShowFooter] = useState(false);
   const navigate = useNavigate();
   const moveToMain = () => {
-    navigate("/main");
+    navigate("/chapter1/1");
   };
   const handleScrollToTop = () => {
     window.scrollTo({

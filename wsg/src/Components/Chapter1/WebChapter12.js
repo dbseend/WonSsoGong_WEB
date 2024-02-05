@@ -32,9 +32,8 @@ const WebChapter12 = () => {
       };
       setIsSubmitted(true);
       createBill(billData).then((response) => {
-        console.log(response);
         console.log(response.choices[0].message.content);
-        // setMadeBill(response.choices[0].message.content);
+        setMadeBill(response.choices[0].message.content);
       });
 
       setTimeout(() => {

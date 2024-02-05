@@ -1,22 +1,10 @@
 import React, { useState } from "react";
-import { createGlobalStyle } from "styled-components";
-import styled from "styled-components";
-import GlobalStyle from "../Etc/GlobalStyle";
-import { useRecoilState } from "recoil";
-import { useNavigate } from "react-router-dom";
-import Ellipse7 from "../../Assets/Ellipse 7.svg";
-import Group89 from "../../Assets/Group 89.svg";
-import Group90 from "../../Assets/Group 90.svg";
-import Group82 from "../../Assets/Group 82.svg";
-import Group81 from "../../Assets/Group 81.svg";
-import Group84 from "../../Assets/Group 84.svg";
-import Group63 from "../../Assets/Group 63.svg";
-import Group125 from "../../Assets/Group 125.png";
-import Group126 from "../../Assets/Group 126.png";
+import styled, { createGlobalStyle } from "styled-components";
 import ChatAi from "../../Assets/ChatAi.png";
 import ChatPerson from "../../Assets/ChatPerson.png";
-import Rectangle24 from "../../Assets/Rectangle 24.svg";
-import Rectangle10 from "../../Assets/Rectangle 10.svg";
+import Ellipse7 from "../../Assets/Ellipse 7.svg";
+import Group125 from "../../Assets/Group 125.png";
+import Group126 from "../../Assets/Group 126.png";
 import { Button } from "./WebChapter2";
 const WebChapter22 = () => {
   const [content, setContent] = useState("");

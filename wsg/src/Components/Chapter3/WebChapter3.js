@@ -12,10 +12,9 @@ import {
   BubbleText,
   BalloonContainer
 } from "../Main/WebMain";
-import { Background } from "../Main/WebOnBoarding";
+import { Background } from "../../Main/WebOnBoarding";
 import Group121 from "../../Assets/Group 121.svg";
 import Group75 from "../../Assets/Group 75.png";
-import GlobalStyle from "../Etc/GlobalStyle";
 
 const WebChapter3 = () => {
   const navigate = useNavigate();

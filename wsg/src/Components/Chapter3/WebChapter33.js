@@ -7,7 +7,8 @@ import Button2 from "../../Assets/Button2.png";
 import Button2Click from "../../Assets/Button2Click.png";
 import Button3 from "../../Assets/Button3.png";
 import Button3Click from "../../Assets/Button3Click.png";
-import Ellipse7 from "../../Assets/Ellipse 7.svg";
+import { SmallBackground } from "../Chapter1/WebChapter12";
+import smallBg from "../../Assets/bg1.svg";
 import Group146 from "../../Assets/Group 146.png";
 
 const WebChapter33 = () => {
@@ -51,7 +52,8 @@ const WebChapter33 = () => {
   return (
     <>
       <Container />
-      <Ellipse7Image src={Ellipse7} alt="Chapter 22 Ellipse7" />
+      <SmallBackground src={smallBg} />
+
       <Button onClick={moveToNext}>투표하기</Button>
       <Part0>
         <ChapTitle>Chapter 3.</ChapTitle>
@@ -202,14 +204,6 @@ const Button3ClickImage = styled.img`
   position: absolute;
   right: 260px;
   top: 344px;
-`;
-
-const Ellipse7Image = styled.img` //큰 원
-  position: absolute;
-  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0%; /* 원하는 가로 위치로 조절 */
-  width: 100%;
-  height: 83%; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 
 export default WebChapter33;

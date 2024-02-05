@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Ellipse5 from "../../Assets/Ellipse 5.svg";
-import Ellipse7 from "../../Assets/Ellipse 7.svg";
+import { Background } from "../Main/WebOnBoarding";
+import BG from "../../Assets/BG.svg";
 import Group121 from "../../Assets/Group 121.svg";
 import Group75 from "../../Assets/Group 75.png";
 import GlobalStyle from "../Etc/GlobalStyle";
@@ -16,8 +16,7 @@ const WebChapter3 = () => {
   return (
     <>
       <GlobalStyle />
-      <Ellipse5Image src={Ellipse5} alt="Chapter 3 Ellipse5" />
-      <Ellipse7Image src={Ellipse7} alt="Chapter 3 Ellipse7" />
+      <Background src = {BG} />
       <ChapTitle>Chapter 3.</ChapTitle>
       <Title>투표 진행</Title>
       <BalloonContainer>
@@ -137,22 +136,6 @@ const BalloonContent = styled.div`
 const Group121Image = styled.img`
   width: 500px;
   height: 500px;
-`;
-
-const Ellipse5Image = styled.img` //작은 원
-  position: absolute;
-  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0%; /* 원하는 가로 위치로 조절 */
-  width: 100%;
-  height: 76%; /* 이미지가 70%의 높이를 차지하도록 설정 */
-`;
-
-const Ellipse7Image = styled.img` //큰 원
-  position: absolute;
-  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0%; /* 원하는 가로 위치로 조절 */
-  width: 100%;
-  height: 83%; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 
 export { Button };

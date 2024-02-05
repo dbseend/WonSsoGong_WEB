@@ -120,10 +120,10 @@ const NoteImage = styled.img`
 
 const Ellipse7Image = styled.img` //큰 원
   position: absolute;
-  top: 40px; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0; /* 원하는 가로 위치로 조절 */
-  width: 1450px;
-  height: 680px; /* 이미지가 70%의 높이를 차지하도록 설정 */
+  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
+  left: 0%; /* 원하는 가로 위치로 조절 */
+  width: 100%;
+  height: 83%; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 
 export default WebChapter32;

@@ -44,7 +44,7 @@ const NavbarContainer = styled.div`
     flex-shrink: 0;
     background: var(--secondary-bg, #77A1F5);
     backdrop-filter: blur(10px);
-    width: 1450px;
+    width: 100%;
     position: fixed;
     top: 0;
     left: 0;
@@ -68,9 +68,9 @@ const ColorMenu = styled(Menu)`
 
 const LogoImage = styled.img`
     position: absolute; /* 상대적 위치 설정을 위해 */
-    left: 50px; /* 왼쪽으로 10px 이동 */
-    width: 145px;
-    height: 45px;
+    left: 2.5%; /* 왼쪽으로 10px 이동 */
+    width: 10%;
+    height: 80%;
 `;
 
 export default WebNavbar;

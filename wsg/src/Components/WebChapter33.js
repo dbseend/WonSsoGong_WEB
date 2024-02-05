@@ -4,14 +4,14 @@ import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import { useRecoilState } from "recoil";
 import { useNavigate, useLocation } from "react-router-dom";
-import Ellipse7 from "../Assets/Ellipse 7.svg";
-import Group146 from "../Assets/Group 146.png";
-import Button1 from "../Assets/Button1.png";
-import Button1Click from "../Assets/Button1Click.png";
-import Button2 from "../Assets/Button2.png";
-import Button2Click from "../Assets/Button2Click.png";
-import Button3 from "../Assets/Button3.png";
-import Button3Click from "../Assets/Button3Click.png";
+import Ellipse7 from "../../Assets/Ellipse 7.svg";
+import Group146 from "../../Assets/Group 146.png";
+import Button1 from "../../Assets/Button1.png";
+import Button1Click from "../../Assets/Button1Click.png";
+import Button2 from "../../Assets/Button2.png";
+import Button2Click from "../../Assets/Button2Click.png";
+import Button3 from "../../Assets/Button3.png";
+import Button3Click from "../../Assets/Button3Click.png";
 
 const WebChapter33 = () => {
   const [content, setContent] = useState("");

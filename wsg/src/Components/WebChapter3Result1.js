@@ -4,9 +4,9 @@ import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import { useRecoilState } from "recoil";
 import { useNavigate, useLocation } from "react-router-dom";
-import Ellipse7 from "../Assets/Ellipse 7.svg";
-import Group149 from "../Assets/Group 149.png";
-import Chapter3Result1 from "../Assets/Chapter3Result1.png";
+import Ellipse7 from "../../Assets/Ellipse 7.svg";
+import Group149 from "../../Assets/Group 149.png";
+import Chapter3Result1 from "../../Assets/Chapter3Result1.png";
 
 const WebChapter3Result1 = (props) => {
   const navigate = useNavigate();

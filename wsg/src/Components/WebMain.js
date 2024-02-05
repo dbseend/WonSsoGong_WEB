@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import { useNavigate } from "react-router-dom";
-import Group118 from "../Assets/Group 118.svg";
-import Group63 from "../Assets/Group 63.png";
-import BG from "../Assets/BG.svg";
+import Group118 from "../../Assets/Group 118.svg";
+import Group63 from "../../Assets/Group 63.png";
+import BG from "../../Assets/BG.svg";
 import { Background } from "./WebOnBoarding";
 import { Button } from "./WebChapter12";
 

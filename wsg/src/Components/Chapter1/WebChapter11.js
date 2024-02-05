@@ -95,7 +95,6 @@ export {
   ChapterArea,
   ChapTitle,
   Title,
-  ChapterChar,
   BalloonContainer,
   BubbleText,
 };

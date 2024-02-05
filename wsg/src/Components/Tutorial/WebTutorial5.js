@@ -1,25 +1,15 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import GlobalStyle from "../Etc/GlobalStyle";
-import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
-import Tutorial4 from "../../Assets/Tutorial4.png";
-import Group36 from "../../Assets/Group 36 1.png";
-import Group159 from "../../Assets/Group 159.png";
+import styled from "styled-components";
 import Ellipse5 from "../../Assets/Ellipse 5.svg";
-import Ellipse7 from "../../Assets/Ellipse 7.svg";
-import GroupA from "../../Assets/법안발의.svg";
-import GroupB from "../../Assets/법안분석.svg";
-import GroupC from "../../Assets/토론참여.svg";
-import GroupD from "../../Assets/법안분석.svg";
+import Group36 from "../../Assets/Group 36 1.png";
 import Group16 from "../../Assets/Group16.svg";
-import Group2 from "../../Assets/법안분석호버.svg";
+import GroupA from "../../Assets/법안발의.svg";
+import { default as GroupB, default as GroupD } from "../../Assets/법안분석.svg";
+import { default as Group2, default as Group4 } from "../../Assets/법안분석호버.svg";
+import GroupC from "../../Assets/토론참여.svg";
 import Group3 from "../../Assets/토론참여호버.svg";
-import Group4 from "../../Assets/법안분석호버.svg";
-import BasicChar from "../../Assets/BasicChar.svg";
-import HoverChar from "../../Assets/HoverChar.svg";
-import HoverCharBubble from "../../Assets/HoverCharBubble.svg";
-import BG from "../../Assets/BG.svg";
+import GlobalStyle from "../Etc/GlobalStyle";
 
 const WebTutorial5 = () => {
   const [rectHoverd1, setRectHovered1] = useState(false);

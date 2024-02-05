@@ -13,6 +13,7 @@ const WebChapter3 = () => {
   const moveToNext = () => {
     navigate("/chapter32");
   };
+
   return (
     <>
       <GlobalStyle />
@@ -34,15 +35,15 @@ const WebChapter3 = () => {
 };
 
 const ChapTitle = styled.div`
-color: #fff;
-font-family: "Pretendard Variable";
-font-size: 30px;
-font-style: normal;
-font-weight: 500; /* You can adjust the font weight here */
-line-height: normal;
-margin-bottom: 10px;
-margin-top: 0;
-text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.20);
+    color: #fff;
+    font-family: "Pretendard Variable";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500; /* You can adjust the font weight here */
+    line-height: normal;
+    margin-bottom: 10px;
+    margin-top: 0;
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.20);
 `;
 
 const Title = styled.div`
@@ -141,18 +142,18 @@ const Group121Image = styled.img`
 
 const Ellipse5Image = styled.img` //작은 원
   position: absolute;
-  top: 40px; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0; /* 원하는 가로 위치로 조절 */
-  width: 1450px;
-  height: 625px; /* 이미지가 70%의 높이를 차지하도록 설정 */
+  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
+  left: 0%; /* 원하는 가로 위치로 조절 */
+  width: 100%;
+  height: 76%; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 
 const Ellipse7Image = styled.img` //큰 원
   position: absolute;
-  top: 40px; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0; /* 원하는 가로 위치로 조절 */
-  width: 1450px;
-  height: 680px; /* 이미지가 70%의 높이를 차지하도록 설정 */
+  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
+  left: 0%; /* 원하는 가로 위치로 조절 */
+  width: 100%;
+  height: 83%; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 
 export { Button };

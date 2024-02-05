@@ -8,6 +8,8 @@ import Chapter12 from "./Pages/Chapter12";
 import Chapter2 from "./Pages/Chapter2";
 import Chapter22 from "./Pages/Chapter22";
 import Chapter3 from "./Pages/Chapter3";
+import Chapter32 from "./Pages/Chapter32";
+import Chapter33 from "./Pages/Chapter33";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/chapter2" element={<Chapter2 />} />
         <Route path="/chapter22" element={<Chapter22 />} />
         <Route path="/chapter3" element={<Chapter3 />} />
+        <Route path="/chapter32" element={<Chapter32 />} />
+        <Route path="/chapter33" element={<Chapter33 />} />
       </Routes>
     </Router>
   );

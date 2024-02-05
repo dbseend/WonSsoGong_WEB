@@ -22,6 +22,7 @@ const WebMain = () => {
       <Ellipse7Image src={Ellipse7} alt="Main Ellipse7" />
       <ChapTitle>Chapter 1.</ChapTitle>
       <Title>법안 발의</Title>
+
       <BalloonContainer>
         <BalloonContent>
           <Group118Image src={Group118} alt="Main Group118" />
@@ -30,6 +31,7 @@ const WebMain = () => {
       <SubText>
       </SubText>
       <Group63Image src={Group63} alt="Main Group63" />
+      <img src ={Test} />
       <Button onClick={moveToNext}>다음으로 넘어가기</Button>
     </>
   );
@@ -75,14 +77,14 @@ const SubText = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-bottom: 60%;
+  margin-bottom: 800px;
 `;
 
 const Button = styled.div`
   position: absolute;
-  bottom: 18%;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 150px;
+  left: 715px;
+  transform: translateX(-520px);
   width: 1050px;
   height: 40px;
   flex-shrink: 0;
@@ -107,18 +109,18 @@ const Button = styled.div`
 
 const Group63Image = styled.img` //호버
   position: absolute;
-  top: 24%;
-  right: 22%;
-  width: 22%;
-  height: 50%;
+  top: 210px;
+  right: 300px;
+  width: 300px;
+  height: 400px;
 `;
 
 const BalloonContainer = styled.div`
   position: absolute;
-  top: 15%;
-  right: 42%;
-  width: 38%;
-  height: 60%;
+  top: 120px;
+  right: 600px;
+  width: 550px;
+  height: 500px;
   z-index: 1;
   display: flex;
   flex-direction: column; /* 이미지와 텍스트를 세로로 배치 */
@@ -128,8 +130,8 @@ const BalloonContainer = styled.div`
 
 const BalloonContent = styled.div`
   position: relative; /* 상대 위치 설정 */
-  width: 100%;
-  height: 100%;
+  width: 550px;
+  height: 550px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -137,38 +139,24 @@ const BalloonContent = styled.div`
 `;
 
 const Group118Image = styled.img`
-  width: 90%;
-  height: 70%; /* 이미지가 70%의 높이를 차지하도록 설정 */
-`;
-
-const BalloonText = styled.span`
-  position: absolute; /* 절대 위치 설정 */
-  bottom: 39%; /* 이미지 아래에 간격 추가 */
-  right : 0;
-  color: black;
-  font-size: 20px;
-  font-family: "Pretendard Variable";
-  width : 70%;
-  white-space: pre-line;
-  strong {
-    font-weight: bold;
-  }
+  width: 500px;
+  height: 500px; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 
 const Ellipse5Image = styled.img` //작은 원
   position: absolute;
-  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0%; /* 원하는 가로 위치로 조절 */
-  width: 100%;
-  height: 76%; /* 이미지가 70%의 높이를 차지하도록 설정 */
+  top: 40px; /* 중심을 화면 상단에 위치하도록 설정 */
+  left: 0; /* 원하는 가로 위치로 조절 */
+  width: 1450px;
+  height: 625px; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 
 const Ellipse7Image = styled.img` //큰 원
   position: absolute;
-  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0%; /* 원하는 가로 위치로 조절 */
-  width: 100%;
-  height: 83%; /* 이미지가 70%의 높이를 차지하도록 설정 */
+  top: 40px; /* 중심을 화면 상단에 위치하도록 설정 */
+  left: 0; /* 원하는 가로 위치로 조절 */
+  width: 1450px;
+  height: 680px; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 
 export { Button };

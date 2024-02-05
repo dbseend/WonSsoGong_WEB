@@ -12,5 +12,3 @@ export const createBill = async (data) => {
   console.log(response.data);
   return (response.data);
 };
-
-

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import GlobalStyle from "../Etc/GlobalStyle";
-import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
-import Twinkle from "../../Assets/Twinkle.svg";
+import styled from "styled-components";
 import { createBill } from "../../Api/Api";
+import Twinkle from "../../Assets/Twinkle.svg";
 import smallBg from "../../Assets/bg1.svg";
+import GlobalStyle from "../Etc/GlobalStyle";
 
 const WebChapter12 = () => {
   const [selectedType, setSelectedType] = useState(null);
@@ -353,5 +351,5 @@ const Form2 = styled.textarea`
   resize: none;
 `;
 
-export { Button, SmallBackground, Hr };
+export { Button, Hr, SmallBackground };
 export default WebChapter12;

@@ -1,21 +1,18 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import GlobalStyle from "../Etc/GlobalStyle";
-import { useRecoilState } from "recoil";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import Group117 from "../../Assets/Group 117.svg";
 import Group68 from "../../Assets/Group 68.png";
-import { Background } from "../Main/WebOnBoarding";
-import {
-  Div,
-  ChapterArea,
-  ChapTitle,
-  Title,
-  ChapterChar,
-  BalloonContainer,
-  BubbleText,
-} from "../Main/WebMain";
 import { Button } from "../Chapter1/WebChapter12";
+import GlobalStyle from "../Etc/GlobalStyle";
+import {
+  BalloonContainer,
+  ChapTitle,
+  ChapterArea,
+  Div,
+  Title
+} from "../Main/WebMain";
+import { Background } from "../Main/WebOnBoarding";
 
 const WebChapter2 = () => {
   const navigate = useNavigate();

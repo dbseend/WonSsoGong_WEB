@@ -1,12 +1,9 @@
-import React, { useState } from "react";
-import { createGlobalStyle } from "styled-components";
-import styled from "styled-components";
-import GlobalStyle from "../Etc/GlobalStyle";
-import { useRecoilState } from "recoil";
-import { useNavigate, useLocation } from "react-router-dom";
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import styled, { createGlobalStyle } from "styled-components";
 import Ellipse7 from "../../Assets/Ellipse 7.svg";
-import Group151 from "../../Assets/Group 151.png";
 import Group150 from "../../Assets/Group 150.png";
+import Group151 from "../../Assets/Group 151.png";
 
 const WebChapter3Result2 = (props) => {
   const navigate = useNavigate();

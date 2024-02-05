@@ -141,6 +141,37 @@ const SubT = styled.div`
   line-height: normal;
 `;
 
+const Button = styled.div`
+  z-index: 2;
+  width: 240px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 84px;
+  background: linear-gradient(
+    90deg,
+    #ffc634 0%,
+    #ffd34a 10%,
+    #ffea5f 30%,
+    #fff275 50%,
+    #d8f5dd 100%
+  );
+  color: #5379c2;
+  font-family: "Pretendard Variable";
+  font-size: 25.2px;
+  font-weight: 800;
+  line-height: 40px;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  cursor: pointer;
+`;
+
 const RectArea = styled.div`
   display: flex;
   flex-direction: row;

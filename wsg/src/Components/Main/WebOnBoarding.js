@@ -19,7 +19,7 @@ import flower from "../../Assets/flower.svg";
 import diamond from "../../Assets/diamond.svg";
 import circle from "../../Assets/circle.svg";
 import BG from "../../Assets/BG.svg";
-import { Button } from "../WebChapter12";
+import { Button } from "../Chapter1/WebChapter12";
 
 const WebOnBoarding = () => {
   const [rectHoverd1, setRectHovered1] = useState(false);

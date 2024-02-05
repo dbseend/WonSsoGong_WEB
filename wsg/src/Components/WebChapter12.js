@@ -3,6 +3,7 @@ import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
+import { createGlobalStyle } from "styled-components";
 import Twinkle from "../Assets/Twinkle.svg";
 import { createBill } from "../Api/Api";
 import Ellipse7 from "../Assets/Ellipse 7.svg";
@@ -70,7 +71,7 @@ const WebChapter12 = () => {
   };
   return (
     <>
-      <GlobalStyle />
+      <EntireContainer />
       <Ellipse7Image src={Ellipse7} alt="Chapter 2 Ellipse7" />
       <Part0>
         <ChapTitle>Chapter 1.</ChapTitle>
@@ -155,17 +156,30 @@ const WebChapter12 = () => {
   );
 };
 
-const Ellipse7Image = styled.img`
-  overflow: hidden; //큰 원
-  position: fixed;
-  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0%; /* 원하는 가로 위치로 조절 */
-  width: 100%;
-  height: 83%;
-  z-index: -1;
+const Ellipse7Image = styled.img` //큰 원
+  position: absolute;
+  top: 40px; /* 중심을 화면 상단에 위치하도록 설정 */
+  left: 0; /* 원하는 가로 위치로 조절 */
+  width: 1450px;
+  height: 680px; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
+
+const EntireContainer = createGlobalStyle`
+body {
+  margin: 0;
+  margin-top : 50px;
+  padding: 0;
+  background: var(--secondary-bg, #77A1F5);
+  /* z-index: auto; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+`;
+
 const Part0 = styled.div`
-  margin-left: 5%;
+  margin-left: 55px;
   margin-top: 30px;
 `;
 
@@ -286,9 +300,9 @@ const ButtonContainer = styled.div`
 
 const Button = styled.div`
   position: absolute;
-  bottom: 15%;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 120px;
+  left: 715px;
+  transform: translateX(-520px);
   width: 1050px;
   height: 40px;
   flex-shrink: 0;

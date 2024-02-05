@@ -4,9 +4,9 @@ import GlobalStyle from "../Etc/GlobalStyle";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
-import Twinkle from "../Assets/Twinkle.svg";
+import Twinkle from "../../Assets/Twinkle.svg";
 import { createBill } from "../../Api/Api";
-import smallBg from "../Assets/bg1.svg";
+import smallBg from "../../Assets/bg1.svg";
 
 const WebChapter12 = () => {
   const [selectedType, setSelectedType] = useState(null);

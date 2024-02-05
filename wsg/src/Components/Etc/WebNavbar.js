@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate, useLocation } from  "react-router-dom";
 import GlobalStyle from "./GlobalStyle";
-import Logo from "../Assets/Logo.png";
+import Logo from "../../Assets/Logo.png";
 
 const WebNavbar = () => {
     const navigate = useNavigate();

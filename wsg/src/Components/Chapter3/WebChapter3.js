@@ -3,10 +3,10 @@ import styled from "styled-components";
 import GlobalStyle from "../Etc/GlobalStyle";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
-import Group121 from "../Assets/Group 121.svg";
-import Group75 from "../Assets/Group 75.png";
-import Ellipse5 from "../Assets/Ellipse 5.svg";
-import Ellipse7 from "../Assets/Ellipse 7.svg";
+import Group121 from "../../Assets/Group 121.svg";
+import Group75 from "../../Assets/Group 75.png";
+import Ellipse5 from "../../Assets/Ellipse 5.svg";
+import Ellipse7 from "../../Assets/Ellipse 7.svg";
 
 const WebChapter3 = () => {
   const navigate = useNavigate();

@@ -68,7 +68,7 @@ const Title = styled.div`
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-fill-color: transparent;
+  /* text-fill-color: transparent; */
   font-family: "Pretendard Variable";
   font-size: 64px;
   font-weight: 800;

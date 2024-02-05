@@ -2,46 +2,64 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { createBill } from "../../Api/Api";
+import { useRecoilState } from "recoil";
+import { billContent } from "../../Recoil/atom"; // atoms 파일 경로에 맞게 수정해주세요.
 import Twinkle from "../../Assets/Twinkle.svg";
 import smallBg from "../../Assets/bg1.svg";
 import GlobalStyle from "../Etc/GlobalStyle";
+import loading from "../../Assets/법안발의로딩페이지.svg";
 
 const WebChapter12 = () => {
   const [keyword, setKeyword] = useState("");
   const [title, setTitle] = useState("");
   const [content, setcontent] = useState("");
+  const [madeBill, setMadeBill] = useRecoilState(billContent);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const types = ["재난", "안전", "도시", "교통", "주민", "법률"];
 
   const navigate = useNavigate();
 
   const addBill = async (e) => {
-      e.preventDefault();
-      validationCheck();
+    e.preventDefault();
+    const isValid = validationCheck();
 
+    if (isValid === true) {
+      //기입 내용 모두 작성한 경우 api 호출
       const billData = {
         keyWord: keyword,
         title: title,
         content: content,
-      }
-      createBill(billData);
+      };
+      setIsSubmitted(true);
+      createBill(billData).then((response) => {
+        console.log(response);
+        console.log(response.choices[0].message.content);
+        // setMadeBill(response.choices[0].message.content);
+      });
 
-      navigate("/chapter1/3");
+      setTimeout(() => {
+        //5초 대기(답변 생성 예상 시간) 후 페이지 이동
+        navigate("/chapter1/3");
+      }, 5 * 1000);
+    }
   };
 
   const validationCheck = () => {
     if (keyword.trim() === "") {
       alert("주제를 선택해 주세요.");
-      return;
+      return false;
     }
     if (title.trim() === "") {
       alert("법안 주제를 입력해 주세요.");
-      return;
+      return false;
     }
     if (content.trim() === "") {
       alert("법안 주제를 설명해 주세요.");
-      return;
+      return false;
     }
-  }
+
+    return true;
+  };
 
   const handleKeywordChange = (type) => {
     setKeyword(type);
@@ -59,49 +77,55 @@ const WebChapter12 = () => {
     <>
       <GlobalStyle />
       <Div>
-        <SmallBackground src={smallBg} />
-        <Part0>
-          <ChapTitle>Chapter 1.</ChapTitle>
-          <Title>법안 발의</Title>
-        </Part0>
-        <Hr />
-        <Body>
-          <Part1>
-            <SubTitle>법안 주제</SubTitle>
-            <Container>
-              <TypeArea>
-                {types.map((type) => (
-                  <Type
-                    key={type}
-                    selected={keyword === type}
-                    onClick={() => handleKeywordChange(type)}
-                  >
-                    {type}
-                  </Type>
-                ))}
-              </TypeArea>
-              <Form1
-                value={title}
-                placeholder="법안 주제를 입력해주세요."
-                onChange={handleTitleChange}
-              />
-            </Container>
-          </Part1>
-          <Part2>
-            <SubTitle>법안 설명</SubTitle>
-            <Form2
-              value={content}
-              placeholder="작성한 법안 주제를 설명해주세요."
-              onChange={handleContentChange}
-            />
-          </Part2>
-          <ButtonContainer>
-            <Button type="submit" onClick={addBill}>
-              <StyledTwinkle src={Twinkle} />
-              <div>AI로 완성하기</div>
-            </Button>
-          </ButtonContainer>
-        </Body>
+        {isSubmitted ? (
+          <LoadingImage src={loading} alt="법안 분석" />
+        ) : (
+          <>
+            <SmallBackground src={smallBg} />
+            <Part0>
+              <ChapTitle>Chapter 1.</ChapTitle>
+              <Title>법안 발의</Title>
+            </Part0>
+            <Hr />
+            <Body>
+              <Part1>
+                <SubTitle>법안 주제</SubTitle>
+                <Container>
+                  <TypeArea>
+                    {types.map((type) => (
+                      <Type
+                        key={type}
+                        selected={keyword === type}
+                        onClick={() => handleKeywordChange(type)}
+                      >
+                        {type}
+                      </Type>
+                    ))}
+                  </TypeArea>
+                  <Form1
+                    value={title}
+                    placeholder="법안 주제를 입력해주세요."
+                    onChange={handleTitleChange}
+                  />
+                </Container>
+              </Part1>
+              <Part2>
+                <SubTitle>법안 설명</SubTitle>
+                <Form2
+                  value={content}
+                  placeholder="작성한 법안 주제를 설명해주세요."
+                  onChange={handleContentChange}
+                />
+              </Part2>
+              <ButtonContainer>
+                <Button type="submit" onClick={addBill}>
+                  <StyledTwinkle src={Twinkle} />
+                  <div>AI로 완성하기</div>
+                </Button>
+              </ButtonContainer>
+            </Body>
+          </>
+        )}
       </Div>
     </>
   );
@@ -302,6 +326,12 @@ const Form2 = styled.textarea`
   padding-left: 20px;
   padding-top: 12px;
   resize: none;
+`;
+
+const LoadingImage = styled.img`
+  width: 70%;
+  object-fit: cover;
+  z-index: 9999; // 다른 요소 위에 표시되도록 z-index를 높게 설정합니다.
 `;
 
 export { Button, Hr, SmallBackground };

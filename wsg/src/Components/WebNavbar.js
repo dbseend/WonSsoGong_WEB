@@ -27,10 +27,17 @@ const WebNavbar = () => {
     return (
         <NavbarContainer>
             <LogoImage src={Logo} alt="Navbar Logo" />
-            <Menu onClick={handleGoRoot}>홈</Menu>
-            <Menu onClick={handleTutorial}>튜토리얼</Menu>
-            <Menu>법안 분석</Menu>
-            <ColorMenu>시작하기</ColorMenu>
+            <Menu onClick={handleGoRoot} isActive={location.pathname === "/"}>
+                홈
+            </Menu>
+            <Menu onClick={handleTutorial} isActive={location.pathname === "/tutorial" || location.pathname === "/tutorial2"
+            || location.pathname === "/tutorial3" || location.pathname === "/tutorial4" || location.pathname === "/tutorial5"}>
+                튜토리얼
+            </Menu>
+            <Menu isActive={location.pathname === "/board"}>법안 분석</Menu>
+            <Menu onClick={handleClick} isActive={location.pathname === "/board"}>
+                시작하기
+            </Menu>
         </NavbarContainer>
     );
 }
@@ -60,6 +67,7 @@ const Menu = styled.div`
     font-family: "Pretendard Variable";
     font-style: normal;
     line-height: normal;
+    color: ${props => (props.isActive ? "#FFA438" : "white")};
 `;
 
 const ColorMenu = styled(Menu)`

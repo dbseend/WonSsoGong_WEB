@@ -79,12 +79,12 @@ const WebOnBoarding = () => {
       </Top>
       <RectArea>
         <RectImage
-          src={rectHoverd1 ? Group1 : GroupB}
+          src={rectHoverd1 ? Group1 : GroupA}
           onMouseEnter={() => setRectHovered1(true)}
           onMouseLeave={() => setRectHovered1(false)}
         />
         <RectImage
-          src={rectHoverd2 ? Group2 : GroupA}
+          src={rectHoverd2 ? Group2 : GroupB}
           onMouseEnter={() => setRectHovered2(true)}
           onMouseLeave={() => setRectHovered2(false)}
         />

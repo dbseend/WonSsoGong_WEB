@@ -8,7 +8,7 @@ const WebNavbar = () => {
     const location = useLocation();
 
     const handleTutorial = () => {
-        navigate("/tutorial");  // wirte페이지로 이동
+        navigate("/tutorial/1");  // wirte페이지로 이동
     }
     const handleClick = () => {
         navigate("/board");  // board페이지로 이동
@@ -76,8 +76,8 @@ const ColorMenu = styled(Menu)`
 const LogoImage = styled.img`
     position: absolute; /* 상대적 위치 설정을 위해 */
     left: 2.5%; /* 왼쪽으로 10px 이동 */
-    width: 10%;
-    height: 80%;
+    width: 150px;
+    height: 45px;
 `;
 
 export default WebNavbar;

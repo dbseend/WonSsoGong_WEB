@@ -24,11 +24,11 @@ const WebChapter33 = () => {
     const votes3 = Math.floor(Math.random() * (99 - 20 + 1) + 20);
 
     if (votes1 >= votes2 && votes1 >= votes3) {
-      navigate("/chapter3Result1", { state: { votes1, votes2, votes3 } });
+      navigate("/chapter3/result1", { state: { votes1, votes2, votes3 } });
     } else if (votes2 >= votes1 && votes2 >= votes3) {
-      navigate("/chapter3Result2", { state: { votes1, votes2, votes3 } });
+      navigate("/chapter3/result2", { state: { votes1, votes2, votes3 } });
     } else {
-      navigate("/chapter3Result3", { state: { votes1, votes2, votes3 } });
+      navigate("/chapter3/result3", { state: { votes1, votes2, votes3 } });
     }
   };
 

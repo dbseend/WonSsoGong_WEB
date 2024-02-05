@@ -8,7 +8,7 @@ const WebChapter32 = () => {
   const [content, setContent] = useState("");
   const navigate = useNavigate();
   const moveToNext = () => {
-    navigate("/chapter33");
+    navigate("/chapter3/3");
   };
   return (
     <>

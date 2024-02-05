@@ -5,13 +5,13 @@ import FluentArrow from "../Assets/FluentArrow.svg";
 import WebFooter from "./WebFooter";
 import { useNavigate } from "react-router-dom";
 import GroupA from "../Assets/법안발의.svg";
-import GroupB from "../Assets/법안분석.svg";
-import GroupC from "../Assets/토론참여.svg";
 import GroupD from "../Assets/법안분석.svg";
+import GroupB from "../Assets/토론참여.svg";
+import GroupC from "../Assets/투표진행.svg";
 import Group1 from "../Assets/법안발의호버.svg";
-import Group2 from "../Assets/법안분석호버.svg";
-import Group3 from "../Assets/토론참여호버.svg";
 import Group4 from "../Assets/법안분석호버.svg";
+import Group2 from "../Assets/토론참여호버.svg";
+import Group3 from "../Assets/투표진행호버.svg";
 import BasicChar from "../Assets/BasicChar.svg";
 import HoverChar from "../Assets/HoverChar.svg";
 import HoverCharBubble from "../Assets/HoverCharBubble.svg";
@@ -19,8 +19,6 @@ import flower from "../Assets/flower.svg";
 import diamond from "../Assets/diamond.svg";
 import circle from "../Assets/circle.svg";
 import BG from "../Assets/BG.svg";
-/* import Ellipse5 from "../Assets/Ellipse 5.svg";
-import Ellipse7 from "../Assets/Ellipse 7.svg"; */
 
 const WebOnBoarding = () => {
   const [rectHoverd1, setRectHovered1] = useState(false);
@@ -64,8 +62,6 @@ const WebOnBoarding = () => {
     <Div>
       <GlobalStyle />
       <Background src={BG} />
-{/*       <Ellipse5Image src={Ellipse5} alt="Chapter 2 Ellipse5" />
-      <Ellipse7Image src={Ellipse7} alt="Chapter 2 Ellipse7" /> */}
       <Top>
         <div>
           <WhiteText>국회의 일부가 되어 국회 의원이 되어보는 경험,</WhiteText>{" "}
@@ -132,14 +128,20 @@ const Div = styled.div`
 `;
 
 const Background = styled.img`
-position: absolute;
-overflow: hidden;
-width: 2000px;
-max-height: 115%;
-min-height: 70%;
-top:-26%;
-z-index: 0;
+  position: absolute;
+  overflow: hidden;
+  width: 1512px;
+  min-height: 852px;
+  height: 70%;
+  z-index: -2;
+  top: 0px;
+
+  @media (min-width: 1512px) {
+    width: 100%;
+    height: auto;
+  }
 `;
+
 const Top = styled.div`
   margin-top: 50px;
   display: flex;
@@ -197,19 +199,18 @@ const RectArea = styled.div`
   flex-direction: row;
   gap: 26px;
   margin-top: 88px;
-  z-index:1;
+  z-index: 1;
 `;
 
 const RectImage = styled.img`
   border-radius: 106px;
 `;
 
-
 const CharImage = styled.img`
   position: absolute;
   margin-top: 800px;
   margin-left: 1110px;
-  z-index: 0;
+  z-index: 2;
 `;
 
 const Img2 = styled.img`
@@ -279,21 +280,5 @@ const BubbleImage = styled.img`
   z-index: 1;
 `;
 
-/*
-const Ellipse5Image = styled.img` //작은 원
-  position: absolute;
-  top: 5%;
-  left: 0%;
-  width: 100%;
-  height: 76%; 
-`;
-
-const Ellipse7Image = styled.img` //큰 원
-  position: absolute;
-  top: 5%; 
-  left: 0%; 
-  width: 100%;
-  height: 83%;
-`;
-*/
+export { Background };
 export default WebOnBoarding;

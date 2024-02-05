@@ -5,19 +5,47 @@ import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import Group117 from "../Assets/Group 117.svg";
 import Group68 from "../Assets/Group 68.png";
-import Ellipse5 from "../Assets/Ellipse 5.svg";
-import Ellipse7 from "../Assets/Ellipse 7.svg";
+import { Background } from "./WebOnBoarding";
+import {
+  Div,
+  ChapterArea,
+  ChapTitle,
+  Title,
+  ChapterChar,
+  BalloonContainer,
+  BubbleText,
+} from "./WebMain";
+import { Button } from "./WebChapter12";
 
 const WebChapter2 = () => {
   const navigate = useNavigate();
   const moveToNext = () => {
     navigate("/chapter22");
   };
+
   return (
+    <Div>
+      <GlobalStyle />
+      <Background />
+
+      <ChapterArea>
+        <ChapTitle>Chapter 2.</ChapTitle>
+        <Title>토론 참여</Title>
+      </ChapterArea>
+
+      <BalloonContainer>
+        <Group117Image src={Group117} alt="Chapter 2 Group117" />
+        {/*         <BubbleText src={Group118} alt="Main Group118" />
+        <ChapterChar src={Group63} alt="Main Group63" /> */}
+      </BalloonContainer>
+      <Group68Image src={Group68} alt="Chapter 2 Group68" />
+      <Button onClick={moveToNext}>다음으로 넘어가기</Button>
+    </Div>
+  );
+  /*  return (
     <>
       <GlobalStyle />
-      <Ellipse5Image src={Ellipse5} alt="Chapter 2 Ellipse5" />
-      <Ellipse7Image src={Ellipse7} alt="Chapter 2 Ellipse7" />
+      <Background />
       <ChapTitle>Chapter 2.</ChapTitle>
       <Title>토론 참여</Title>
       <BalloonContainer>
@@ -29,78 +57,8 @@ const WebChapter2 = () => {
       <Group68Image src={Group68} alt="Chapter 2 Group68" />
       <Button onClick={moveToNext}>다음으로 넘어가기</Button>
     </>
-  );
+  ); */
 };
-
-const ChapTitle = styled.div`
-  color: #fff;
-  font-family: "Pretendard Variable";
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 500; /* You can adjust the font weight here */
-  line-height: normal;
-  margin-bottom: 10px;
-  margin-top: 0;
-  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-`;
-
-const Title = styled.div`
-  background: linear-gradient(
-    90deg,
-    #ffc634 0%,
-    #ffd34a 3%,
-    #ffea5f 8%,
-    #fff275 17%,
-    #d8f5dd 24%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-fill-color: transparent;
-  font-family: "Pretendard Variable";
-  font-size: 64px;
-  font-weight: 800;
-  line-height: normal;
-  margin-bottom: 10px;
-`;
-
-const SubText = styled.div`
-  width: 900px;
-  color: var(--white-text, #f6f6f6);
-  font-family: "Pretendard Variable";
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-bottom: 800px;
-`;
-
-const Button = styled.div`
-  position: absolute;
-  bottom: 150px;
-  left: 715px;
-  transform: translateX(-520px);
-  width: 1050px;
-  height: 40px;
-  flex-shrink: 0;
-  border-radius: 84px;
-  background: linear-gradient(
-    90deg,
-    #ffc634 0%,
-    #ffd34a 10%,
-    #ffea5f 30%,
-    #fff275 50%,
-    #d8f5dd 100%
-  );
-  color: #5379c2;
-  font-family: "Pretendard Variable";
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 40px;
-  text-align: center;
-  cursor: pointer;
-`;
 
 const Group68Image = styled.img`
   position: absolute;
@@ -110,50 +68,9 @@ const Group68Image = styled.img`
   height: 400px;
 `;
 
-const BalloonContainer = styled.div`
-  position: absolute;
-  top: 120px;
-  right: 600px;
-  width: 550px;
-  height: 500px;
-  z-index: 1;
-  display: flex;
-  flex-direction: column; /* 이미지와 텍스트를 세로로 배치 */
-  justify-content: center;
-  align-items: center;
-`;
-
-const BalloonContent = styled.div`
-  position: relative; /* 상대 위치 설정 */
-  width: 550px;
-  height: 550px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
 const Group117Image = styled.img`
   width: 550px;
   height: 500px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-`;
-
-const Ellipse5Image = styled.img`
-  //작은 원
-  position: absolute;
-  top: 40px; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0; /* 원하는 가로 위치로 조절 */
-  width: 1450px;
-  height: 625px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-`;
-
-const Ellipse7Image = styled.img`
-  //큰 원
-  position: absolute;
-  top: 40px; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0; /* 원하는 가로 위치로 조절 */
-  width: 1450px;
-  height: 680px; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 
 export { Button };

@@ -127,13 +127,12 @@ const Div = styled.div`
   align-items: center;
 `;
 
-
 const Background = styled.img`
   position: absolute;
   overflow: hidden;
-  min-width: 1512px;
+  width: 1512px;
   min-height: 852px;
-  max-height: 70%;
+  height: 70%;
   z-index: -2;
   top: 0px;
 
@@ -141,13 +140,7 @@ const Background = styled.img`
     width: 100%;
     height: auto;
   }
-
-/*   @media (min-width: 2000px) {
-    width: 2000px;
-  } */
 `;
-
-
 
 const Top = styled.div`
   margin-top: 50px;

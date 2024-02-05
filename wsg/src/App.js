@@ -15,6 +15,7 @@ import Tutorial4 from "./Pages/Tutorial/Tutorial4";
 import Tutorial5 from "./Pages/Tutorial/Tutorial5";
 import Chapter11 from "./Pages/Chapter1/Chapter11";
 import Chapter12 from "./Pages/Chapter1/Chapter12";
+import Chapter13 from "./Pages/Chapter1/Chapter13";
 import Chapter21 from "./Pages/Chapter2/Chapter21";
 import Chapter22 from "./Pages/Chapter2/Chapter22";
 import Chapter31 from "./Pages/Chapter3/Chapter31";
@@ -44,6 +45,7 @@ function App() {
         <Route path="/chapter1" element={<Outlet />}>
           <Route path="1" element={<Chapter11 />} />
           <Route path="2" element={<Chapter12 />} />
+          <Route path="3" element={<Chapter13 />} />
         </Route>
 
         {/* 챕터2 페이지 */}

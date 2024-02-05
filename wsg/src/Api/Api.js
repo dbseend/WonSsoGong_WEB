@@ -12,6 +12,6 @@ export const createBill = async (data) => {
     return response.data;
   } catch (error) {
     console.error("Error creating bill:", error);
-    throw error; // You can choose to handle the error in a different way if needed
+    throw error;
   }
 };

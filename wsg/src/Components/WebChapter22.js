@@ -104,13 +104,13 @@ const Button = styled.div`
   border-radius: 84px;
   background: linear-gradient(
     90deg,
-    #FFC634 0%,
-    #FFD34A 10%,
-    #FFEA5F 30%,
-    #FFF275 50%,
-    #D8F5DD 100%
+    #ffc634 0%,
+    #ffd34a 10%,
+    #ffea5f 30%,
+    #fff275 50%,
+    #d8f5dd 100%
   );
-  color: #5379C2;
+  color: #5379c2;
   font-family: "Pretendard Variable";
   font-size: 20px;
   font-style: normal;
@@ -118,6 +118,11 @@ const Button = styled.div`
   line-height: 40px;
   text-align: center;
   cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
 `;
 
 const CurveHr = styled.hr`
@@ -128,7 +133,7 @@ const CurveHr = styled.hr`
   position: absolute;
   bottom: 260px;
 `;
-
+//빵긋이
 const Group125Image = styled.img`
   width: 200px;
   height: 285px; /* 이미지가 70%의 높이를 차지하도록 설정 */

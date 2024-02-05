@@ -4,24 +4,23 @@ import GlobalStyle from "./GlobalStyle";
 import FluentArrow from "../Assets/FluentArrow.svg";
 import WebFooter from "./WebFooter";
 import { useNavigate } from "react-router-dom";
-import GroupA from "../Assets/Group 15.svg";
-import GroupB from "../Assets/Group 16.svg";
-import GroupC from "../Assets/Group 17.svg";
-import GroupD from "../Assets/Group 60.svg";
-import Group1 from "../Assets/Group 50.svg";
-import Group2 from "../Assets/Group 51.svg";
-import Group3 from "../Assets/Group 52.svg";
-import Group4 from "../Assets/Group 53.svg";
+import GroupA from "../Assets/법안발의.svg";
+import GroupB from "../Assets/법안분석.svg";
+import GroupC from "../Assets/토론참여.svg";
+import GroupD from "../Assets/법안분석.svg";
+import Group1 from "../Assets/법안발의호버.svg";
+import Group2 from "../Assets/법안분석호버.svg";
+import Group3 from "../Assets/토론참여호버.svg";
+import Group4 from "../Assets/법안분석호버.svg";
 import BasicChar from "../Assets/BasicChar.svg";
 import HoverChar from "../Assets/HoverChar.svg";
 import HoverCharBubble from "../Assets/HoverCharBubble.svg";
 import flower from "../Assets/flower.svg";
 import diamond from "../Assets/diamond.svg";
 import circle from "../Assets/circle.svg";
-import Ellipse5 from "../Assets/Ellipse 5.svg";
-import Ellipse7 from "../Assets/Ellipse 7.svg";
-
-
+import BG from "../Assets/BG.svg";
+/* import Ellipse5 from "../Assets/Ellipse 5.svg";
+import Ellipse7 from "../Assets/Ellipse 7.svg"; */
 
 const WebOnBoarding = () => {
   const [rectHoverd1, setRectHovered1] = useState(false);
@@ -41,19 +40,22 @@ const WebOnBoarding = () => {
     });
   };
 
-  useEffect(() => { // 스크롤 이벤트 리스너 등록
+  useEffect(() => {
+    // 스크롤 이벤트 리스너 등록
     const handleScroll = () => {
       const scrolledHeight = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
-      if (scrolledHeight + windowHeight >= documentHeight) { // 스크롤이 일정 높이 이상 내려갔을 때 Footer 표시
+      if (scrolledHeight + windowHeight >= documentHeight) {
+        // 스크롤이 일정 높이 이상 내려갔을 때 Footer 표시
         setShowFooter(true);
       } else {
         setShowFooter(false);
       }
     };
     window.addEventListener("scroll", handleScroll); // 스크롤 이벤트 리스너 등록
-    return () => { // 컴포넌트 언마운트 시 이벤트 리스너 제거
+    return () => {
+      // 컴포넌트 언마운트 시 이벤트 리스너 제거
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -61,8 +63,9 @@ const WebOnBoarding = () => {
   return (
     <Div>
       <GlobalStyle />
-      <Ellipse5Image src={Ellipse5} alt="Chapter 2 Ellipse5" />
-      <Ellipse7Image src={Ellipse7} alt="Chapter 2 Ellipse7" />
+      <Background src={BG} />
+{/*       <Ellipse5Image src={Ellipse5} alt="Chapter 2 Ellipse5" />
+      <Ellipse7Image src={Ellipse7} alt="Chapter 2 Ellipse7" /> */}
       <Top>
         <div>
           <WhiteText>국회의 일부가 되어 국회 의원이 되어보는 경험,</WhiteText>{" "}
@@ -128,6 +131,15 @@ const Div = styled.div`
   align-items: center;
 `;
 
+const Background = styled.img`
+position: absolute;
+overflow: hidden;
+width: 2000px;
+max-height: 115%;
+min-height: 70%;
+top:-26%;
+z-index: 0;
+`;
 const Top = styled.div`
   margin-top: 50px;
   display: flex;
@@ -185,15 +197,13 @@ const RectArea = styled.div`
   flex-direction: row;
   gap: 26px;
   margin-top: 88px;
-
+  z-index:1;
 `;
 
 const RectImage = styled.img`
-  backdrop-filter: blur(30px);
-  z-index: 0;
-  border-radius: 103px;
-  transition: all 0.5s ease;
+  border-radius: 106px;
 `;
+
 
 const CharImage = styled.img`
   position: absolute;
@@ -228,7 +238,6 @@ const Img4 = styled.img`
   height: 322px;
   z-index: -1;
 `;
-
 
 const Arrow = styled.img`
   margin-top: 750px;
@@ -270,20 +279,21 @@ const BubbleImage = styled.img`
   z-index: 1;
 `;
 
+/*
 const Ellipse5Image = styled.img` //작은 원
   position: absolute;
-  top: 40px; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0; /* 원하는 가로 위치로 조절 */
-  width: 1450px;
-  height: 625px; /* 이미지가 70%의 높이를 차지하도록 설정 */
+  top: 5%;
+  left: 0%;
+  width: 100%;
+  height: 76%; 
 `;
 
 const Ellipse7Image = styled.img` //큰 원
   position: absolute;
-  top: 40px; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0; /* 원하는 가로 위치로 조절 */
-  width: 1450px;
-  height: 680px; /* 이미지가 70%의 높이를 차지하도록 설정 */
+  top: 5%; 
+  left: 0%; 
+  width: 100%;
+  height: 83%;
 `;
-
+*/
 export default WebOnBoarding;

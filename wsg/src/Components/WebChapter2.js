@@ -25,8 +25,7 @@ const WebChapter2 = () => {
           <Group117Image src={Group117} alt="Chapter 2 Group117" />
         </BalloonContent>
       </BalloonContainer>
-      <SubText>
-      </SubText>
+      <SubText></SubText>
       <Group68Image src={Group68} alt="Chapter 2 Group68" />
       <Button onClick={moveToNext}>다음으로 넘어가기</Button>
     </>
@@ -34,25 +33,25 @@ const WebChapter2 = () => {
 };
 
 const ChapTitle = styled.div`
-color: #fff;
-font-family: "Pretendard Variable";
-font-size: 30px;
-font-style: normal;
-font-weight: 500; /* You can adjust the font weight here */
-line-height: normal;
-margin-bottom: 10px;
-margin-top: 0;
-text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.20);
+  color: #fff;
+  font-family: "Pretendard Variable";
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500; /* You can adjust the font weight here */
+  line-height: normal;
+  margin-bottom: 10px;
+  margin-top: 0;
+  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 `;
 
 const Title = styled.div`
-background: linear-gradient(
+  background: linear-gradient(
     90deg,
-    #FFC634 0%,
-    #FFD34A 3%,
-    #FFEA5F 8%,
-    #FFF275 17%,
-    #D8F5DD 24%
+    #ffc634 0%,
+    #ffd34a 3%,
+    #ffea5f 8%,
+    #fff275 17%,
+    #d8f5dd 24%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -87,13 +86,13 @@ const Button = styled.div`
   border-radius: 84px;
   background: linear-gradient(
     90deg,
-    #FFC634 0%,
-    #FFD34A 10%,
-    #FFEA5F 30%,
-    #FFF275 50%,
-    #D8F5DD 100%
+    #ffc634 0%,
+    #ffd34a 10%,
+    #ffea5f 30%,
+    #fff275 50%,
+    #d8f5dd 100%
   );
-  color: #5379C2;
+  color: #5379c2;
   font-family: "Pretendard Variable";
   font-size: 20px;
   font-style: normal;
@@ -139,7 +138,8 @@ const Group117Image = styled.img`
   height: 500px; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 
-const Ellipse5Image = styled.img` //작은 원
+const Ellipse5Image = styled.img`
+  //작은 원
   position: absolute;
   top: 40px; /* 중심을 화면 상단에 위치하도록 설정 */
   left: 0; /* 원하는 가로 위치로 조절 */
@@ -147,7 +147,8 @@ const Ellipse5Image = styled.img` //작은 원
   height: 625px; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 
-const Ellipse7Image = styled.img` //큰 원
+const Ellipse7Image = styled.img`
+  //큰 원
   position: absolute;
   top: 40px; /* 중심을 화면 상단에 위치하도록 설정 */
   left: 0; /* 원하는 가로 위치로 조절 */

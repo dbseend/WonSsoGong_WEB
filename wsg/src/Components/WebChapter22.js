@@ -13,11 +13,7 @@ import Group84 from "../../Assets/Group 84.svg";
 import Group63 from "../../Assets/Group 63.svg";
 import Group125 from "../../Assets/Group 125.png";
 import Group126 from "../../Assets/Group 126.png";
-import ChatAi from "../../Assets/ChatAi.png";
-import ChatPerson from "../../Assets/ChatPerson.png";
-import Rectangle24 from "../../Assets/Rectangle 24.svg";
-import Rectangle10 from "../../Assets/Rectangle 10.svg";
-import { Button } from "./WebChapter2";
+import { Button } from "../Chapter1/WebChapter12";
 const WebChapter22 = () => {
   const [content, setContent] = useState("");
 

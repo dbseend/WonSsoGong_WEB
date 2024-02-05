@@ -26,7 +26,7 @@ const WebMain = () => {
 
       <BalloonContainer>
         <BubbleText src={Group118} alt="Main Group118" />
-        <ChapterChar src={Group63} alt="Main Group63" />
+        <Chapter1Char src={Group63} alt="Main Group63" />
       </BalloonContainer>
 
       <Button onClick={moveToNext}>다음으로 넘어가기</Button>
@@ -75,7 +75,7 @@ const Title = styled.div`
   line-height: normal;
 `;
 
-const ChapterChar = styled.img`
+const Chapter1Char = styled.img`
   margin-top: 50px;
 `;
 
@@ -95,7 +95,6 @@ export {
   ChapterArea,
   ChapTitle,
   Title,
-  ChapterChar,
   BalloonContainer,
   BubbleText,
 };

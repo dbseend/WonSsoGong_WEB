@@ -297,7 +297,6 @@ const ButtonContainer = styled.div`
 `;
 
 const Button = styled.div`
-  position: absolute;
   width: 1050px;
   height: 40px;
   flex-shrink: 0;

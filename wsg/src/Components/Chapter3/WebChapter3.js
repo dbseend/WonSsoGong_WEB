@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import GlobalStyle from "./GlobalStyle";
+import GlobalStyle from "../Etc/GlobalStyle";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../Chapter1/WebChapter12";
 import BG from "../../Assets/BG.svg";
 import {
-  BalloonContainer,
-  ChapTitle,
-  ChapterArea,
   Div,
+  ChapterArea,
+  ChapTitle,
   Title,
   BubbleText,
+  BalloonContainer
 } from "../Main/WebMain";
 import { Background } from "../Main/WebOnBoarding";
 import Group121 from "../../Assets/Group 121.svg";

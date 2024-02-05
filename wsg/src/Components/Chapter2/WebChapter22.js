@@ -5,7 +5,7 @@ import ChatPerson from "../../Assets/ChatPerson.png";
 import Ellipse7 from "../../Assets/Ellipse 7.svg";
 import Group125 from "../../Assets/Group 125.png";
 import Group126 from "../../Assets/Group 126.png";
-import { Button } from "./WebChapter2";
+import { Button } from "../Chapter1/WebChapter12";
 const WebChapter22 = () => {
   const [content, setContent] = useState("");
 

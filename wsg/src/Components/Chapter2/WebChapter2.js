@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import GlobalStyle from "./GlobalStyle";
+import GlobalStyle from "../Etc/GlobalStyle";
 import { useNavigate } from "react-router-dom";
 import Group117 from "../../Assets/Group 117.svg";
 import Group68 from "../../Assets/Group 68.png";
 import { Button } from "../Chapter1/WebChapter12";
-import GlobalStyle from "../Etc/GlobalStyle";
 import BG from "../../Assets/BG.svg";
 import {
   Div,
@@ -13,9 +12,9 @@ import {
   ChapTitle,
   Title,
   BubbleText,
+  BalloonContainer
 } from "../Main/WebMain";
 import { Background } from "../Main/WebOnBoarding";
-import styled from "styled-components";
 
 const WebChapter2 = () => {
   const navigate = useNavigate();

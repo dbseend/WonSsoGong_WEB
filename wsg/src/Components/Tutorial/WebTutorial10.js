@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Group156 from "../../Assets/튜토리얼10완료.png";
-import Group176 from "../../Assets/Group 176.png";
+import Tutorial10Greet from "../../Assets/튜토리얼10완료.png";
+import Tutorial10Logo from "../../Assets/튜토리얼10로고.png";
 import GlobalStyle from "../Etc/GlobalStyle";
 import { SmallBackground } from "../Chapter1/WebChapter12";
 import smallBg from "../../Assets/bg1.svg";
@@ -18,15 +18,15 @@ const WebTutorial10 = () => {
     <Div>
       <GlobalStyle />
       <SmallBackground src={smallBg} />
-      <Group36Image src={Group156} alt="Tutorial Group36" />
-      <Group155Image src={Group176} alt="Tutorial Group135" />
+      <Tutorial10GreetImage src={Tutorial10Greet} alt="Tutorial Tutorial10Greet" />
+      <Tutorial10LogoImage src={Tutorial10Logo} alt="Tutorial Tutorial10Logo" />
       <Overlay>
         <NameText>빵긋이</NameText>
         <WelcomeText><BoldText>이제 여러분도 국회 의원이 되어 국가의 발전에 참여할 수 있어요!</BoldText><br />
           국회의 중요성을 깨달아보고 방방국국을 통해<br />
           민주주의 참여의 즐거움을 느껴보면 어떨까요?</WelcomeText>
       </Overlay>
-        <Button onClick={moveToNext}>홈으로 돌아가기</Button>
+      <Button onClick={moveToNext}>홈으로 돌아가기</Button>
     </Div>
   );
 };
@@ -67,12 +67,12 @@ const Button = styled.div`
   font-size: 20px;
   font-style: normal;
   font-weight: 800;
-  line-height: 30px;
+  line-height: 40px;
   text-align: center;
   cursor: pointer;
 `;
 
-const Group36Image = styled.img`
+const Tutorial10GreetImage = styled.img`
   transform: translate(0, -10px);
   top: 100px;
   right: 200px;
@@ -80,7 +80,7 @@ const Group36Image = styled.img`
   height: 50px;
 `;
 
-const Group155Image = styled.img`
+const Tutorial10LogoImage = styled.img`
   top: 500px;
   transform: translate(0, 8%);
   width: 840px;

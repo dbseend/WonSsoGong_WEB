@@ -21,9 +21,9 @@ export const makeBill = async (message) => {
         ],
         max_tokens: 1000,
         top_p: 1,
-        temperature: 1,
-        frequency_penalty: 0.5,
-        presence_penalty: 0.5,
+        temperature: 0.8,
+        frequency_penalty: 0.3,
+        presence_penalty: 0.7,
         stop: ["문장 생성 중단 단어"],
       }),
     });
@@ -116,9 +116,9 @@ export const debate = async (message) => {
         ],
         max_tokens: 1000,
         top_p: 1,
-        temperature: 1,
-        frequency_penalty: 0.5,
-        presence_penalty: 0.5,
+        temperature: 0.8,
+        frequency_penalty: 0.3,
+        presence_penalty: 0.7,
         stop: ["문장 생성 중단 단어"],
       }),
     });
@@ -139,19 +139,19 @@ export const extractInfo = async (keyword) => {
   try {
     const url = "https://open.assembly.go.kr/portal/openapi/TVBPMBILL11";
     const params = {
-      'KEY': process.env.REACT_APP_OPENAPI_KEY,
-      'Type': 'json',
-      'pIndex': 1,
-      'pSize': 50,
-      'BILL_NAME': keyword
+      KEY: process.env.REACT_APP_OPENAPI_KEY,
+      Type: "json",
+      pIndex: 1,
+      pSize: 50,
+      BILL_NAME: keyword,
     };
     const response = await axios.get(url, { params });
     const data = response.data;
-    const billInfo = data['TVBPMBILL11'][1]['row'].map(item => ({
-      id: item['BILL_NO'],
-      author: item['PROPOSER'],
-      title: item['BILL_NAME'],
-      LINK_URL: item['LINK_URL'],
+    const billInfo = data["TVBPMBILL11"][1]["row"].map((item) => ({
+      id: item["BILL_NO"],
+      author: item["PROPOSER"],
+      title: item["BILL_NAME"],
+      LINK_URL: item["LINK_URL"],
     }));
 
     return billInfo;
@@ -160,60 +160,26 @@ export const extractInfo = async (keyword) => {
   }
 };
 
-export const downloadPDF = async () => {
-  try {
-    const url =
-      "https://likms.assembly.go.kr/bill/billDetail.do?billId=ARC_U2C3T1G2X2O1M1K6W0T5C1A2A0K0L3";
-
-    const response = await axios.get(url);
-    const parser = new DOMParser();
-    const htmlDoc = parser.parseFromString(response.data, "text/html");
-    const tagsA = Array.from(htmlDoc.getElementsByTagName("a")).filter((a) =>
-      a.href.startsWith("javascript:openBillFile")
-    );
-
-    let id;
-    for (let tag of tagsA) {
-      const match = /openBillFile\('(.+?)','(.+?)','(.+?)'\)/.exec(tag.href);
-      if (match) {
-        [, id] = match;
-        break;
-      }
-    }
-
-    if (!id) {
-      console.log("No match found");
-      return;
-    }
-
-    const base_url = "https://likms.assembly.go.kr/filegate/servlet/FileGate";
-    const final_url = `${base_url}?bookId=${id}&type=1`;
-
-    const pdfResponse = await axios.get(final_url, { responseType: "blob" });
-    if (pdfResponse.status === 200) {
-      const file = new Blob([pdfResponse.data], { type: "application/pdf" });
-      saveAs(file, `${id}.pdf`);
-      console.log(`Downloaded ${id}.pdf successfully.`);
-    } else {
-      console.log(`No match found for ${final_url}.`);
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const createAssistant = async () => {
-  const api_key = "testKey";
+export const createAssistant = async (billNo) => {
+  const api_key = process.env.REACT_APP_KEY;
   const headers = {
     Authorization: `Bearer ${api_key}`,
-    "Content-Type": "application/json",
   };
+  // "Content-Type": "application/pdf",
 
-  // 파일 생성
   let fileData = new FormData();
-  fileData.append("file", "pdf_file_name");
+
+  // public 폴더에 있는 PDF 파일을 불러옵니다.
+  const temp = await fetch(`/pdf/${billNo}.pdf`);
+
+  // 불러온 파일을 Blob 객체로 변환합니다.
+  const blob = await temp.blob();
+
+  // Blob 객체를 FormData 객체에 추가합니다.
+  fileData.append("file", blob, `${billNo}.pdf`);
   fileData.append("purpose", "assistants");
 
+  // axios를 사용하여 FormData 객체를 서버에 전송합니다.
   let res = await axios.post("https://api.openai.com/v1/files", fileData, {
     headers,
   });
@@ -221,7 +187,7 @@ export const createAssistant = async () => {
 
   // 어시스턴트 생성
   let assistantData = {
-    name: "ChatPDF-0.0.0",
+    name: "ChatPDF-0.0.3",
     instructions: template,
     tools: [{ type: "retrieval" }],
     model: "gpt-4-1106-preview",
@@ -229,6 +195,7 @@ export const createAssistant = async () => {
   };
 
   res = await axios.post(
+    // "https://api.openai.com/v1/beta/assistants",
     "https://api.openai.com/v1/beta/assistants",
     assistantData,
     { headers }
@@ -247,13 +214,13 @@ export const createAssistant = async () => {
   let messageData = {
     role: "user",
     content: `
-    위 법률안을 분석하여 다음 정보를 리스트 형식으로 제공해주세요:
+      위 법률안을 분석하여 다음 정보를 리스트 형식으로 제공해주세요:
 
-핵심 키워드 3개
-법안의 주제
-법안 제안의 이유
-법안 설명
-상세하고 명확하게 분석해주세요.`,
+  핵심 키워드 3개
+  법안의 주제
+  법안 제안의 이유
+  법안 설명
+  상세하고 명확하게 분석해주세요.`,
   };
 
   await axios.post(
@@ -316,4 +283,47 @@ Please write all text in Korean.
 `;
 
 const debateTemplate = `
-Dear AI, as an expert on legislative bills with a somewhat cynical perspective, please provide an in-depth analysis based on the legislative bill and statements provided by the user. Discuss the pros and cons of the bill, as well as areas that require improvement. Furthermore, offer your insights on how the bill can be enhanced, and what aspects are already well-addressed. Through this, we aim to facilitate a constructive and productive discussion. This is our ultimate goal. Remember, your cynicism can bring a unique and critical viewpoint to the discussion`;
+Greetings, user. I am bbgg, an expert in analyzing legislative bills, approached from a somewhat cynical perspective. I provide in-depth analysis based on the legislative bill and statements you provide, discussing the pros and cons, and areas that need improvement. In addition, I offer insights on how the bill can be enhanced and what aspects are already well-addressed. Through this, we aim to facilitate a constructive and productive discussion, our ultimate goal. My cynical viewpoint offers a unique and critical perspective to the discussion. Please note that all responses will be provided in Korean and within 100 characters.
+`
+// export const downloadPDF = async (url) => {
+//   const modifiedUrl = url.replace('https://likms.assembly.go.kr', '');
+//   console.log(modifiedUrl);
+//   try {
+
+//     const response = await axios.get(modifiedUrl);
+//     const parser = new DOMParser();
+//     const htmlDoc = parser.parseFromString(response.data, "text/html");
+//     const tagsA = Array.from(htmlDoc.getElementsByTagName("a")).filter((a) =>
+//       a.href.startsWith("javascript:openBillFile")
+//     );
+
+//     let id;
+//     for (let tag of tagsA) {
+//       const match = /openBillFile\('(.+?)','(.+?)','(.+?)'\)/.exec(tag.href);
+//       if (match) {
+//         [, id] = match;
+//         break;
+//       }
+//     }
+
+//     if (!id) {
+//       console.log("No match found");
+//       return;
+//     }
+
+//     const base_url = "https://likms.assembly.go.kr/filegate/servlet/FileGate";
+//     const final_url = `${base_url}?bookId=${id}&type=1`;
+//     console.log(final_url);
+
+//     const pdfResponse = await axios.get(final_url, { responseType: "blob" });
+//     if (pdfResponse.status === 200) {
+//       const file = new Blob([pdfResponse.data], { type: "application/pdf" });
+//       saveAs(file, `${id}.pdf`);
+//       console.log(`Downloaded ${id}.pdf successfully.`);
+//     } else {
+//       console.log(`No match found for ${final_url}.`);
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };

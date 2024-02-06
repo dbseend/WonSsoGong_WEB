@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import GlobalStyle from "../Etc/GlobalStyle";
-import { useNavigate } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
 import { extractInfo, downloadPDF, createAssistant } from "../../Api/BillAPI";
 import Left from "../../Assets/Left.svg";
 import Right from "../../Assets/Right.svg";
@@ -21,11 +21,13 @@ import Chapter4Bubble from "../../Assets/Chapter4Bubble.svg";
 import searchIcon from "../../Assets/searchIcon.svg";
 
 const WebChapter41 = () => {
+  const navigate = useNavigate();
+
   const [keyword, setKeyword] = useState("");
   const [billUrls, setBillUrls] = useState([]);
 
   const types = ["재난", "안전", "도시", "교통", "주민", "법률"];
-  const itemsPerPage = 9;
+  const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const columns = [
     { key: "id", label: "번호" },
@@ -42,6 +44,12 @@ const WebChapter41 = () => {
 
     fetchData();
   }, [keyword]);
+
+  const handleClick = (index) => {
+    const billNo = visibleItems[index].id;
+    console.log(billNo);
+    navigate('../2', { state: { billNo } });
+  };
 
   const calculatePageInfo = () => {
     const totalPages = Math.ceil(billUrls.length / itemsPerPage);
@@ -63,7 +71,7 @@ const WebChapter41 = () => {
 
   const Pagination = () => (
     <div>
-      <img src={Left} onClick={() => handlePageClick(1)} />
+      <img src={Left} onClick={() => handlePageClick(1)} alt="Left" />
       {Array.from({ length: totalPages }).map((_, index) => (
         <PaginationButton
           key={index + 1}
@@ -73,7 +81,11 @@ const WebChapter41 = () => {
           {index + 1}
         </PaginationButton>
       ))}
-      <img src={Right} onClick={() => handlePageClick(totalPages)} />
+      <img
+        src={Right}
+        onClick={() => handlePageClick(totalPages)}
+        alt="Right"
+      />
     </div>
   );
 
@@ -130,8 +142,13 @@ const WebChapter41 = () => {
               <tbody>
                 {visibleItems.map((row, rowIndex) => (
                   <tr key={rowIndex}>
-                    {columns.map((column) => (
-                      <td key={column.key}>{row[column.key]}</td>
+                    {columns.map((column, columnIndex) => (
+                      <td
+                        key={column.key}
+                        onClick={() => handleClick(rowIndex, columnIndex)}
+                      >
+                        {row[column.key]}
+                      </td>
                     ))}
                   </tr>
                 ))}

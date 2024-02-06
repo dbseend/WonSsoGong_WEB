@@ -10,6 +10,11 @@ import Button3Click from "../../Assets/Button3Click.png";
 import { SmallBackground } from "../Chapter1/WebChapter12";
 import smallBg from "../../Assets/bg1.svg";
 import Group146 from "../../Assets/Group 146.png";
+import GlobalStyle from "../Etc/GlobalStyle";
+import { Button } from "../Chapter1/WebChapter12";
+import {
+  Div,
+} from "../Chapter1/WebChapter11";
 
 const WebChapter33 = () => {
   const [content, setContent] = useState("");
@@ -17,7 +22,6 @@ const WebChapter33 = () => {
   const [button2Clicked, setButton2Clicked] = useState(false);
   const [button3Clicked, setButton3Clicked] = useState(false);
   const navigate = useNavigate();
-  let votes1, votes2, votes3;
 
   const moveToNext = () => {
     const votes1 = Math.floor(Math.random() * (99 - 20 + 1) + 20);
@@ -50,56 +54,52 @@ const WebChapter33 = () => {
   };
 
   return (
-    <>
-      <Container />
+    <Div>
+      <GlobalStyle />
       <SmallBackground src={smallBg} />
-
-      <Button onClick={moveToNext}>투표하기</Button>
       <Part0>
         <ChapTitle>Chapter 3.</ChapTitle>
         <ChapTitle>
         <Title>투표 진행 : </Title> 
-            의사결정
+        의사 결정
         </ChapTitle>
       </Part0>
       <Hr />
       <Group146Image src={Group146} alt="Chapter 33 Group146" />
-      {button1Clicked ? (
-        <Button1ClickImage src={Button1Click} alt="Chapter 33 Button1Click" onClick={handleButton1Click} />
-      ) : (
-        <Button1Image src={Button1} alt="Chapter 33 Button1" onClick={handleButton1Click} />
-      )}
-      {button2Clicked ? (
-        <Button2ClickImage src={Button2Click} alt="Chapter 33 Button2Click" onClick={handleButton2Click} />
-      ) : (
-        <Button2Image src={Button2} alt="Chapter 33 Button2" onClick={handleButton2Click} />
-      )}
-      {button3Clicked ? (
-        <Button3ClickImage src={Button3Click} alt="Chapter 33 Button3Click" onClick={handleButton3Click} />
-      ) : (
-        <Button3Image src={Button3} alt="Chapter 33 Button3" onClick={handleButton3Click} />
-      )}
-    </>
+      <ImageContainer>
+        {button1Clicked ? (
+          <Button1ClickImage src={Button1Click} alt="Chapter 33 Button1Click" onClick={handleButton1Click} />
+        ) : (
+          <Button1Image src={Button1} alt="Chapter 33 Button1" onClick={handleButton1Click} />
+        )}
+        {button2Clicked ? (
+          <Button2ClickImage src={Button2Click} alt="Chapter 33 Button2Click" onClick={handleButton2Click} />
+        ) : (
+          <Button2Image src={Button2} alt="Chapter 33 Button2" onClick={handleButton2Click} />
+        )}
+        {button3Clicked ? (
+          <Button3ClickImage src={Button3Click} alt="Chapter 33 Button3Click" onClick={handleButton3Click} />
+        ) : (
+          <Button3Image src={Button3} alt="Chapter 33 Button3" onClick={handleButton3Click} />
+        )}
+      </ImageContainer>
+      <Button onClick={moveToNext}>다음으로 넘어가기</Button>
+    </Div>
   );
 };
 
-const Container = createGlobalStyle`
-body {
-  margin: 0;
-  margin-top : 90px;
-  padding: 0;
-  background: var(--secondary-bg, #77A1F5);
-  /* z-index: auto; */
+const ImageContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+  flex-direction: row;
+  margin-top: -22.2%;
+  margin-bottom: 22.1%;
+  margin-right: 33%;
 `;
 
 const Part0 = styled.div`
-  margin-left: 80px;
+  margin-left: -65%;
   margin-top: 0;
+
 `;
 
 const ChapTitle = styled.div`
@@ -119,81 +119,53 @@ const Title = styled.span`
 const Hr = styled.hr`
   width: 1131px;
   background: #fff;
-  margin-top: 18px;
+  margin-top: 1%;
+  margin-bottom: 10%;
   position: relative;
-`;
-
-const Button = styled.div`
-  position: absolute;
-  bottom: 120px;
-  left: 715px;
-  transform: translateX(-520px);
-  width: 1050px;
-  height: 40px;
-  flex-shrink: 0;
-  border-radius: 84px;
-  background: linear-gradient(
-    90deg,
-    #FFC634 0%,
-    #FFD34A 10%,
-    #FFEA5F 30%,
-    #FFF275 50%,
-    #D8F5DD 100%
-  );
-  color: #5379C2;
-  font-family: "Pretendard Variable";
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 40px;
-  text-align: center;
-  cursor: pointer;
 `;
 
 const Group146Image = styled.img`
   width: 1131px;
   height: 332px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-  position: absolute;
   right: 155px;
-  top: 250px;
+  top: 200px;
 `;
 
 const Button1Image = styled.img`
   width: 170px;
   height: 86px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-  position: absolute;
-  right: 1004px;
+  right: 500px;
   top: 333px;
+  margin-right: 44%;
 `;
 
 const Button1ClickImage = styled.img`
   width: 170px;
   height: 86px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-  position: absolute;
   right: 1004px;
-  top: 344px;
+  top: 314px;
+  margin-right: 39.7%;
 `;
 
 const Button2Image = styled.img`
   width: 170px;
   height: 86px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-  position: absolute;
   right: 632px;
   top: 333px;
+  margin-right: 44.5%;
 `;
 
 const Button2ClickImage = styled.img`
   width: 170px;
   height: 86px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-  position: absolute;
   right: 632px;
   top: 344px;
+  margin-right: 40.5%;
 `;
 
 const Button3Image = styled.img`
   width: 170px;
   height: 86px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-  position: absolute;
   right: 260px;
   top: 333px;
 `;
@@ -201,7 +173,6 @@ const Button3Image = styled.img`
 const Button3ClickImage = styled.img`
   width: 170px;
   height: 86px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-  position: absolute;
   right: 260px;
   top: 344px;
 `;

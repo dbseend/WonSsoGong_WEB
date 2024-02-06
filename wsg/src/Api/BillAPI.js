@@ -135,28 +135,32 @@ export const debate = async (message) => {
   }
 };
 
-const extractInfo = async () => {
+export const extractInfo = async (keyword) => {
   try {
     const url = "https://open.assembly.go.kr/portal/openapi/TVBPMBILL11";
     const params = {
       'KEY': process.env.REACT_APP_OPENAPI_KEY,
       'Type': 'json',
       'pIndex': 1,
-      'pSize': 100,
-      'BILL_NAME': '재난'
+      'pSize': 50,
+      'BILL_NAME': keyword
     };
     const response = await axios.get(url, { params });
     const data = response.data;
-    const billUrls = data['TVBPMBILL11'][1]['row'].map(item => item['LINK_URL']);
+    const billInfo = data['TVBPMBILL11'][1]['row'].map(item => ({
+      id: item['BILL_NO'],
+      author: item['PROPOSER'],
+      title: item['BILL_NAME'],
+      LINK_URL: item['LINK_URL'],
+    }));
 
-    return billUrls;
+    return billInfo;
   } catch (error) {
     console.log(error);
   }
 };
 
-
-const downloadPDF = async () => {
+export const downloadPDF = async () => {
   try {
     const url =
       "https://likms.assembly.go.kr/bill/billDetail.do?billId=ARC_U2C3T1G2X2O1M1K6W0T5C1A2A0K0L3";
@@ -198,7 +202,7 @@ const downloadPDF = async () => {
   }
 };
 
-const createAssistant = async () => {
+export const createAssistant = async () => {
   const api_key = "testKey";
   const headers = {
     Authorization: `Bearer ${api_key}`,

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { createBill } from "../../Api/Api";
+import { makeBill } from "../../Api/Api";
 import { useRecoilState } from "recoil";
 import { billContent } from "../../Recoil/atom"; // atoms 파일 경로에 맞게 수정해주세요.
 import Twinkle from "../../Assets/Twinkle.svg";
@@ -25,15 +25,12 @@ const WebChapter12 = () => {
 
     if (isValid === true) {
       //기입 내용 모두 작성한 경우 api 호출
-      const billData = {
-        keyWord: keyword,
-        title: title,
-        content: content,
-      };
       setIsSubmitted(true);
-      createBill(billData).then((response) => {
-        console.log(response.choices[0].message.content);
-        setMadeBill(response.choices[0].message.content);
+
+      const userContent = `Keywords: ${keyword}\nTitle: ${title}\nDescription: ${content}`;
+      makeBill(userContent).then((response) => {
+        console.log(response);
+        setMadeBill(response);
       });
 
       setTimeout(() => {
@@ -151,7 +148,6 @@ const SmallBackground = styled.img`
 `;
 
 const Part0 = styled.div`
-  margin-left: 55px;
   margin-top: 30px;
   z-index: 2;
   margin-left: -75%;
@@ -164,6 +160,7 @@ const ChapTitle = styled.div`
   font-style: normal;
   font-weight: 300;
   line-height: normal;
+  margin-left: 3px;
 `;
 
 const Title = styled.div`
@@ -208,6 +205,7 @@ const Container = styled.div`
   margin-left: 37px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const TypeArea = styled.div`
@@ -333,5 +331,18 @@ const LoadingImage = styled.img`
   z-index: 9999; // 다른 요소 위에 표시되도록 z-index를 높게 설정합니다.
 `;
 
-export { Button, Hr, SmallBackground };
+export {
+  Button,
+  Hr,
+  SmallBackground,
+  Div,
+  ChapTitle,
+  Part0,
+  Title,
+  Type,
+  TypeArea,
+  SubTitle,
+  Container,
+  Part1,
+};
 export default WebChapter12;

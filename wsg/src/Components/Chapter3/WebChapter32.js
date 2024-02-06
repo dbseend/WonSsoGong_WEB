@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { SmallBackground } from "../Chapter1/WebChapter12";
 import smallBg from "../../Assets/bg1.svg";
 import GlobalStyle from "../Etc/GlobalStyle";

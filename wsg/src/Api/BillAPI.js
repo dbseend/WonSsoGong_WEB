@@ -160,10 +160,9 @@ export const extractInfo = async (keyword) => {
   }
 };
 
-export const downloadPDF = async () => {
+export const downloadPDF = async (url) => {
   try {
-    const url =
-      "https://likms.assembly.go.kr/bill/billDetail.do?billId=ARC_U2C3T1G2X2O1M1K6W0T5C1A2A0K0L3";
+    console.log(url);
 
     const response = await axios.get(url);
     const parser = new DOMParser();
@@ -188,6 +187,7 @@ export const downloadPDF = async () => {
 
     const base_url = "https://likms.assembly.go.kr/filegate/servlet/FileGate";
     const final_url = `${base_url}?bookId=${id}&type=1`;
+    console.log(final_url);
 
     const pdfResponse = await axios.get(final_url, { responseType: "blob" });
     if (pdfResponse.status === 200) {

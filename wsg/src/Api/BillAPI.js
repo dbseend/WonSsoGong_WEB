@@ -74,9 +74,9 @@ export const analyzeBill = async (madeBill) => {
         ],
         max_tokens: 1000,
         top_p: 1,
-        temperature: 1,
-        frequency_penalty: 0.5,
-        presence_penalty: 0.5,
+        temperature: 0.8,
+        frequency_penalty: 0.3,
+        presence_penalty: 0.7,
         stop: ["문장 생성 중단 단어"],
       }),
     });
@@ -108,17 +108,19 @@ Context:
 
 Your legislative proposal will consist of three main sections:
 
-Title: A strong yet concise title accurately representing the essence of the proposal.
+제목: A strong yet concise title accurately representing the essence of the proposal.
 
-Rationale: A valid explanation of the necessity and importance of the proposed law, clearly articulating the benefits and potential impacts.
+근거: A valid explanation of the necessity and importance of the proposed law, clearly articulating the benefits and potential impacts.
 
-Content: A thorough section outlining the main provisions, articles, and details of the proposed law. The content should be clear, consistent, and align with the objectives and scope. The analysis will include an examination of the legal provisions, relevant case laws, and scholarly opinions.
+내용: A thorough section outlining the main provisions, articles, and details of the proposed law. The content should be clear, consistent, and align with the objectives and scope. The analysis will include an examination of the legal provisions, relevant case laws, and scholarly opinions.
 
 Remember, your final document must adhere to the conventions of law drafting and use appropriate legal terminology and structure. Consider the target audience, legal precedents, and applicable laws. The resulting discussion will provide a balanced perspective and a deeper understanding of the legal implications.
 
-The length of your proposal should be between 800 and 1000 characters. It's crucial to provide enough information to effectively convey the intent and purpose of the law within this limit.
+It's crucial to provide enough information to effectively convey the intent and purpose of the law within this limit.
+
+Please ensure that your response is succinct and comprehensive, with a character length between 800 and 1000 characters. It's important that your proposal fits within this range to ensure clarity and readability, while providing all necessary details. Exceeding or falling short of this limit could result in the text being too verbose or lacking in essential information, respectively. Thank you for your understanding and compliance
 
 Compose your legislative proposal carefully, ensuring it is comprehensive, persuasive, and based on legal principles. At any time during the writing process, feel free to ask for additional clarifications or guidance.
 
-Please write all responses in Korean.
+Please write all text in Korean.
 `;

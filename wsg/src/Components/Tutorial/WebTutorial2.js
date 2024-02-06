@@ -1,11 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Ellipse5 from "../../Assets/Ellipse 5.svg";
 import Group154 from "../../Assets/Group 154.png";
-import Group155 from "../../Assets/Group 155.png";
-import Group36 from "../../Assets/Group 36.png";
+import Group36 from "../../Assets/튜토리얼1인사.png";
 import GlobalStyle from "../Etc/GlobalStyle";
+import { SmallBackground } from "../Chapter1/WebChapter12";
+import smallBg from "../../Assets/bg1.svg";
+import { Div } from "../Chapter1/WebChapter11";
 
 const WebTutorial2 = () => {
   const navigate = useNavigate();
@@ -13,65 +14,70 @@ const WebTutorial2 = () => {
     navigate("/tutorial/3");
   };
   return (
-    <>
+    <Div>
       <GlobalStyle />
-      <Ellipse5Image src={Ellipse5} alt="Tutorial Ellipse5" />
+      <SmallBackground src={smallBg} />
       <Group36Image src={Group36} alt="Tutorial Group36" />
       <Group155Image src={Group154} alt="Tutorial Group135" />
-      <Group135Image src={Group155} alt="Tutorial Group135" />
-      <Button onClick={moveToNext}>다음</Button>
-    </>
+      <Overlay>
+        <NameText>빵긋이</NameText>
+        <WelcomeText>저는 방방국국의 <BoldText>AI 도우미 빵긋이</BoldText>에요! 이제부터 제가 다 도울게요!<br />
+        다시 한 번 환영합니다~!!</WelcomeText>
+      </Overlay>
+        <Button onClick={moveToNext}>다음</Button>
+    </Div>
   );
 };
 
-const ChapTitle = styled.div`
-  color: #fff;
-  font-family: "Pretendard Variable";
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 500; /* You can adjust the font weight here */
-  line-height: normal;
-  margin-bottom: 10px;
-  margin-top: 0;
-  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+const BoldText = styled.span`
+  font-weight: bold;
+  margin-left: 1%;
 `;
 
-const Title = styled.div`
-  background: linear-gradient(
-    90deg,
-    #ffc634 0%,
-    #ffd34a 3%,
-    #ffea5f 8%,
-    #fff275 17%,
-    #d8f5dd 24%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-fill-color: transparent;
+const NameText = styled.div`
+  white-space: nowrap;
+  color: var(--sec_text, #5379C2);
   font-family: "Pretendard Variable";
-  font-size: 64px;
-  font-weight: 800;
-  line-height: normal;
-  margin-bottom: 10px;
+  font-size: 32px;
+  font-weight: 600;
+  margin-top: 2.4%;
+  margin-left: 3%;
+  margin-right: 2%;
 `;
 
-const SubText = styled.div`
+const WelcomeText = styled.div`
+  white-space: nowrap;
+  width: 494px;
+  height: 29px;
+  background-color: ;
+  color: black; /* Set your desired text color */
+  font-family: "Pretendard Variable"; /* Replace with your preferred font */
+  font-size: 24px; /* Adjust the font size as needed */
+  font-weight: 450; /* Adjust the font weight as needed */
+  margin-top: 3%;
+  z-index: 1;
+`;
+
+const Overlay = styled.div`
+  display: flex; /* 자식 요소들을 가로로 배치 */
+  flex-direction: row;
+  position: absolute;
   width: 900px;
-  color: var(--white-text, #f6f6f6);
-  font-family: "Pretendard Variable";
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-bottom: 800px;
+  height: 167px;
+  border-radius: 2px;
+  background: rgba(246, 246, 246, 0.30);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.10);
+  backdrop-filter: blur(25px);
+  opacity: 0.9;
+  top: 70%; /* Adjust the top position according to your layout */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%);
 `;
 
 const Button = styled.div`
-  position: absolute;
   bottom: 150px;
-  left: 1500px;
-  transform: translateX(-520px);
+  left: 1800px;
+  transform: translate(220%, 950%);
   width: 151px;
   height: 29px;
   flex-shrink: 0;
@@ -95,65 +101,21 @@ const Button = styled.div`
 `;
 
 const Group36Image = styled.img`
-    transform: translate(180px, -10px);
-    top: 100px;
-    right: 200px;
-    width: 1050px;
-    height: 50px;
+  transform: translate(0, -10px);
+  top: 100px;
+  right: 200px;
+  width: 1050px;
+  height: 50px;
 `;
 
 const Group155Image = styled.img`
-  top: 300px;
-  transform: translate(420px, 30px);
+  top: 500px;
+  transform: translate(0, 20%);
   width: 550px;
   height: 360px;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
 `;
 
-const Group135Image = styled.img`
-    top: 250px;
-    transform: translate(270px, -14px);
-    width: 900px;
-    height: 167px;
-    opacity: 0.9;
-`;
-
-const BalloonContainer = styled.div`
-  position: absolute;
-  top: 120px;
-  right: 600px;
-  width: 550px;
-  height: 500px;
-  z-index: 1;
-  display: flex;
-  flex-direction: column; /* 이미지와 텍스트를 세로로 배치 */
-  justify-content: center;
-  align-items: center;
-`;
-
-const BalloonContent = styled.div`
-  position: relative; /* 상대 위치 설정 */
-  width: 550px;
-  height: 550px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Group117Image = styled.img`
-  width: 550px;
-  height: 500px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-`;
-
-const Ellipse5Image = styled.img` //작은 원
-  position: absolute;
-  top: 5%;
-  left: 0%;
-  width: 100%;
-  height: 76%; 
-`;
-
-export { Button };
+export { Overlay, WelcomeText, NameText, BoldText, Button};
 
 export default WebTutorial2;

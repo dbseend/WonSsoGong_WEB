@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import ChatAi from "../../Assets/ChatAi.png";
 import ChatPerson from "../../Assets/ChatPerson.png";
-import Ellipse7 from "../../Assets/Ellipse 7.svg";
+import { SmallBackground } from "../Chapter1/WebChapter12";
+import smallBg from "../../Assets/bg1.svg";
 import Group125 from "../../Assets/Group 125.png";
 import Group126 from "../../Assets/Group 126.png";
 import { Button } from "../Chapter1/WebChapter12";
@@ -25,7 +26,7 @@ const WebChapter22 = () => {
   return (
     <>
       <Container />
-      <Ellipse7Image src={Ellipse7} alt="Chapter 22 Ellipse7" />
+      <SmallBackground src={smallBg} />
       <Button>토론 끝내기</Button>
       <Part0>
         <ChapTitle>Chapter 2.</ChapTitle>

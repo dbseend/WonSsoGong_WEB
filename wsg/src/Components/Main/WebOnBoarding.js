@@ -26,7 +26,6 @@ const WebOnBoarding = () => {
   const [rectHoverd3, setRectHovered3] = useState(false);
   const [rectHoverd4, setRectHovered4] = useState(false);
   const [charHovered, setCharHovered] = useState(false);
-  const [showFooter, setShowFooter] = useState(false);
   const navigate = useNavigate();
   const moveToMain = () => {
     navigate("/chapter1/1");
@@ -37,26 +36,6 @@ const WebOnBoarding = () => {
       behavior: "smooth",
     });
   };
-
-  useEffect(() => {
-    // 스크롤 이벤트 리스너 등록
-    const handleScroll = () => {
-      const scrolledHeight = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      if (scrolledHeight + windowHeight >= documentHeight) {
-        // 스크롤이 일정 높이 이상 내려갔을 때 Footer 표시
-        setShowFooter(true);
-      } else {
-        setShowFooter(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll); // 스크롤 이벤트 리스너 등록
-    return () => {
-      // 컴포넌트 언마운트 시 이벤트 리스너 제거
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <Div>
@@ -116,7 +95,6 @@ const WebOnBoarding = () => {
       <Img3 src={diamond} />
       <Img4 src={circle} />
       <Arrow src={FluentArrow} onClick={handleScrollToTop} />
-      {showFooter && <WebFooter />}
     </Div>
   );
 };

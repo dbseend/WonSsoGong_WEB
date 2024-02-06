@@ -3,13 +3,18 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Ellipse5 from "../../Assets/Ellipse 5.svg";
 import Group36 from "../../Assets/Group 36 1.png";
-import Group16 from "../../Assets/Group16.svg";
-import GroupA from "../../Assets/법안발의 .png";
-import { default as GroupB, default as GroupD } from "../../Assets/법안분석 .png";
-import { default as Group2, default as Group4 } from "../../Assets/법안분석호버.png";
-import GroupC from "../../Assets/토론참여 .png";
-import Group3 from "../../Assets/토론참여호버.png";
+import GroupA from "../../Assets/법률제정호버.svg";
+import Group1 from "../../Assets/법률제정.svg";
+import GroupB from "../../Assets/정부감독호버.svg";
+import Group2 from "../../Assets/정부감독.svg";
+import GroupC from "../../Assets/국가예산호버.svg";
+import Group3 from "../../Assets/국가예산.svg";
+import GroupD from "../../Assets/국제문제호버.svg";
+import Group4 from "../../Assets/국제문제.svg";
 import GlobalStyle from "../Etc/GlobalStyle";
+import { SmallBackground } from "../Chapter1/WebChapter12";
+import smallBg from "../../Assets/bg1.svg";
+import { WelcomeText, NameText, BoldText } from "../Tutorial/WebTutorial2";
 
 const WebTutorial5 = () => {
   const [rectHoverd1, setRectHovered1] = useState(false);
@@ -19,16 +24,16 @@ const WebTutorial5 = () => {
   const [charHovered, setCharHovered] = useState(false);
   const navigate = useNavigate();
   const moveToNext = () => {
-    navigate("/chapter2/2");
+    navigate("/tutorial/6");
   };
   return (
-    <>
+    <Div>
       <GlobalStyle />
-      <Ellipse5Image src={Ellipse5} alt="Tutorial Ellipse5" />
+      <SmallBackground src={smallBg} />
       <Group36Image src={Group36} alt="Tutorial Group36" />
       <RectArea>
         <RectImage
-          src={rectHoverd1 ? Group16 : GroupA}
+          src={rectHoverd1 ? Group1 : GroupA}
           onMouseEnter={() => setRectHovered1(true)}
           onMouseLeave={() => setRectHovered1(false)}
         />
@@ -48,10 +53,35 @@ const WebTutorial5 = () => {
           onMouseLeave={() => setRectHovered4(false)}
         />
       </RectArea>
+      <Overlay>
+        <NameText>빵긋이</NameText>
+        <WelcomeText>타원에 마우스를 올려서 상세 정보를 확인해보세요!</WelcomeText>
+      </Overlay>
       <Button onClick={moveToNext}>다음</Button>
-    </>
+    </Div>
   );
 };
+
+const Overlay = styled.div`
+  display: flex; /* 자식 요소들을 가로로 배치 */
+  flex-direction: row;
+  position: relative;
+  width: 900px;
+  height: 82px;
+  border-radius: 2px;
+  background: rgba(246, 246, 246, 0.30);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.10);
+  backdrop-filter: blur(25px);
+  opacity: 0.9;
+  margin-top: 2%; /* Adjust the top position according to your layout */
+  margin-right: 0%; /* Center horizontally */
+`;
+
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const ChapTitle = styled.div`
   color: #fff;
@@ -97,10 +127,9 @@ const SubText = styled.div`
 `;
 
 const Button = styled.div`
-  position: absolute;
   bottom: 150px;
-  left: 1500px;
-  transform: translateX(-520px);
+  left: 1800px;
+  transform: translate(220%, -200%);
   width: 151px;
   height: 29px;
   flex-shrink: 0;
@@ -190,11 +219,16 @@ const RectArea = styled.div`
   gap: 26px;
   margin-top: 88px;
   z-index:1;
+  margin-left: -3%;
 `;
 
 const RectImage = styled.img`
   border-radius: 106px;
-  
+  width: 206px;
+  height: 453px;
+  flex-direction: row;
+  gap: 26px;
+  display: flex;
 `;
 
 

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { makeBill } from "../../Api/Api";
+import { makeBill } from "../../Api/BillAPI";
 import { useRecoilState } from "recoil";
 import { billContent } from "../../Recoil/atom"; // atoms 파일 경로에 맞게 수정해주세요.
 import Twinkle from "../../Assets/Twinkle.svg";
 import smallBg from "../../Assets/bg1.svg";
 import GlobalStyle from "../Etc/GlobalStyle";
-import loading from "../../Assets/법안발의로딩페이지.svg";
+import loading from "../../Assets/법안발의로딩페이지.svg"; //법안발의로딩페이지 파일 없어서 임시로 바꿔놓음
 
 const WebChapter12 = () => {
   const [keyword, setKeyword] = useState("");
@@ -36,7 +36,7 @@ const WebChapter12 = () => {
       setTimeout(() => {
         //5초 대기(답변 생성 예상 시간) 후 페이지 이동
         navigate("/chapter1/3");
-      }, 5 * 1000);
+      }, 8 * 1000);
     }
   };
 
@@ -170,6 +170,7 @@ const Title = styled.div`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  margin-bottom: 30px;
 `;
 
 const Hr = styled.hr`
@@ -199,6 +200,7 @@ const SubTitle = styled.div`
   font-style: normal;
   font-weight: 900;
   line-height: normal;
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 `;
 
 const Container = styled.div`

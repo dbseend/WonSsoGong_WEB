@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-// import Group156 from "../../Assets/Group 156.png";
-// import Group167 from "../../Assets/Group 167.png";
+import Tutorial4Greet from "../../Assets/튜토리얼2인사.png";
+import Tutorial4Logo from "../../Assets/튜토리얼4로고.png";
 import GlobalStyle from "../Etc/GlobalStyle";
 import { SmallBackground } from "../Chapter1/WebChapter12";
 import smallBg from "../../Assets/bg1.svg";
@@ -18,20 +18,13 @@ const WebTutorial4 = () => {
     <Div>
       <GlobalStyle />
       <SmallBackground src={smallBg} />
-      {/* <Group36Image src={Group156} alt="Tutorial Group36" />
-      <Group155Image src={Group167} alt="Tutorial Group135" /> */}
+      <Tutorial4GreetImage src={Tutorial4Greet} alt="Tutorial Tutorial4Greet" />
+      <Tutorial4LogoImage src={Tutorial4Logo} alt="Tutorial Tutorial4Logo" />
       <Overlay>
         <NameText>빵긋이</NameText>
-        <WelcomeText>
-          국회는{" "}
-          <BoldText>
-            국민을 대표하여 나라를 운영하고 법을 만들어 나가는
-          </BoldText>{" "}
-          <br />
-          중요한 기관입니다. 국회는 <BoldText>국가의 정책 방향을 결정</BoldText>
-          하고, <br />
-          <BoldText>국민들의 다양한 의견을 수렴</BoldText>하여 나라를 향상시키기
-          위해 노력하죠.
+        <WelcomeText>국회는 <BoldText>국민을 대표하여 나라를 운영하고 법을 만들어 나가는</BoldText> <br />
+          중요한 기관입니다. 국회는 <BoldText>국가의 정책 방향을 결정</BoldText>하고, <br />
+          <BoldText>국민들의 다양한 의견을 수렴</BoldText>하여 나라를 향상시키기 위해 노력하죠.
         </WelcomeText>
       </Overlay>
       <Button onClick={moveToNext}>다음</Button>
@@ -80,7 +73,7 @@ const Button = styled.div`
   cursor: pointer;
 `;
 
-const Group36Image = styled.img`
+const Tutorial4GreetImage = styled.img`
   transform: translate(0, -10px);
   top: 100px;
   right: 200px;
@@ -88,7 +81,7 @@ const Group36Image = styled.img`
   height: 50px;
 `;
 
-const Group155Image = styled.img`
+const Tutorial4LogoImage = styled.img`
   top: 500px;
   transform: translate(5%, 13%);
   width: 840px;

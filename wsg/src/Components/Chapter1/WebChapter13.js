@@ -19,9 +19,10 @@ const WebChapter13 = () => {
   const title = madeBill.match(titleRegex);
   const rationale = madeBill.match(rationaleRegex);
   const content = madeBill.match(contentRegex);
+  
 
   const [summarizedBill, setSummarizedBill] = useState("");
-  const [keywords, setKeywords] = useState([]);
+  const [keywords, setKeywords] = useState(["쿵짝짝1", "쿵짝짝2", "쿵짝짝3"]);
   const [topic, setTopic] = useState("");
   const [reason, setReason] = useState("");
   const [description, setDescription] = useState("");
@@ -35,19 +36,19 @@ const WebChapter13 = () => {
     const summarizeBill = () => {
       analyzeBill(madeBill).then((response) => {
         console.log(response);
-        const keywordRegex = /핵심 키워드: (.+?)\n/;
-        const topicRegex = /법안의 주제: (.+?)\n/;
-        const reasonRegex = /법안 제안의 이유: (.+?)\n/;
-        const descriptionRegex = /법안 설명: (.+)/;
+        // const keywordRegex = /핵심 키워드: (.+?)\n/;
+        // const topicRegex = /법안의 주제: (.+?)\n/;
+        // const reasonRegex = /법안 제안의 이유: (.+?)\n/;
+        // const descriptionRegex = /법안 설명: (.+)/;
       
-        const keywords = response.match(keywordRegex).split(', ').map(keyword => keyword.trim());
-        const topic = response.match(topicRegex);
-        const reason = response.match(reasonRegex);
-        const description = response.match(descriptionRegex);
-        setKeywords(keywords);
-        setTopic(topic);
-        setReason(reason);
-        setDescription(description);
+        // const keywords = response.match(keywordRegex).split(', ').map(keyword => keyword.trim());
+        // const topic = response.match(topicRegex);
+        // const reason = response.match(reasonRegex);
+        // const description = response.match(descriptionRegex);
+        // setKeywords(keywords);
+        // setTopic(topic);
+        // setReason(reason);
+        // setDescription(description);
         setSummarizedBill(response);
       });
     };

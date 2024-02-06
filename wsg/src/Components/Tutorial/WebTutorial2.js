@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Group154 from "../../Assets/Group 154.png";
-import Group36 from "../../Assets/튜토리얼1인사.png";
+import Tutorial2Logo from "../../Assets/Group 154.png";
+import Tutorial2Greet from "../../Assets/튜토리얼1인사.png";
 import GlobalStyle from "../Etc/GlobalStyle";
 import { SmallBackground } from "../Chapter1/WebChapter12";
 import smallBg from "../../Assets/bg1.svg";
@@ -17,8 +17,8 @@ const WebTutorial2 = () => {
     <Div>
       <GlobalStyle />
       <SmallBackground src={smallBg} />
-      <Group36Image src={Group36} alt="Tutorial Group36" />
-      <Group155Image src={Group154} alt="Tutorial Group135" />
+      <Tutorial2GreetImage src={Tutorial2Greet} alt="Tutorial Tutorial2Logo" />
+      <Tutorial2LogoImage src={Tutorial2Logo} alt="Tutorial Tutorial2Logo" />
       <Overlay>
         <NameText>빵긋이</NameText>
         <WelcomeText>저는 방방국국의 <BoldText>AI 도우미 빵긋이</BoldText>에요! 이제부터 제가 다 도울게요!<br />
@@ -69,7 +69,7 @@ const Overlay = styled.div`
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.10);
   backdrop-filter: blur(25px);
   opacity: 0.9;
-  margin-top: 15%; /* Adjust the top position according to your layout */
+  margin-top: 14%; /* Adjust the top position according to your layout */
   margin-right: 0%; /* Center horizontally */
 `;
 
@@ -99,17 +99,17 @@ const Button = styled.div`
   cursor: pointer;
 `;
 
-const Group36Image = styled.img`
-  transform: translate(0, -10px);
+const Tutorial2GreetImage = styled.img`
+  transform: translate(0, 50px);
   top: 100px;
   right: 200px;
   width: 1050px;
   height: 50px;
 `;
 
-const Group155Image = styled.img`
+const Tutorial2LogoImage = styled.img`
   top: 500px;
-  transform: translate(0, 20%);
+  transform: translate(0, 35%);
   width: 550px;
   height: 360px;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);

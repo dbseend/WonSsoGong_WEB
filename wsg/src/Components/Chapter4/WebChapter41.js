@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import GlobalStyle from "../Etc/GlobalStyle";
-import { useNavigate } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
+import { extractInfo, downloadPDF, createAssistant } from "../../Api/BillAPI";
 import Left from "../../Assets/Left.svg";
 import Right from "../../Assets/Right.svg";
 import {
@@ -20,9 +21,13 @@ import Chapter4Bubble from "../../Assets/Chapter4Bubble.svg";
 import searchIcon from "../../Assets/searchIcon.svg";
 
 const WebChapter41 = () => {
+  const navigate = useNavigate();
+
   const [keyword, setKeyword] = useState("");
+  const [billUrls, setBillUrls] = useState([]);
+
   const types = ["재난", "안전", "도시", "교통", "주민", "법률"];
-  const itemsPerPage = 9;
+  const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const columns = [
     { key: "id", label: "번호" },
@@ -30,32 +35,27 @@ const WebChapter41 = () => {
     { key: "title", label: "제목" },
   ];
 
-  /*  useEffect(() => {
-    //서버에서 가져오기
-  }, []); */
+  useEffect(() => {
+    const fetchData = async () => {
+      const urls = await extractInfo(keyword);
+      console.log(urls);
+      setBillUrls(urls);
+    };
 
-  // 더미데이터
-  const boardInfo = [
-    { id: 1238, author: "김철수", title: "00에 대한 법률 (XXX에 대하여)" },
-    { id: 1239, author: "김철수", title: "00에 대한 법률 (XXX에 대하여)" },
-    { id: 1240, author: "김예은", title: "00에 대한 법률 (XXX에 대하여)" },
-    { id: 1238, author: "김철수", title: "00에 대한 법률 (XXX에 대하여)" },
-    { id: 1239, author: "김철수", title: "00에 대한 법률 (XXX에 대하여)" },
-    { id: 1240, author: "김예은", title: "00에 대한 법률 (XXX에 대하여)" },
-    { id: 1238, author: "김철수", title: "00에 대한 법률 (XXX에 대하여)" },
-    { id: 1239, author: "김철수", title: "00에 대한 법률 (XXX에 대하여)" },
-    { id: 1240, author: "김예은", title: "00에 대한 법률 (XXX에 대하여)" },
-    { id: 1238, author: "김철수", title: "00에 대한 법률 (XXX에 대하여)" },
-    { id: 1239, author: "김철수", title: "00에 대한 법률 (XXX에 대하여)" },
-    { id: 1240, author: "김예은", title: "00에 대한 법률 (XXX에 대하여)" },
-    { id: 1238, author: "김철수", title: "00에 대한 법률 (XXX에 대하여)" },
-    { id: 1239, author: "김철수", title: "00에 대한 법률 (XXX에 대하여)" },
-    { id: 1240, author: "김예은", title: "00에 대한 법률 (XXX에 대하여)" },
-  ];
+    fetchData();
+  }, [keyword]);
+
+  const handleClick = (index) => {
+    const billNo = visibleItems[index].id;
+    console.log(billNo);
+    navigate('../2', { state: { billNo } });
+  };
+
   const calculatePageInfo = () => {
-    const totalPages = Math.ceil(boardInfo.length / itemsPerPage);
+    const totalPages = Math.ceil(billUrls.length / itemsPerPage);
     return totalPages;
   };
+
   const totalPages = calculatePageInfo();
   const handlePageClick = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -64,14 +64,14 @@ const WebChapter41 = () => {
   const getVisibleItems = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    return boardInfo.slice(startIndex, endIndex);
+    return billUrls.slice(startIndex, endIndex);
   };
 
   const visibleItems = getVisibleItems();
 
   const Pagination = () => (
     <div>
-      <img src={Left} onClick={() => handlePageClick(1)} />
+      <img src={Left} onClick={() => handlePageClick(1)} alt="Left" />
       {Array.from({ length: totalPages }).map((_, index) => (
         <PaginationButton
           key={index + 1}
@@ -81,13 +81,18 @@ const WebChapter41 = () => {
           {index + 1}
         </PaginationButton>
       ))}
-      <img src={Right} onClick={() => handlePageClick(totalPages)} />
+      <img
+        src={Right}
+        onClick={() => handlePageClick(totalPages)}
+        alt="Right"
+      />
     </div>
   );
-  
+
   const handleKeywordChange = (type) => {
     setKeyword(type);
   };
+
   return (
     <>
       <Div>
@@ -137,8 +142,13 @@ const WebChapter41 = () => {
               <tbody>
                 {visibleItems.map((row, rowIndex) => (
                   <tr key={rowIndex}>
-                    {columns.map((column) => (
-                      <td key={column.key}>{row[column.key]}</td>
+                    {columns.map((column, columnIndex) => (
+                      <td
+                        key={column.key}
+                        onClick={() => handleClick(rowIndex, columnIndex)}
+                      >
+                        {row[column.key]}
+                      </td>
                     ))}
                   </tr>
                 ))}
@@ -154,7 +164,7 @@ const WebChapter41 = () => {
 };
 
 const PaginationButton = styled.button`
-background-color: transparent;
+  background-color: transparent;
   margin: 0 4px;
   border: none;
   cursor: pointer;
@@ -174,12 +184,12 @@ const Title = styled.div`
 `;
 const SearchArea = styled.div`
   display: flex;
-  margin-right:1.5%;
+  margin-right: 1.5%;
   position: relative;
 `;
 
 const StyledSearchIcon = styled.img`
-  position: absolute; 
+  position: absolute;
   top: 65%;
   left: 20px;
   transform: translateY(-50%);
@@ -196,18 +206,18 @@ const StyledSearch = styled.input`
   font-size: 18px;
   line-height: 44px;
 
-  &:: placeholder {
+  /* &:: placeholder {
     color: #f6f6f6;
   }
   background-color: #b0c8f6;
   padding-left: 70px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1); */
 `;
 
 const Part2 = styled.div`
   display: flex;
   flex-direction: row;
-  margin-right:15.5%;
+  margin-right: 15.5%;
   gap: 40px;
   margin-top: 2%;
 `;
@@ -275,12 +285,11 @@ const StyledTable = styled.table`
   }
 `;
 
-
 const TableArea = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap:15px;
+  gap: 15px;
 `;
 export default WebChapter41;

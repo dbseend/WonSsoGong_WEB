@@ -1,77 +1,42 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Ellipse5 from "../../Assets/Ellipse 5.svg";
-import Group135 from "../../Assets/Group 135.png";
-import Group36 from "../../Assets/Group 36.png";
+import Tutorial1Greet from "../../Assets/튜토리얼1인사.png";
 import TutorialLogo from "../../Assets/TutorialLogo.png";
 import GlobalStyle from "../Etc/GlobalStyle";
+import smallBg from "../../Assets/bg1.svg";
+import { SmallBackground } from "../Chapter1/WebChapter12";
+import {
+  Div,
+} from "../Chapter1/WebChapter11";
+import { Overlay, WelcomeText, NameText, BoldText } from "../Tutorial/WebTutorial2";
 
-const WebTutorial = () => {
+const WebTutorial1 = () => {
   const navigate = useNavigate();
   const moveToNext = () => {
     navigate("/tutorial/2");
   };
   return (
-    <>
+    <Div>
       <GlobalStyle />
-      <Ellipse5Image src={Ellipse5} alt="Tutorial Ellipse5" />
-      <Group36Image src={Group36} alt="Tutorial Group36" />
-      <Group155Image src={TutorialLogo} alt="Tutorial Group155" />
-      <Group135Image src={Group135} alt="Tutorial Group135" />
-      <Button onClick={moveToNext}>다음</Button>
-    </>
+      <SmallBackground src={smallBg} />
+      <Group36Image src={Tutorial1Greet} alt="Tutorial Group36" />
+      <Group155Image src={TutorialLogo} alt="Tutorial Group135" />
+      <Overlay>
+        <NameText>???</NameText>
+        <WelcomeText>안녕하세요! 
+          <BoldText>방방국국</BoldText>
+        에 오신 여러분을 환영합니다~!!</WelcomeText>
+      </Overlay>
+        <Button onClick={moveToNext}>다음</Button>
+    </Div>
   );
 };
 
-const ChapTitle = styled.div`
-  color: #fff;
-  font-family: "Pretendard Variable";
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 500; /* You can adjust the font weight here */
-  line-height: normal;
-  margin-bottom: 10px;
-  margin-top: 0;
-  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-`;
-
-const Title = styled.div`
-  background: linear-gradient(
-    90deg,
-    #ffc634 0%,
-    #ffd34a 3%,
-    #ffea5f 8%,
-    #fff275 17%,
-    #d8f5dd 24%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-fill-color: transparent;
-  font-family: "Pretendard Variable";
-  font-size: 64px;
-  font-weight: 800;
-  line-height: normal;
-  margin-bottom: 10px;
-`;
-
-const SubText = styled.div`
-  width: 900px;
-  color: var(--white-text, #f6f6f6);
-  font-family: "Pretendard Variable";
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-bottom: 800px;
-`;
-
 const Button = styled.div`
-  position: absolute;
   bottom: 150px;
-  left: 1500px;
-  transform: translateX(-520px);
+  left: 1800px;
+  transform: translate(220%, 1450%);
   width: 151px;
   height: 29px;
   flex-shrink: 0;
@@ -95,7 +60,7 @@ const Button = styled.div`
 `;
 
 const Group36Image = styled.img`
-  transform: translate(180px, -10px);
+  transform: translate(0, -10px);
   top: 100px;
   right: 200px;
   width: 1050px;
@@ -104,56 +69,10 @@ const Group36Image = styled.img`
 
 const Group155Image = styled.img`
   top: 210px;
-  transform: translate(350px, 60px);
+  transform: translate(0, 40%);
   width: 722px;
   height: 215px;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
 `;
 
-const Group135Image = styled.img`
-  top: 250px;
-  transform: translate(270px, 130px);
-  width: 900px;
-  height: 167px;
-  opacity: 0.9;
-`;
-
-const BalloonContainer = styled.div`
-  position: absolute;
-  top: 120px;
-  right: 600px;
-  width: 550px;
-  height: 500px;
-  z-index: 1;
-  display: flex;
-  flex-direction: column; /* 이미지와 텍스트를 세로로 배치 */
-  justify-content: center;
-  align-items: center;
-`;
-
-const BalloonContent = styled.div`
-  position: relative; /* 상대 위치 설정 */
-  width: 550px;
-  height: 550px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Group117Image = styled.img`
-  width: 550px;
-  height: 500px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-`;
-
-const Ellipse5Image = styled.img` //작은 원
-  position: absolute;
-  top: 5%;
-  left: 0%;
-  width: 100%;
-  height: 76%; 
-`;
-
-export { Button };
-
-export default WebTutorial;
+export default WebTutorial1;

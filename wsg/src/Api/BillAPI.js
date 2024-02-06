@@ -37,6 +37,62 @@ export const makeBill = async (message) => {
   }
 };
 
+export const analyzeBill = async (madeBill) => {
+  const apiEndpoint = process.env.REACT_APP_URL;
+  const apiKey = process.env.REACT_APP_KEY;
+  const apiModel = process.env.REACT_APP_MODEL;
+  const message = `
+
+  위 법률안을 분석하여 다음 정보를 리스트 형식으로 제공해주세요:
+  1. 핵심 키워드 3개
+  2. 법안의 주제 
+  3. 법안 제안의 이유
+  4. 법안 설명
+  
+  상세하고 명확하게 분석해주세요.
+  `;
+
+  console.log(madeBill);
+
+  if (madeBill) {
+    const data = madeBill + message;
+    console.log(data);
+  }
+
+  try {
+    const response = await fetch(apiEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: apiModel,
+        messages: [
+          { role: "system", content: template },
+          { role: "user", content: madeBill + message },
+        ],
+        max_tokens: 1000,
+        top_p: 1,
+        temperature: 1,
+        frequency_penalty: 0.5,
+        presence_penalty: 0.5,
+        stop: ["문장 생성 중단 단어"],
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const aiResponse = data.choices?.[0]?.message?.content || "No response";
+    return aiResponse;
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
+};
+
 const template = `
 As an AI specialist in drafting laws, I'm here to assist you in creating and analyzing a comprehensive legislative proposal. I will guide you based on the keywords, title, and description you provide, and facilitate a discussion of the draft.
 
@@ -63,20 +119,6 @@ Remember, your final document must adhere to the conventions of law drafting and
 The length of your proposal should be between 800 and 1000 characters. It's crucial to provide enough information to effectively convey the intent and purpose of the law within this limit.
 
 Compose your legislative proposal carefully, ensuring it is comprehensive, persuasive, and based on legal principles. At any time during the writing process, feel free to ask for additional clarifications or guidance.
+
+Please write all responses in Korean.
 `;
-
-// export const createBill = async (data) => {
-//   try {
-//     console.log(data);
-//     const response = await axios.post(
-//       `${process.env.REACT_APP_URL}/chat/bill`,
-//       data
-//     );
-//     console.log(response.data);
-
-//     return response.data;
-//   } catch (error) {
-//     console.error("Error creating bill:", error);
-//     throw error;
-//   }
-// };

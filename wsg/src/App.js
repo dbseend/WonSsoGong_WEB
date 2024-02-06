@@ -24,6 +24,7 @@ import Chapter33 from "./Pages/Chapter3/Chapter33";
 import Chapter3Result1 from "./Pages/Chapter3/Chapter3Result1";
 import Chapter3Result2 from "./Pages/Chapter3/Chapter3Result2";
 import Chapter3Result3 from "./Pages/Chapter3/Chapter3Result3";
+import Chapter41 from "./Pages/Chapter4/Chapter41";
 
 function App() {
   return (
@@ -62,6 +63,11 @@ function App() {
           <Route path="result1" element={<Chapter3Result1 />} />
           <Route path="result2" element={<Chapter3Result2 />} />
           <Route path="result3" element={<Chapter3Result3 />} />
+        </Route>
+
+        {/* 챕터4 페이지 */}
+        <Route path="/chapter4" element={<Outlet />}>
+          <Route path="1" element={<Chapter41 />} />
         </Route>
       </Routes>
     </Router>

@@ -43,7 +43,7 @@ const WebNavbar = () => {
 
 const NavbarContainer = styled.div`
     display: flex;
-    position: relative;
+    position: fixed;
     justify-content: flex-end;
     align-items: center;
     height: 50px;

@@ -119,28 +119,6 @@ const Background = styled.img`
     height: auto;
   }
 `;
-
-const Top = styled.div`
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-`;
-
-const SubT = styled.div`
-  width: 887px;
-  height: auto;
-  height: auto;
-  flex-shrink: 0;
-  color: #fff;
-  font-family: "Pretendard Variable";
-  font-size: 25.2px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-`;
-
 const Button = styled.div`
   z-index: 2;
   width: 240px;
@@ -170,6 +148,26 @@ const Button = styled.div`
   margin-top: 50px;
   margin-bottom: 10px;
   cursor: pointer;
+`;
+const Top = styled.div`
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+`;
+
+const SubT = styled.div`
+  width: 887px;
+  height: auto;
+  height: auto;
+  flex-shrink: 0;
+  color: #fff;
+  font-family: "Pretendard Variable";
+  font-size: 25.2px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `;
 
 const RectArea = styled.div`

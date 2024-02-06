@@ -151,7 +151,6 @@ const SmallBackground = styled.img`
 `;
 
 const Part0 = styled.div`
-  margin-left: 55px;
   margin-top: 30px;
   z-index: 2;
   margin-left: -75%;
@@ -209,6 +208,7 @@ const Container = styled.div`
   margin-left: 37px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const TypeArea = styled.div`
@@ -334,5 +334,18 @@ const LoadingImage = styled.img`
   z-index: 9999; // 다른 요소 위에 표시되도록 z-index를 높게 설정합니다.
 `;
 
-export { Button, Hr, SmallBackground };
+export {
+  Button,
+  Hr,
+  SmallBackground,
+  Div,
+  ChapTitle,
+  Part0,
+  Title,
+  Type,
+  TypeArea,
+  SubTitle,
+  Container,
+  Part1,
+};
 export default WebChapter12;

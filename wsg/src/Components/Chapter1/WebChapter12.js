@@ -164,6 +164,7 @@ const ChapTitle = styled.div`
   font-style: normal;
   font-weight: 300;
   line-height: normal;
+  margin-left: 3px;
 `;
 
 const Title = styled.div`

@@ -1,3 +1,6 @@
+import axios from "axios";
+import { saveAs } from "file-saver";
+
 export const makeBill = async (message) => {
   const apiEndpoint = process.env.REACT_APP_URL;
   const apiKey = process.env.REACT_APP_KEY;
@@ -108,7 +111,7 @@ export const debate = async (message) => {
       body: JSON.stringify({
         model: apiModel,
         messages: [
-          { role: "system", content: template },
+          { role: "system", content: debateTemplate },
           { role: "user", content: message },
         ],
         max_tokens: 1000,
@@ -130,6 +133,150 @@ export const debate = async (message) => {
   } catch (error) {
     console.error("An error occurred:", error);
   }
+};
+
+const extractInfo = async () => {
+  try {
+    const url = "https://open.assembly.go.kr/portal/openapi/TVBPMBILL11";
+    const params = {
+      'KEY': process.env.REACT_APP_OPENAPI_KEY,
+      'Type': 'json',
+      'pIndex': 1,
+      'pSize': 100,
+      'BILL_NAME': '재난'
+    };
+    const response = await axios.get(url, { params });
+    const data = response.data;
+    const billUrls = data['TVBPMBILL11'][1]['row'].map(item => item['LINK_URL']);
+
+    return billUrls;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+const downloadPDF = async () => {
+  try {
+    const url =
+      "https://likms.assembly.go.kr/bill/billDetail.do?billId=ARC_U2C3T1G2X2O1M1K6W0T5C1A2A0K0L3";
+
+    const response = await axios.get(url);
+    const parser = new DOMParser();
+    const htmlDoc = parser.parseFromString(response.data, "text/html");
+    const tagsA = Array.from(htmlDoc.getElementsByTagName("a")).filter((a) =>
+      a.href.startsWith("javascript:openBillFile")
+    );
+
+    let id;
+    for (let tag of tagsA) {
+      const match = /openBillFile\('(.+?)','(.+?)','(.+?)'\)/.exec(tag.href);
+      if (match) {
+        [, id] = match;
+        break;
+      }
+    }
+
+    if (!id) {
+      console.log("No match found");
+      return;
+    }
+
+    const base_url = "https://likms.assembly.go.kr/filegate/servlet/FileGate";
+    const final_url = `${base_url}?bookId=${id}&type=1`;
+
+    const pdfResponse = await axios.get(final_url, { responseType: "blob" });
+    if (pdfResponse.status === 200) {
+      const file = new Blob([pdfResponse.data], { type: "application/pdf" });
+      saveAs(file, `${id}.pdf`);
+      console.log(`Downloaded ${id}.pdf successfully.`);
+    } else {
+      console.log(`No match found for ${final_url}.`);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const createAssistant = async () => {
+  const api_key = "testKey";
+  const headers = {
+    Authorization: `Bearer ${api_key}`,
+    "Content-Type": "application/json",
+  };
+
+  // 파일 생성
+  let fileData = new FormData();
+  fileData.append("file", "pdf_file_name");
+  fileData.append("purpose", "assistants");
+
+  let res = await axios.post("https://api.openai.com/v1/files", fileData, {
+    headers,
+  });
+  let fileId = res.data.id;
+
+  // 어시스턴트 생성
+  let assistantData = {
+    name: "ChatPDF-0.0.0",
+    instructions: template,
+    tools: [{ type: "retrieval" }],
+    model: "gpt-4-1106-preview",
+    file_ids: [fileId],
+  };
+
+  res = await axios.post(
+    "https://api.openai.com/v1/beta/assistants",
+    assistantData,
+    { headers }
+  );
+  let assistantId = res.data.id;
+
+  // 쓰레드 생성
+  res = await axios.post(
+    "https://api.openai.com/v1/beta/threads",
+    {},
+    { headers }
+  );
+  let threadId = res.data.id;
+
+  // 메시지 생성
+  let messageData = {
+    role: "user",
+    content: `
+    위 법률안을 분석하여 다음 정보를 리스트 형식으로 제공해주세요:
+
+핵심 키워드 3개
+법안의 주제
+법안 제안의 이유
+법안 설명
+상세하고 명확하게 분석해주세요.`,
+  };
+
+  await axios.post(
+    `https://api.openai.com/v1/beta/threads/${threadId}/messages`,
+    messageData,
+    { headers }
+  );
+
+  // 실행
+  let runData = {
+    assistant_id: assistantId,
+  };
+
+  await axios.post(
+    `https://api.openai.com/v1/beta/threads/${threadId}/runs`,
+    runData,
+    { headers }
+  );
+
+  // 응답 받기
+  res = await axios.get(
+    `https://api.openai.com/v1/beta/threads/${threadId}/messages`,
+    { headers }
+  );
+  const response = res.data[0].content[0].text.value;
+
+  return response;
 };
 
 const template = `

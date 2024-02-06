@@ -6,9 +6,6 @@ import { SmallBackground, Div, Hr } from "../Chapter1/WebChapter12";
 import smallBg from "../../Assets/bg1.svg";
 import Group149 from "../../Assets/Group 149.png";
 import GlobalStyle from "../Etc/GlobalStyle";
-import {
-  Div,
-} from "../Chapter1/WebChapter11";
 
 const WebChapter3Result1 = (props) => {
   const navigate = useNavigate();
@@ -18,11 +15,8 @@ const WebChapter3Result1 = (props) => {
     navigate("/");
   };
 
-  return (
-    <>
-    <Div>
+  return (    <Div>
       <GlobalStyle />
-    <Div>
       <GlobalStyle />
       <SmallBackground src={smallBg} />
       <Part0>
@@ -101,14 +95,6 @@ const ChapTitle = styled.div`
 
 const Title = styled.span`
   font-weight: 600;
-`;
-
-const Hr = styled.hr`
-  width: 1131px;
-  background: #fff;
-  margin-top: 1%;
-  margin-bottom: 10%;
-  position: relative;
 `;
 
 const Button = styled.div`

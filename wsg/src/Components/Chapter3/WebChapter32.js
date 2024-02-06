@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { SmallBackground } from "../Chapter1/WebChapter12";
 import smallBg from "../../Assets/bg1.svg";
 import Note from "../../Assets/WebChapter32 Note.png";
+import GlobalStyle from "../Etc/GlobalStyle";
 
 const WebChapter32 = () => {
   const [content, setContent] = useState("");
@@ -13,7 +14,7 @@ const WebChapter32 = () => {
   };
   return (
     <>
-      <Container />
+      <GlobalStyle />
       <SmallBackground src={smallBg} />
       <Button onClick={moveToNext}>다음으로 넘어가기</Button>
       <Part0>
@@ -29,19 +30,6 @@ const WebChapter32 = () => {
   );
 };
 
-const Container = createGlobalStyle`
-body {
-  margin: 0;
-  margin-top : 90px;
-  padding: 0;
-  background: var(--secondary-bg, #77A1F5);
-  /* z-index: auto; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-`;
 
 const Part0 = styled.div`
   margin-left: 80px;

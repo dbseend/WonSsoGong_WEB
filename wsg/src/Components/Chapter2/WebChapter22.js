@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import ChatAi from "../../Assets/ChatAi.png";
 import ChatPerson from "../../Assets/ChatPerson.png";
-import { SmallBackground } from "../Chapter1/WebChapter12";
+import { SmallBackground, Div } from "../Chapter1/WebChapter12";
 import smallBg from "../../Assets/bg1.svg";
 import Group125 from "../../Assets/Group 125.png";
 import Group126 from "../../Assets/Group 126.png";
 import { Button } from "../Chapter1/WebChapter12";
+import GlobalStyle from "../Etc/GlobalStyle";
 const WebChapter22 = () => {
   const [content, setContent] = useState("");
 
   return (
     <>
-      <Container />
+    <Div>
+    <GlobalStyle />
       <SmallBackground src={smallBg} />
       <Button>토론 끝내기</Button>
       <Part0>
@@ -33,23 +35,10 @@ const WebChapter22 = () => {
         onChange={(e) => setContent(e.target.value)}
       />
       <SendButton>전송</SendButton>
+      </Div>
     </>
   );
 };
-
-const Container = createGlobalStyle`
-body {
-  margin: 0;
-  margin-top : 90px;
-  padding: 0;
-  background: var(--secondary-bg, #77A1F5);
-  /* z-index: auto; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-`;
 
 const Part0 = styled.div`
   margin-left: 80px;

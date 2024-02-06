@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Group156 from "../../Assets/튜토리얼6질문.png";
-import Group168 from "../../Assets/Group 168.png";
+import Tutorial6Greet from "../../Assets/튜토리얼6질문.png";
+import Tutorial6Logo from "../../Assets/튜토리얼6로고.png";
 import GlobalStyle from "../Etc/GlobalStyle";
 import { SmallBackground } from "../Chapter1/WebChapter12";
 import smallBg from "../../Assets/bg1.svg";
@@ -18,12 +18,13 @@ const WebTutorial6 = () => {
     <Div>
       <GlobalStyle />
       <SmallBackground src={smallBg} />
-      <Group36Image src={Group156} alt="Tutorial Group36" />
-      <Group155Image src={Group168} alt="Tutorial Group135" />
+      <Tutorial6GreetImage src={Tutorial6Greet} alt="Tutorial Tutorial6Greet" />
+      <Tutorial6LogoImage src={Tutorial6Logo} alt="Tutorial Tutorial6Logo" />
       <Overlay>
         <NameText>빵긋이</NameText>
         <WelcomeText>국회의원은 국민이 선출한 대표자로, 국민을 대표하여 국회에서 법을 <br />
-        만들고 의사 결정을 하는 주체입니다.</WelcomeText>
+            만들고 의사 결정을 하는 주체입니다.
+        </WelcomeText>
       </Overlay>
         <Button onClick={moveToNext}>다음</Button>
     </Div>
@@ -71,7 +72,7 @@ const Button = styled.div`
   cursor: pointer;
 `;
 
-const Group36Image = styled.img`
+const Tutorial6GreetImage = styled.img`
   transform: translate(0, -10px);
   top: 100px;
   right: 200px;
@@ -79,7 +80,7 @@ const Group36Image = styled.img`
   height: 50px;
 `;
 
-const Group155Image = styled.img`
+const Tutorial6LogoImage = styled.img`
   top: 500px;
   transform: translate(-10%, 13%);
   width: 840px;

@@ -2,7 +2,8 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import Chapter3Result1 from "../../Assets/Chapter3Result1.png";
-import Ellipse7 from "../../Assets/Ellipse 7.svg";
+import { SmallBackground } from "../Chapter1/WebChapter12";
+import smallBg from "../../Assets/bg1.svg";
 import Group149 from "../../Assets/Group 149.png";
 
 const WebChapter3Result1 = (props) => {
@@ -16,7 +17,7 @@ const WebChapter3Result1 = (props) => {
   return (
     <>
       <Container />
-      <Ellipse7Image src={Ellipse7} alt="Chapter 22 Ellipse7" />
+      <SmallBackground src={smallBg} />
       <Button onClick={moveToNext}>홈으로 돌아가기</Button>
       <Part0>
         <ChapTitle>Chapter 3.</ChapTitle>
@@ -221,14 +222,6 @@ const Group149ResultImage = styled.img`
   right: 575px;
   top: 400px;
   z-index: 5;
-`;
-
-const Ellipse7Image = styled.img` //큰 원
-  position: absolute;
-  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0%; /* 원하는 가로 위치로 조절 */
-  width: 100%;
-  height: 83%; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 
 export default WebChapter3Result1;

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
-import Ellipse7 from "../../Assets/Ellipse 7.svg";
+import { SmallBackground } from "../Chapter1/WebChapter12";
+import smallBg from "../../Assets/bg1.svg";
 import Note from "../../Assets/WebChapter32 Note.png";
 
 const WebChapter32 = () => {
@@ -13,7 +14,7 @@ const WebChapter32 = () => {
   return (
     <>
       <Container />
-      <Ellipse7Image src={Ellipse7} alt="Chapter 22 Ellipse7" />
+      <SmallBackground src={smallBg} />
       <Button onClick={moveToNext}>다음으로 넘어가기</Button>
       <Part0>
         <ChapTitle>Chapter 3.</ChapTitle>
@@ -101,14 +102,6 @@ const NoteImage = styled.img`
   position: absolute;
   right: 220px;
   top: 270px;
-`;
-
-const Ellipse7Image = styled.img` //큰 원
-  position: absolute;
-  top: 5%; /* 중심을 화면 상단에 위치하도록 설정 */
-  left: 0%; /* 원하는 가로 위치로 조절 */
-  width: 100%;
-  height: 83%; /* 이미지가 70%의 높이를 차지하도록 설정 */
 `;
 
 export default WebChapter32;

@@ -46,9 +46,9 @@ const WebChapter41 = () => {
   }, [keyword]);
 
   const handleClick = (index) => {
-    const pdfLink = visibleItems[index].LINK_URL;
-    console.log(pdfLink);
-    navigate('../2', { state: { pdfLink } });
+    const billNo = visibleItems[index].id;
+    console.log(billNo);
+    navigate('../2', { state: { billNo } });
   };
 
   const calculatePageInfo = () => {

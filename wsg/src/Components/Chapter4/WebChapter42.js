@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useLocation } from 'react-router-dom';
 import { useRecoilState } from "recoil";
 import { billContent } from "../../Recoil/atom"; // atoms 파일 경로에 맞게 수정해주세요.
-import { downloadPDF, createAssistant } from "../../Api/BillAPI";
+import { createAssistant } from "../../Api/BillAPI";
 import smallBg from "../../Assets/bg1.svg";
 import left from "../../Assets/Group 169.svg";
 import right from "../../Assets/Group 174.svg";
@@ -12,7 +12,7 @@ import { Div, SmallBackground, Title, Hr, Button } from "../Chapter1/WebChapter1
 
 const WebChapter42 = () => {
   const location = useLocation();
-  const { pdfLink } = location.state;
+  const { billNo } = location.state;
 
   const [isClicked, setIsClicked] = useState(false);
 
@@ -37,7 +37,7 @@ const WebChapter42 = () => {
 
 
   useEffect(() => {
-    downloadPDF(pdfLink);
+    createAssistant(billNo);
   }, []);
 
   const handleClickAfter = () => {

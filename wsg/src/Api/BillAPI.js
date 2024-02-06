@@ -21,9 +21,9 @@ export const makeBill = async (message) => {
         ],
         max_tokens: 1000,
         top_p: 1,
-        temperature: 1,
-        frequency_penalty: 0.5,
-        presence_penalty: 0.5,
+        temperature: 0.8,
+        frequency_penalty: 0.3,
+        presence_penalty: 0.7,
         stop: ["문장 생성 중단 단어"],
       }),
     });
@@ -116,9 +116,9 @@ export const debate = async (message) => {
         ],
         max_tokens: 1000,
         top_p: 1,
-        temperature: 1,
-        frequency_penalty: 0.5,
-        presence_penalty: 0.5,
+        temperature: 0.8,
+        frequency_penalty: 0.3,
+        presence_penalty: 0.7,
         stop: ["문장 생성 중단 단어"],
       }),
     });
@@ -139,19 +139,19 @@ export const extractInfo = async (keyword) => {
   try {
     const url = "https://open.assembly.go.kr/portal/openapi/TVBPMBILL11";
     const params = {
-      'KEY': process.env.REACT_APP_OPENAPI_KEY,
-      'Type': 'json',
-      'pIndex': 1,
-      'pSize': 50,
-      'BILL_NAME': keyword
+      KEY: process.env.REACT_APP_OPENAPI_KEY,
+      Type: "json",
+      pIndex: 1,
+      pSize: 50,
+      BILL_NAME: keyword,
     };
     const response = await axios.get(url, { params });
     const data = response.data;
-    const billInfo = data['TVBPMBILL11'][1]['row'].map(item => ({
-      id: item['BILL_NO'],
-      author: item['PROPOSER'],
-      title: item['BILL_NAME'],
-      LINK_URL: item['LINK_URL'],
+    const billInfo = data["TVBPMBILL11"][1]["row"].map((item) => ({
+      id: item["BILL_NO"],
+      author: item["PROPOSER"],
+      title: item["BILL_NAME"],
+      LINK_URL: item["LINK_URL"],
     }));
 
     return billInfo;

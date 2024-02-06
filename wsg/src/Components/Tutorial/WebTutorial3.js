@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Group36 from "../../Assets/튜토리얼1인사.png";
-import Tutorial3 from "../../Assets/Tutorial3.png";
+import Tutorial3Greet from "../../Assets/튜토리얼1인사.png";
+import Tutorial3Logo from "../../Assets/Tutorial3.png";
 import GlobalStyle from "../Etc/GlobalStyle";
 import { SmallBackground } from "../Chapter1/WebChapter12";
 import smallBg from "../../Assets/bg1.svg";
@@ -19,8 +19,8 @@ const WebTutorial3 = () => {
     <Div>
       <GlobalStyle />
       <SmallBackground src={smallBg} />
-      <Group36Image src={Group36} alt="Tutorial Group36" />
-      <Group155Image src={Tutorial3} alt="Tutorial Group135" />
+      <Tutorial3GreetImage src={Tutorial3Greet} alt="Tutorial Tutorial3Greet" />
+      <Tutorial3LogoImage src={Tutorial3Logo} alt="Tutorial Tutorial3Logo" />
       <Overlay>
         <NameText>빵긋이</NameText>
         <WelcomeText>이 튜토리얼은 <BoldText>국회와 국회의원의 역할, 그리고 방방국국 서비스를</BoldText> <br />
@@ -31,17 +31,17 @@ const WebTutorial3 = () => {
   );
 };
 
-const Group36Image = styled.img`
-  transform: translate(0, -10px);
+const Tutorial3GreetImage = styled.img`
+  transform: translate(0, 50px);
   top: 100px;
   right: 200px;
   width: 1050px;
   height: 50px;
 `;
 
-const Group155Image = styled.img`
+const Tutorial3LogoImage = styled.img`
   top: 500px;
-  transform: translate(0, 13%);
+  transform: translate(0, 25%);
   width: 550px;
   height: 360px;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);

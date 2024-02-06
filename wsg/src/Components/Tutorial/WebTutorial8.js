@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Group156 from "../../Assets/튜토리얼8질문.png";
-import Group175 from "../../Assets/Group 175.png";
+import Tutorial8Greet from "../../Assets/튜토리얼8질문.png";
+import Tutorial8Logo from "../../Assets/튜토리얼8로고.png";
 import GlobalStyle from "../Etc/GlobalStyle";
 import { SmallBackground } from "../Chapter1/WebChapter12";
 import smallBg from "../../Assets/bg1.svg";
@@ -18,8 +18,8 @@ const WebTutorial8 = () => {
     <Div>
       <GlobalStyle />
       <SmallBackground src={smallBg} />
-      <Group36Image src={Group156} alt="Tutorial Group36" />
-      <Group155Image src={Group175} alt="Tutorial Group135" />
+      <Tutorial8GreetImage src={Tutorial8Greet} alt="Tutorial Tutorial8Greet" />
+      <Tutorial8LogoImage src={Tutorial8Logo} alt="Tutorial Tutorial8Logo" />
       <Overlay>
         <NameText>빵긋이</NameText>
         <WelcomeText>국민들은 선거를 통해 <BoldText>자신을 대표할 국회의원을 선택함으로써 나라의 방향 <br />
@@ -30,7 +30,6 @@ const WebTutorial8 = () => {
     </Div>
   );
 };
-
 
 const Overlay = styled.div`
   display: flex; /* 자식 요소들을 가로로 배치 */
@@ -73,7 +72,7 @@ const Button = styled.div`
   cursor: pointer;
 `;
 
-const Group36Image = styled.img`
+const Tutorial8GreetImage = styled.img`
   transform: translate(0, -10px);
   top: 100px;
   right: 200px;
@@ -81,7 +80,7 @@ const Group36Image = styled.img`
   height: 50px;
 `;
 
-const Group155Image = styled.img`
+const Tutorial8LogoImage = styled.img`
   top: 500px;
   transform: translate(6%, 18.5%);
   width: 840px;

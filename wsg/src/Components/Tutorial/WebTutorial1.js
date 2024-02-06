@@ -6,9 +6,7 @@ import TutorialLogo from "../../Assets/TutorialLogo.png";
 import GlobalStyle from "../Etc/GlobalStyle";
 import smallBg from "../../Assets/bg1.svg";
 import { SmallBackground } from "../Chapter1/WebChapter12";
-import {
-  Div,
-} from "../Chapter1/WebChapter11";
+import { Div } from "../Chapter1/WebChapter11";
 import { WelcomeText, NameText, BoldText } from "../Tutorial/WebTutorial2";
 
 const WebTutorial1 = () => {
@@ -20,8 +18,8 @@ const WebTutorial1 = () => {
     <Div>
       <GlobalStyle />
       <SmallBackground src={smallBg} />
-      <Group36Image src={Tutorial1Greet} alt="Tutorial Group36" />
-      <Group155Image src={TutorialLogo} alt="Tutorial Group135" />
+      <Tutorial1GreetImage src={Tutorial1Greet} alt="Tutorial Tutorial1Greet" />
+      <LogoImage src={TutorialLogo} alt="Tutorial TutorialLogo" />
       <Overlay>
         <NameText>???</NameText>
         <WelcomeText>안녕하세요! 
@@ -44,7 +42,7 @@ const Overlay = styled.div`
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.10);
   backdrop-filter: blur(25px);
   opacity: 0.9;
-  margin-top: 29%; /* Adjust the top position according to your layout */
+  margin-top: 28%; /* Adjust the top position according to your layout */
   margin-right: 0%; /* Center horizontally */
 `;
 
@@ -74,17 +72,17 @@ const Button = styled.div`
   cursor: pointer;
 `;
 
-const Group36Image = styled.img`
-  transform: translate(0, -10px);
+const Tutorial1GreetImage = styled.img`
+  transform: translate(0, 50px);
   top: 100px;
   right: 200px;
   width: 1050px;
   height: 50px;
 `;
 
-const Group155Image = styled.img`
+const LogoImage = styled.img`
   top: 210px;
-  transform: translate(0, 40%);
+  transform: translate(0, 80%);
   width: 722px;
   height: 215px;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);

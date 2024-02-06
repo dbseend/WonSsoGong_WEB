@@ -6,6 +6,9 @@ import { SmallBackground, Div, Hr } from "../Chapter1/WebChapter12";
 import smallBg from "../../Assets/bg1.svg";
 import Group149 from "../../Assets/Group 149.png";
 import GlobalStyle from "../Etc/GlobalStyle";
+import {
+  Div,
+} from "../Chapter1/WebChapter11";
 
 const WebChapter3Result1 = (props) => {
   const navigate = useNavigate();
@@ -19,13 +22,16 @@ const WebChapter3Result1 = (props) => {
     <>
     <Div>
       <GlobalStyle />
+    <Div>
+      <GlobalStyle />
       <SmallBackground src={smallBg} />
-      <Button onClick={moveToNext}>홈으로 돌아가기</Button>
       <Part0>
         <ChapTitle>Chapter 3.</ChapTitle>
         <ChapTitle>
           <Title>투표 진행 : </Title>
           결과 발표
+        <Title>투표 진행 : </Title> 
+        결과 발표
         </ChapTitle>
       </Part0>
       <Hr />
@@ -36,18 +42,50 @@ const WebChapter3Result1 = (props) => {
         />
         <GradientOverlay />
       </Chapter3ResultImageContainer>
-      <AgreeText>찬성</AgreeText>
-      <Votes1Text>{votes1}표</Votes1Text>
-      <Votes2Text>{votes2}표</Votes2Text>
-      <Votes3Text>{votes3}표</Votes3Text>
-      <Group149ResultImage src={Group149} alt="Chapter 34 Group149" />
+      <TextContainer>
+        <AgreeText>
+          찬성
+        </AgreeText>
+      </TextContainer>
+      <VoteContainer>
+        <Votes1Text>{votes1}표</Votes1Text>
+        <Votes2Text>{votes2}표</Votes2Text>
+        <Votes3Text>{votes3}표</Votes3Text>
+      </VoteContainer>
+      <ImageContainer>
+        <Group149ResultImage src={Group149} alt="Chapter 34 Group149" />
+      </ImageContainer>
+      <ButtonContainer>
+        <Button onClick={moveToNext}>홈으로 돌아가기</Button>
+      </ButtonContainer>
     </Div>
-    </>
   );
 };
 
+const VoteContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: 8%;
+  margin-right: 28%;
+  margin-bottom: -8%;
+`;
+
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: -21%;
+  margin-right: 54%;
+  margin-bottom: 5.5%;
+`;
+
+const ImageContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-right: 40%;
+`;
+
 const Part0 = styled.div`
-  margin-left: 80px;
+  margin-left: -65%;
   margin-top: 0;
 `;
 
@@ -65,10 +103,15 @@ const Title = styled.span`
   font-weight: 600;
 `;
 
+const Hr = styled.hr`
+  width: 1131px;
+  background: #fff;
+  margin-top: 1%;
+  margin-bottom: 10%;
+  position: relative;
+`;
+
 const Button = styled.div`
-  position: absolute;
-  bottom: 150px;
-  right: 250px;
   width: 333px;
   height: 40px;
   flex-shrink: 0;
@@ -89,6 +132,11 @@ const Button = styled.div`
   line-height: 40px;
   text-align: center;
   cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
 `;
 
 const Chapter3ResultImageContainer = styled.div`
@@ -96,8 +144,8 @@ const Chapter3ResultImageContainer = styled.div`
   width: 1000px;
   height: 263px;
   overflow: hidden;
-  left: 90px;
-  top: 50px;
+  left: 30px;
+  top: -30px;
   z-index: 1;
 `;
 
@@ -120,7 +168,6 @@ const AgreeText = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
   right: 1005px;
   top: 300px;
   z-index: 3; /* 기존 이미지보다 위에 오도록 설정 */
@@ -129,6 +176,7 @@ const AgreeText = styled.div`
 `;
 
 const Votes1Text = styled.div`
+  white-space: nowrap;
   width: 164px;
   height: 76px;
   background-color: transparent;
@@ -138,16 +186,21 @@ const Votes1Text = styled.div`
   font-weight: 800;
   letter-spacing: 1px;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: absolute;
   right: 950px;
   top: 350px;
   -webkit-text-stroke: 1px #000;
   z-index: 3;
+  margin-top: -30%;
+  margin-right: 42.7%;
 `;
 
 const Votes2Text = styled.div`
+  white-space: nowrap;
+  margin-top: -30%;
+  margin-right: 40%;
   width: 132px;
   height: 76px;
   background-color: transparent;
@@ -158,13 +211,14 @@ const Votes2Text = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
   right: 660px;
   top: 350px;
   z-index: 3; /* 기존 이미지보다 위에 오도록 설정 */
 `;
 
 const Votes3Text = styled.div`
+  white-space: nowrap;
+  margin-top: -30%;
   width: 132px;
   height: 76px;
   background-color: transparent;
@@ -175,7 +229,6 @@ const Votes3Text = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
   right: 345px;
   top: 350px;
   z-index: 3; /* 기존 이미지보다 위에 오도록 설정 */
@@ -202,10 +255,17 @@ const GradientOverlay = styled.div`
 const Group149ResultImage = styled.img`
   width: 700px;
   height: 350px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-  position: absolute;
-  right: 575px;
-  top: 400px;
+  margin-right: 20%;
+  top: 450px;
   z-index: 5;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: -5.2%;
+  margin-right: -65%;
 `;
 
 export default WebChapter3Result1;

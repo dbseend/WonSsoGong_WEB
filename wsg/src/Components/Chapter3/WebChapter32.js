@@ -3,8 +3,12 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { SmallBackground } from "../Chapter1/WebChapter12";
 import smallBg from "../../Assets/bg1.svg";
-import Note from "../../Assets/WebChapter32 Note.png";
 import GlobalStyle from "../Etc/GlobalStyle";
+import Note from "../../Assets/WebChapter32 Note.png";
+import { Button } from "../Chapter1/WebChapter12";
+import {
+  Div,
+} from "../Chapter1/WebChapter11";
 
 const WebChapter32 = () => {
   const [content, setContent] = useState("");
@@ -13,10 +17,9 @@ const WebChapter32 = () => {
     navigate("/chapter3/3");
   };
   return (
-    <>
+    <Div>
       <GlobalStyle />
       <SmallBackground src={smallBg} />
-      <Button onClick={moveToNext}>다음으로 넘어가기</Button>
       <Part0>
         <ChapTitle>Chapter 3.</ChapTitle>
         <ChapTitle>
@@ -25,14 +28,25 @@ const WebChapter32 = () => {
         </ChapTitle>
       </Part0>
       <Hr />
-      <NoteImage src={Note} alt="Chapter 32 Note" />
-    </>
+      <ImageContainer>
+        <NoteImage src={Note} alt="Chapter 32 Note" />
+      </ImageContainer>
+      <Button onClick={moveToNext}>다음으로 넘어가기</Button>
+    </Div>
   );
 };
 
+const ImageContainer = styled.div`
+  display: relative;
+  flex-direction: row;
+  right: 200px;
+  margin-top: 12.7%;
+  margin-bottom: 3.1%;
+  margin-right: -60%;
+`;
 
 const Part0 = styled.div`
-  margin-left: 80px;
+  margin-left: -65%;
   margin-top: 0;
 `;
 
@@ -57,39 +71,9 @@ const Hr = styled.hr`
   position: relative;
 `;
 
-const Button = styled.div`
-  position: absolute;
-  bottom: 120px;
-  left: 715px;
-  transform: translateX(-520px);
-  width: 1050px;
-  height: 40px;
-  flex-shrink: 0;
-  border-radius: 84px;
-  background: linear-gradient(
-    90deg,
-    #FFC634 0%,
-    #FFD34A 10%,
-    #FFEA5F 30%,
-    #FFF275 50%,
-    #D8F5DD 100%
-  );
-  color: #5379C2;
-  font-family: "Pretendard Variable";
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 40px;
-  text-align: center;
-  cursor: pointer;
-`;
-
 const NoteImage = styled.img`
   width: 366px;
   height: 332px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-  position: absolute;
-  right: 220px;
-  top: 270px;
 `;
 
 export default WebChapter32;

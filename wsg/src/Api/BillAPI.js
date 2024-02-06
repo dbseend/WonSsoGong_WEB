@@ -93,6 +93,45 @@ export const analyzeBill = async (madeBill) => {
   }
 };
 
+export const debate = async (message) => {
+  const apiEndpoint = process.env.REACT_APP_URL;
+  const apiKey = process.env.REACT_APP_KEY;
+  const apiModel = process.env.REACT_APP_MODEL;
+
+  try {
+    const response = await fetch(apiEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: apiModel,
+        messages: [
+          { role: "system", content: template },
+          { role: "user", content: message },
+        ],
+        max_tokens: 1000,
+        top_p: 1,
+        temperature: 1,
+        frequency_penalty: 0.5,
+        presence_penalty: 0.5,
+        stop: ["문장 생성 중단 단어"],
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const aiResponse = data.choices?.[0]?.message?.content || "No response";
+    return aiResponse;
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
+};
+
 const template = `
 As an AI specialist in drafting laws, I'm here to assist you in creating and analyzing a comprehensive legislative proposal. I will guide you based on the keywords, title, and description you provide, and facilitate a discussion of the draft.
 
@@ -124,3 +163,6 @@ Compose your legislative proposal carefully, ensuring it is comprehensive, persu
 
 Please write all text in Korean.
 `;
+
+const debateTemplate = `
+Dear AI, as an expert on legislative bills with a somewhat cynical perspective, please provide an in-depth analysis based on the legislative bill and statements provided by the user. Discuss the pros and cons of the bill, as well as areas that require improvement. Furthermore, offer your insights on how the bill can be enhanced, and what aspects are already well-addressed. Through this, we aim to facilitate a constructive and productive discussion. This is our ultimate goal. Remember, your cynicism can bring a unique and critical viewpoint to the discussion`;

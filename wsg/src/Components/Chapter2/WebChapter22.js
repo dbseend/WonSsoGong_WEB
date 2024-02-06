@@ -20,7 +20,7 @@ const WebChapter22 = () => {
   const [aiMessages, setAiMessages] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [aiAnswer, setAiAnswer] = useState("");
-  const [converSation, setConversation] = useState([]);
+  const [conversation, setConversation] = useState([]);
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
   };
@@ -29,17 +29,18 @@ const WebChapter22 = () => {
     if (userInput.trim() !== "") {
       const userMessage = { text: userInput, sender: "user" };
       setMessages([...messages, userMessage]);
-
+  
       try {
         const answer = await debate(userInput);
         const aiMessage = { text: answer, sender: "Ai" };
-
+  
         setAiAnswer(answer);
         setAiMessages([...aiMessages, aiMessage]);
-        setConversation([...converSation, userMessage, aiMessage]);
+        setConversation([...conversation, userMessage, aiMessage]);
       } catch (error) {
         console.error("Error while fetching data:", error);
       }
+  
       setUserInput("");
     }
   };
@@ -73,24 +74,20 @@ const WebChapter22 = () => {
             가상 국회의원들과 토론을 진행하세요. 먼저 의견을 내면 토론이
             시작됩니다.
           </OppositeMessageBubble>
-          {messages.map((message, index) => (
-            <MessageBubble
-              className={message.sender === "user" ? "pull" : "push"}
-              key={index}
-            >
-              {message.text}
-            </MessageBubble>
-          ))}
-
-          {aiMessages.map((aiMessage, index) => (
-            <OppositeMessageBubble
-              className={aiMessage.sender === "Ai" ? "pull" : "push"}
-              key={index}
-            >
-              {aiMessage.text}
-            </OppositeMessageBubble>
-          ))}
+          {conversation.map((message, index) => {
+            const MessageComponent =
+              message.sender === "user" ? MessageBubble : OppositeMessageBubble;
+            return (
+              <MessageComponent
+                className={index % 2 === 0 ? "pull" : "push"}
+                key={index}
+              >
+                {message.text}
+              </MessageComponent>
+            );
+          })}
         </CenteredContainer>
+
         <SendArea>
           <ContentInput
             type="text"
@@ -110,7 +107,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 600px;
+  gap: 900px;
   margin-top: 130px;
   margin-bottom: 20px;
   z-index: 1;
@@ -122,16 +119,18 @@ const CenteredContainer = styled.div`
   align-items: center;
   padding-right: 30px;
   z-index: 1000;
-  margin-top: -35%;
-  width: 45%;
-  height: 300px;
+  margin-top: -32.5%;
+  width: 65%;
+  height: 450px;
   margin-bottom: 90px;
   overflow: scroll;
   overflow-y: auto;
   overflow-x: hidden;
+  background-color: #000;
 `;
 
 const MessageBubble = styled.div`
+flex-direction: row;
   width: auto;
   height: auto;
   max-width: 300.976px;
@@ -143,7 +142,7 @@ const MessageBubble = styled.div`
   padding-bottom: 7.34px;
   padding-left: 13.92px;
   padding-right: 13.92px;
-  margin-right: -85%;
+  // margin-right: 0%;
   &.pull:after {
     align-self: flex-end;
     content: "";
@@ -158,6 +157,7 @@ const MessageBubble = styled.div`
   }
 `;
 const OppositeMessageBubble = styled.div`
+flex-direction: row-reverse;
   width: auto;
   height: auto;
   max-width: 300.976px;
@@ -169,7 +169,7 @@ const OppositeMessageBubble = styled.div`
   padding-bottom: 7.34px;
   padding-left: 13.92px;
   padding-right: 13.92px;
-  margin-left: -25%;
+  // margin-left: -50%;
   &.push:after {
     align-self: flex-start;
     content: "";

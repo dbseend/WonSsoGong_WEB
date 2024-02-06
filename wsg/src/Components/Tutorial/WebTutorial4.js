@@ -31,10 +31,11 @@ const WebTutorial4 = () => {
   );
 };
 
+
 const Overlay = styled.div`
   display: flex; /* 자식 요소들을 가로로 배치 */
   flex-direction: row;
-  position: absolute;
+  position: relative;
   width: 900px;
   height: 167px;
   border-radius: 2px;
@@ -42,31 +43,14 @@ const Overlay = styled.div`
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.10);
   backdrop-filter: blur(25px);
   opacity: 0.9;
-  top: 62.5%; /* Adjust the top position according to your layout */
-  left: 48%; /* Center horizontally */
-  transform: translateX(-45%);
-`;
-
-const Group36Image = styled.img`
-  transform: translate(0, -10px);
-  top: 100px;
-  right: 200px;
-  width: 1050px;
-  height: 50px;
-`;
-
-const Group155Image = styled.img`
-  top: 500px;
-  transform: translate(5%, 13%);
-  width: 840px;
-  height: 400px;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+  margin-top: 4%; /* Adjust the top position according to your layout */
+  margin-right: 0%; /* Center horizontally */
 `;
 
 const Button = styled.div`
   bottom: 150px;
   left: 1800px;
-  transform: translate(220%, 570%);
+  transform: translate(220%, -130%);
   width: 151px;
   height: 29px;
   flex-shrink: 0;
@@ -87,6 +71,22 @@ const Button = styled.div`
   line-height: 30px;
   text-align: center;
   cursor: pointer;
+`;
+
+const Group36Image = styled.img`
+  transform: translate(0, -10px);
+  top: 100px;
+  right: 200px;
+  width: 1050px;
+  height: 50px;
+`;
+
+const Group155Image = styled.img`
+  top: 500px;
+  transform: translate(5%, 13%);
+  width: 840px;
+  height: 400px;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
 `;
 
 export default WebTutorial4;

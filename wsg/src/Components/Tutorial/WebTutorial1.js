@@ -9,7 +9,7 @@ import { SmallBackground } from "../Chapter1/WebChapter12";
 import {
   Div,
 } from "../Chapter1/WebChapter11";
-import { Overlay, WelcomeText, NameText, BoldText } from "../Tutorial/WebTutorial2";
+import { WelcomeText, NameText, BoldText } from "../Tutorial/WebTutorial2";
 
 const WebTutorial1 = () => {
   const navigate = useNavigate();
@@ -33,10 +33,25 @@ const WebTutorial1 = () => {
   );
 };
 
+const Overlay = styled.div`
+  display: flex; /* 자식 요소들을 가로로 배치 */
+  flex-direction: row;
+  position: relative;
+  width: 900px;
+  height: 167px;
+  border-radius: 2px;
+  background: rgba(246, 246, 246, 0.30);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.10);
+  backdrop-filter: blur(25px);
+  opacity: 0.9;
+  margin-top: 29%; /* Adjust the top position according to your layout */
+  margin-right: 0%; /* Center horizontally */
+`;
+
 const Button = styled.div`
   bottom: 150px;
   left: 1800px;
-  transform: translate(220%, 1450%);
+  transform: translate(220%, -130%);
   width: 151px;
   height: 29px;
   flex-shrink: 0;

@@ -7,7 +7,7 @@ import { billContent } from "../../Recoil/atom"; // atoms 파일 경로에 맞�
 import Twinkle from "../../Assets/Twinkle.svg";
 import smallBg from "../../Assets/bg1.svg";
 import GlobalStyle from "../Etc/GlobalStyle";
-import loading from "../../Assets/TutorialLogo.png"; //법안발의로딩페이지 파일 없어서 임시로 바꿔놓음
+import loading from "../../Assets/법안발의로딩페이지.svg"; //법안발의로딩페이지 파일 없어서 임시로 바꿔놓음
 
 const WebChapter12 = () => {
   const [keyword, setKeyword] = useState("");
@@ -200,6 +200,7 @@ const SubTitle = styled.div`
   font-style: normal;
   font-weight: 900;
   line-height: normal;
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 `;
 
 const Container = styled.div`

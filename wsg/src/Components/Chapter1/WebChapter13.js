@@ -10,15 +10,45 @@ import GlobalStyle from "../Etc/GlobalStyle";
 import { Div, SmallBackground, Title, Hr, Button } from "./WebChapter12";
 
 const WebChapter13 = () => {
-  const [madeBill, setMadeBill] = useRecoilState(billContent);
   const [isClicked, setIsClicked] = useState(false);
-  const keywords = ["키워드1", "키워드2", "키워드3"];
+
+  const [madeBill, setMadeBill] = useRecoilState(billContent);
+  const titleRegex = /제목: (.+?)\n/;
+  const rationaleRegex = /근거: (.+?)\n/;
+  const contentRegex = /내용:\n([\s\S]*)/;
+  const title = madeBill.match(titleRegex);
+  const rationale = madeBill.match(rationaleRegex);
+  const content = madeBill.match(contentRegex);
+
+  const [summarizedBill, setSummarizedBill] = useState("");
+  const [keywords, setKeywords] = useState([]);
+  const [topic, setTopic] = useState("");
+  const [reason, setReason] = useState("");
+  const [description, setDescription] = useState("");
+  const keywordRegex = /핵심 키워드: (.+?)\n/;
+  const topicRegex = /법안의 주제: (.+?)\n/;
+  const reasonRegex = /법안 제안의 이유: (.+?)\n/;
+  const descriptionRegex = /법안 설명: (.+)/;
+
 
   useEffect(() => {
     const summarizeBill = () => {
       analyzeBill(madeBill).then((response) => {
         console.log(response);
-        setMadeBill(response);
+        const keywordRegex = /핵심 키워드: (.+?)\n/;
+        const topicRegex = /법안의 주제: (.+?)\n/;
+        const reasonRegex = /법안 제안의 이유: (.+?)\n/;
+        const descriptionRegex = /법안 설명: (.+)/;
+      
+        const keywords = response.match(keywordRegex).split(', ').map(keyword => keyword.trim());
+        const topic = response.match(topicRegex);
+        const reason = response.match(reasonRegex);
+        const description = response.match(descriptionRegex);
+        setKeywords(keywords);
+        setTopic(topic);
+        setReason(reason);
+        setDescription(description);
+        setSummarizedBill(response);
       });
     };
 
@@ -56,8 +86,8 @@ const WebChapter13 = () => {
             </TitleBox>
             <Sequence>핵심 키워드</Sequence>
             <RowContainer>
-              {keywords.map((keyword, index) => (
-                <KeywordBox key={index}>{keyword}</KeywordBox>
+              {keywords.map((word, index) => (
+                <KeywordBox key={index}>{word}</KeywordBox>
               ))}
             </RowContainer>
             <Sequence>제안 이유</Sequence>
@@ -78,7 +108,9 @@ const WebChapter13 = () => {
             </TitleBox>
             <ExplainBill>
               <BillTitle>법안 설명</BillTitle>
-              <Font1>쿵짝짝3</Font1>
+              <Font3 >{title}</Font3>
+              <Font3 >{rationale}</Font3>
+              <Font3 >{content}</Font3>
             </ExplainBill>
           </>
         )}
@@ -102,6 +134,11 @@ const Font1 = styled.div`
 const Font2 = styled(Font1)`
   color: var(--sec_text, #5379c2);
 `;
+
+const Font3 = styled(Font1)`
+  color: #FFF;
+  font-size: 20px;
+`
 
 const AfterText = styled.div`
   color: #fff;

@@ -15,17 +15,16 @@ const WebChapter3Result1 = (props) => {
     navigate("/");
   };
 
-  return (    <Div>
+  return (    
+    <Div>
       <GlobalStyle />
       <GlobalStyle />
       <SmallBackground src={smallBg} />
       <Part0>
         <ChapTitle>Chapter 3.</ChapTitle>
         <ChapTitle>
-          <Title>투표 진행 : </Title>
+        <Title>투표 진행 : </Title>
           결과 발표
-        <Title>투표 진행 : </Title> 
-        결과 발표
         </ChapTitle>
       </Part0>
       <Hr />
@@ -67,7 +66,7 @@ const VoteContainer = styled.div`
 const TextContainer = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: -21%;
+  margin-top: -18.5%;
   margin-right: 54%;
   margin-bottom: 5.5%;
 `;
@@ -131,7 +130,7 @@ const Chapter3ResultImageContainer = styled.div`
   height: 263px;
   overflow: hidden;
   left: 30px;
-  top: -30px;
+  margin-top: 10%;
   z-index: 1;
 `;
 
@@ -155,7 +154,7 @@ const AgreeText = styled.div`
   justify-content: center;
   align-items: center;
   right: 1005px;
-  top: 300px;
+  top: 400px;
   z-index: 3; /* 기존 이미지보다 위에 오도록 설정 */
   -webkit-text-stroke: 1px #000; /* 텍스트의 테두리 추가 */
   text-stroke: 1px #000;

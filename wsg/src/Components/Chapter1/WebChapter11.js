@@ -73,6 +73,7 @@ const Title = styled.div`
   font-size: 64px;
   font-weight: 800;
   line-height: normal;
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 `;
 
 const ChapterChar = styled.img`
@@ -90,12 +91,5 @@ const BalloonContainer = styled.div`
 
 const BubbleText = styled.img``;
 
-export {
-  Div,
-  ChapterArea,
-  ChapTitle,
-  Title,
-  BalloonContainer,
-  BubbleText,
-};
+export { Div, ChapterArea, ChapTitle, Title, BalloonContainer, BubbleText };
 export default WebMain;

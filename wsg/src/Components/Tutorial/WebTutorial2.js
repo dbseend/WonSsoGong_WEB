@@ -61,7 +61,7 @@ const WelcomeText = styled.div`
 const Overlay = styled.div`
   display: flex; /* 자식 요소들을 가로로 배치 */
   flex-direction: row;
-  position: absolute;
+  position: relative;
   width: 900px;
   height: 167px;
   border-radius: 2px;
@@ -69,15 +69,14 @@ const Overlay = styled.div`
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.10);
   backdrop-filter: blur(25px);
   opacity: 0.9;
-  top: 70%; /* Adjust the top position according to your layout */
-  left: 50%; /* Center horizontally */
-  transform: translateX(-50%);
+  margin-top: 15%; /* Adjust the top position according to your layout */
+  margin-right: 0%; /* Center horizontally */
 `;
 
 const Button = styled.div`
   bottom: 150px;
   left: 1800px;
-  transform: translate(220%, 950%);
+  transform: translate(220%, -130%);
   width: 151px;
   height: 29px;
   flex-shrink: 0;

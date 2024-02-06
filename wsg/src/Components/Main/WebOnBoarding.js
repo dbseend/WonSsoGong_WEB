@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import GlobalStyle from "../Etc/GlobalStyle";
-import FluentArrow from "../../Assets/FluentArrow.svg";
-import WebFooter from "../Etc/WebFooter";
 import { useNavigate } from "react-router-dom";
-import GroupA from "../../Assets/법안발의.svg";
-import GroupD from "../../Assets/법안분석.svg";
-import GroupB from "../../Assets/토론참여.svg";
-import GroupC from "../../Assets/투표진행.svg";
-import Group1 from "../../Assets/법안발의호버.svg";
-import Group4 from "../../Assets/법안분석호버.svg";
-import Group2 from "../../Assets/토론참여호버.svg";
-import Group3 from "../../Assets/투표진행호버.svg";
+import step1 from "../../Assets/법안발의 .png";
+import step4 from "../../Assets/법안분석 .png";
+import step2 from "../../Assets/토론참여 .png";
+import step3 from "../../Assets/투표진행 .png";
+import step1Hover from "../../Assets/법안발의호버.png";
+import step4Hover from "../../Assets/법안분석호버.png";
+import step2Hover from "../../Assets/토론참여호버.png";
+import step3Hover from "../../Assets/투표진행호버.png";
 import BasicChar from "../../Assets/BasicChar.svg";
 import HoverChar from "../../Assets/HoverChar.svg";
 import HoverCharBubble from "../../Assets/HoverCharBubble.svg";
@@ -29,12 +27,6 @@ const WebOnBoarding = () => {
   const navigate = useNavigate();
   const moveToMain = () => {
     navigate("/chapter1/1");
-  };
-  const handleScrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
   };
 
   return (
@@ -54,22 +46,22 @@ const WebOnBoarding = () => {
       </Top>
       <RectArea>
         <RectImage
-          src={rectHoverd1 ? Group1 : GroupA}
+          src={rectHoverd1 ? step1Hover : step1}
           onMouseEnter={() => setRectHovered1(true)}
           onMouseLeave={() => setRectHovered1(false)}
         />
         <RectImage
-          src={rectHoverd2 ? Group2 : GroupB}
+          src={rectHoverd2 ? step2Hover : step2}
           onMouseEnter={() => setRectHovered2(true)}
           onMouseLeave={() => setRectHovered2(false)}
         />
         <RectImage
-          src={rectHoverd3 ? Group3 : GroupC}
+          src={rectHoverd3 ? step3Hover : step3}
           onMouseEnter={() => setRectHovered3(true)}
           onMouseLeave={() => setRectHovered3(false)}
         />
         <RectImage
-          src={rectHoverd4 ? Group4 : GroupD}
+          src={rectHoverd4 ?step4Hover : step4}
           onMouseEnter={() => setRectHovered4(true)}
           onMouseLeave={() => setRectHovered4(false)}
         />
@@ -94,7 +86,6 @@ const WebOnBoarding = () => {
       <Img2 src={flower} />
       <Img3 src={diamond} />
       <Img4 src={circle} />
-      <Arrow src={FluentArrow} onClick={handleScrollToTop} />
     </Div>
   );
 };
@@ -180,6 +171,10 @@ const RectArea = styled.div`
 
 const RectImage = styled.img`
   border-radius: 106px;
+  width:206px;
+  height:612px;
+  backdrop-filter: blur(30px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 `;
 
 const CharImage = styled.img`
@@ -195,7 +190,7 @@ const Img2 = styled.img`
   margin-left: -930px;
   width: 329px;
   height: 322px;
-  z-index: -1;
+  z-index: -3;
 `;
 
 const Img3 = styled.img`
@@ -204,7 +199,7 @@ const Img3 = styled.img`
   margin-left: -850px;
   width: 500.47px;
   height: 500.47px;
-  z-index: -1;
+  z-index: -3;
 `;
 
 const Img4 = styled.img`
@@ -213,15 +208,9 @@ const Img4 = styled.img`
   margin-left: 890px;
   width: 329px;
   height: 322px;
-  z-index: -1;
+  z-index: -3;
 `;
 
-const Arrow = styled.img`
-  margin-top: 750px;
-  align-self: center;
-  cursor: pointer;
-  transform: translateY(-40px);
-`;
 
 const GradientText = styled.div`
   font-family: "Pretendard Variable";

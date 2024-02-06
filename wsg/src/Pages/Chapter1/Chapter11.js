@@ -8,7 +8,7 @@ const WebChapter11 = () => {
     <div>
       <WebNavbar />
       <Chapter11 />
-      <WebFooter />
+      {/* <WebFooter /> */}
     </div>
   );
 };

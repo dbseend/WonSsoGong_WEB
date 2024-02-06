@@ -8,7 +8,7 @@ const OnBoarding = () => {
     <div>
       <WebNavbar />
       <WebOnBoarding />
-      <WebFooter />
+      {/* <WebFooter /> */}
     </div>
   );
 };

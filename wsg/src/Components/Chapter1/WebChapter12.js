@@ -7,7 +7,7 @@ import { billContent } from "../../Recoil/atom"; // atoms 파일 경로에 맞�
 import Twinkle from "../../Assets/Twinkle.svg";
 import smallBg from "../../Assets/bg1.svg";
 import GlobalStyle from "../Etc/GlobalStyle";
-import loading from "../../Assets/법안발의로딩페이지.svg";
+import loading from "../../Assets/TutorialLogo.png"; //법안발의로딩페이지 파일 없어서 임시로 바꿔놓음
 
 const WebChapter12 = () => {
   const [keyword, setKeyword] = useState("");

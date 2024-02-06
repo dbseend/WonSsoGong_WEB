@@ -4,11 +4,11 @@ import styled from "styled-components";
 import Ellipse5 from "../../Assets/Ellipse 5.svg";
 import Group36 from "../../Assets/Group 36 1.png";
 import Group16 from "../../Assets/Group16.svg";
-import GroupA from "../../Assets/법안발의.svg";
-import { default as GroupB, default as GroupD } from "../../Assets/법안분석.svg";
-import { default as Group2, default as Group4 } from "../../Assets/법안분석호버.svg";
-import GroupC from "../../Assets/토론참여.svg";
-import Group3 from "../../Assets/토론참여호버.svg";
+import GroupA from "../../Assets/법안발의 .png";
+import { default as GroupB, default as GroupD } from "../../Assets/법안분석 .png";
+import { default as Group2, default as Group4 } from "../../Assets/법안분석호버.png";
+import GroupC from "../../Assets/토론참여 .png";
+import Group3 from "../../Assets/토론참여호버.png";
 import GlobalStyle from "../Etc/GlobalStyle";
 
 const WebTutorial5 = () => {

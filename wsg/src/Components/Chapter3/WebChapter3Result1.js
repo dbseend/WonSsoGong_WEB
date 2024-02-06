@@ -1,14 +1,11 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import Chapter3Result1 from "../../Assets/Chapter3Result1.png";
-import { SmallBackground } from "../Chapter1/WebChapter12";
+import { SmallBackground, Div, Hr } from "../Chapter1/WebChapter12";
 import smallBg from "../../Assets/bg1.svg";
 import Group149 from "../../Assets/Group 149.png";
 import GlobalStyle from "../Etc/GlobalStyle";
-import {
-  Div,
-} from "../Chapter1/WebChapter11";
 
 const WebChapter3Result1 = (props) => {
   const navigate = useNavigate();
@@ -18,20 +15,25 @@ const WebChapter3Result1 = (props) => {
     navigate("/");
   };
 
-  return (
-    <Div>
+  return (    <Div>
+      <GlobalStyle />
       <GlobalStyle />
       <SmallBackground src={smallBg} />
       <Part0>
         <ChapTitle>Chapter 3.</ChapTitle>
         <ChapTitle>
+          <Title>투표 진행 : </Title>
+          결과 발표
         <Title>투표 진행 : </Title> 
         결과 발표
         </ChapTitle>
       </Part0>
       <Hr />
       <Chapter3ResultImageContainer>
-        <Chapter3ResultImage src={Chapter3Result1} alt="Chapter 34 Chapter3Result" />
+        <Chapter3ResultImage
+          src={Chapter3Result1}
+          alt="Chapter 34 Chapter3Result"
+        />
         <GradientOverlay />
       </Chapter3ResultImageContainer>
       <TextContainer>
@@ -95,14 +97,6 @@ const Title = styled.span`
   font-weight: 600;
 `;
 
-const Hr = styled.hr`
-  width: 1131px;
-  background: #fff;
-  margin-top: 1%;
-  margin-bottom: 10%;
-  position: relative;
-`;
-
 const Button = styled.div`
   width: 333px;
   height: 40px;
@@ -153,7 +147,7 @@ const AgreeText = styled.div`
   width: 56px;
   height: 38px;
   background-color: transparent;
-  color: #CFFFA0;
+  color: #cfffa0;
   font-family: "Pretendard Variable";
   font-size: 32px; /* 폰트 크기 수정 */
   font-weight: 800;
@@ -226,7 +220,8 @@ const Votes3Text = styled.div`
   z-index: 3; /* 기존 이미지보다 위에 오도록 설정 */
 `;
 
-const GradientOverlay = styled.div` //그라데이션 할 부분
+const GradientOverlay = styled.div`
+  //그라데이션 할 부분
   position: absolute;
   top: 3px;
   left: 6.5px;
@@ -234,11 +229,11 @@ const GradientOverlay = styled.div` //그라데이션 할 부분
   height: 250px;
   background: linear-gradient(
     90deg,
-    #FFC634 0%,
-    #FFD34A 10%,
-    #FFEA5F 30%,
-    #FFF275 50%,
-    #D8F5DD 100%
+    #ffc634 0%,
+    #ffd34a 10%,
+    #ffea5f 30%,
+    #fff275 50%,
+    #d8f5dd 100%
   );
   z-index: 1;
 `;

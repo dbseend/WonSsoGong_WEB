@@ -16,7 +16,7 @@ import {
   Title,
   BubbleText,
   BalloonContainer
-} from "../Main/WebMain";
+} from "../Chapter1/WebChapter11";
 import { Background } from "../Main/WebOnBoarding";
 
 const WebChapter2 = () => {
@@ -28,7 +28,7 @@ const WebChapter2 = () => {
   return (
     <Div>
       <GlobalStyle />
-      <Background />
+      <Background src = {BG}/>
 
       <ChapterArea>
         <ChapTitle>Chapter 2.</ChapTitle>

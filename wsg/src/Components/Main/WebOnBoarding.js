@@ -61,7 +61,7 @@ const WebOnBoarding = () => {
           onMouseLeave={() => setRectHovered3(false)}
         />
         <RectImage
-          src={rectHoverd4 ?step4Hover : step4}
+          src={rectHoverd4 ? step4Hover : step4}
           onMouseEnter={() => setRectHovered4(true)}
           onMouseLeave={() => setRectHovered4(false)}
         />
@@ -171,8 +171,8 @@ const RectArea = styled.div`
 
 const RectImage = styled.img`
   border-radius: 106px;
-  width:206px;
-  height:612px;
+  width: 206px;
+  height: 612px;
   backdrop-filter: blur(30px);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 `;
@@ -210,7 +210,6 @@ const Img4 = styled.img`
   height: 322px;
   z-index: -3;
 `;
-
 
 const GradientText = styled.div`
   font-family: "Pretendard Variable";

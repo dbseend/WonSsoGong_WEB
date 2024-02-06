@@ -15,11 +15,13 @@ const WebChapter13 = () => {
   const [madeBill, setMadeBill] = useRecoilState(billContent);
   const titleRegex = /제목: (.+?)\n/;
   const rationaleRegex = /근거: (.+?)\n/;
-  const contentRegex = /내용:\n([\s\S]*)/;
+ 
   const title = madeBill.match(titleRegex);
   const rationale = madeBill.match(rationaleRegex);
-  const content = madeBill.match(contentRegex);
   
+  const contentRegex = /내용:([\s\S]*?)(?=내용:|$)/;
+  const contentMatch = madeBill.match(contentRegex);
+  const content = contentMatch ? contentMatch[1].trim() : "";
 
   const [summarizedBill, setSummarizedBill] = useState("");
   const [keywords, setKeywords] = useState(["쿵짝짝1", "쿵짝짝2", "쿵짝짝3"]);
@@ -35,21 +37,23 @@ const WebChapter13 = () => {
   useEffect(() => {
     const summarizeBill = () => {
       analyzeBill(madeBill).then((response) => {
-        console.log(response);
-        // const keywordRegex = /핵심 키워드: (.+?)\n/;
-        // const topicRegex = /법안의 주제: (.+?)\n/;
-        // const reasonRegex = /법안 제안의 이유: (.+?)\n/;
-        // const descriptionRegex = /법안 설명: (.+)/;
-      
-        // const keywords = response.match(keywordRegex).split(', ').map(keyword => keyword.trim());
-        // const topic = response.match(topicRegex);
-        // const reason = response.match(reasonRegex);
-        // const description = response.match(descriptionRegex);
-        // setKeywords(keywords);
-        // setTopic(topic);
-        // setReason(reason);
-        // setDescription(description);
-        setSummarizedBill(response);
+        console.log(response); // 예시: 핵심 키워드: 예시1, 예시2, 예시3
+        const keywordRegex = /핵심 키워드: (.+?)\n/; // 키워드 정규식
+        const keywordsMatch = response.match(keywordRegex); // 정규식에 매칭되는 부분 찾기
+        if (keywordsMatch) {
+          // 매칭된 키워드가 있는 경우
+          const extractedKeywords = keywordsMatch[1].split(", "); // 쉼표로 구분된 키워드들을 배열로 분할
+          setKeywords(extractedKeywords); // 키워드 배열 상태 업데이트
+        }
+        setSummarizedBill(response); // 요약된 법안 내용 상태 업데이트
+        const reasonRegex = /법안 제안의 이유: (.+?)\n/;
+        const reasonMatch = response.match(reasonRegex);
+        const reason = reasonMatch ? reasonMatch[1] : "";
+        setReason(reason);
+        const descriptionRegex = /법안 설명: (.+)/;
+        const descriptionMatch = response.match(descriptionRegex);
+        const description = descriptionMatch ? descriptionMatch[1] : "";
+        setDescription(description);
       });
     };
 
@@ -94,11 +98,11 @@ const WebChapter13 = () => {
             <Sequence>제안 이유</Sequence>
             <RowContainer>
               <LeftCharacter src={left} />
-              <ContentBox>쿵짝짝1</ContentBox>
+              <ContentBox>{reason}</ContentBox>
             </RowContainer>
             <Sequence>제안 내용</Sequence>
             <RowContainer>
-              <ContentBox>쿵짝짝2</ContentBox>
+              <ContentBox>{description}</ContentBox>
               <RightCharacter src={right} />
             </RowContainer>
           </>
@@ -138,8 +142,9 @@ const Font2 = styled(Font1)`
 
 const Font3 = styled(Font1)`
   color: #FFF;
-  font-size: 20px;
-`
+  font-size: 15px;
+  margin-bottom: 20px;
+`;
 
 const AfterText = styled.div`
   color: #fff;
@@ -249,13 +254,13 @@ const LeftCharacter = styled.img`
   height: 260px;
   flex-shrink: 0;
   margin-top: -200px;
-  margin-right: -100px;
+  margin-right: 25px;
   z-index: 1;
 `;
 
 const RightCharacter = styled(LeftCharacter)`
   margin-right: 0px;
-  margin-left: -100px;
+  margin-left: 25px;
 `;
 
 const NextButton = styled(Button)`

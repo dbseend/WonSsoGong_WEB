@@ -91,9 +91,10 @@ const WebChapter33 = () => {
 const ImageContainer = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   margin-top: -22.2%;
   margin-bottom: 22.1%;
-  margin-right: 33%;
+  gap: 210px;
 `;
 
 const Part0 = styled.div`
@@ -132,49 +133,33 @@ const Group146Image = styled.img`
 `;
 
 const Button1Image = styled.img`
-  width: 170px;
-  height: 86px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-  right: 500px;
-  top: 333px;
-  margin-right: 44%;
+width : 158.4px;
+height: 86.07px;
 `;
 
 const Button1ClickImage = styled.img`
-  width: 170px;
-  height: 86px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-  right: 1004px;
-  top: 314px;
-  margin-right: 39.7%;
+width : 158.4px;
+height: 86.07px;
 `;
 
 const Button2Image = styled.img`
-  width: 170px;
-  height: 86px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-  right: 632px;
-  top: 333px;
-  margin-right: 44.5%;
+width : 158.4px;
+height: 86.07px;
 `;
 
 const Button2ClickImage = styled.img`
-  width: 170px;
-  height: 86px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-  right: 632px;
-  top: 344px;
-  margin-right: 40.5%;
+width : 158.4px;
+height: 86.07px;
 `;
 
 const Button3Image = styled.img`
-  width: 170px;
-  height: 86px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-  right: 260px;
-  top: 333px;
+width : 158.4px;
+height: 86.07px;
 `;
 
 const Button3ClickImage = styled.img`
-  width: 170px;
-  height: 86px; /* 이미지가 70%의 높이를 차지하도록 설정 */
-  right: 260px;
-  top: 344px;
+width : 158.4px;
+height: 86.07px;
 `;
 
 export default WebChapter33;

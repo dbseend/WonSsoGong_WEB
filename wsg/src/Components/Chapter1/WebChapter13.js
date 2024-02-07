@@ -8,7 +8,7 @@ import smallBg from "../../Assets/bg1.svg";
 import left from "../../Assets/Group 169.svg";
 import right from "../../Assets/Group 174.svg";
 import GlobalStyle from "../Etc/GlobalStyle";
-import { Div, SmallBackground, Title, Hr, Button } from "./WebChapter12";
+import { Div, SmallBackground, Hr, Button } from "./WebChapter12";
 
 const WebChapter13 = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -17,10 +17,10 @@ const WebChapter13 = () => {
   const [madeBill, setMadeBill] = useRecoilState(billContent);
   const titleRegex = /제목: (.+?)\n/;
   const rationaleRegex = /근거: (.+?)\n/;
- 
+
   const title = madeBill.match(titleRegex);
   const rationale = madeBill.match(rationaleRegex);
-  
+
   const contentRegex = /내용:([\s\S]*?)(?=내용:|$)/;
   const contentMatch = madeBill.match(contentRegex);
   const content = contentMatch ? contentMatch[1].trim() : "";
@@ -35,7 +35,6 @@ const WebChapter13 = () => {
   const reasonRegex = /법안 제안의 이유: (.+?)\n/;
   const descriptionRegex = /법안 설명: (.+)/;
   console.log(title);
-
 
   useEffect(() => {
     const summarizeBill = () => {
@@ -73,16 +72,16 @@ const WebChapter13 = () => {
     setIsClicked(false);
   };
 
-  const moveToChapter2 = () =>{
+  const moveToChapter2 = () => {
     navigate("/chapter2/1");
-  }
+  };
 
   return (
     <>
       <GlobalStyle />
       <Div>
         <SmallBackground src={smallBg} />
-        <Title>법안 발의서 완성!</Title>
+        <TitleContainer>법안 발의서 완성!</TitleContainer>
         <RowContainer>
           <AfterText onClick={handleClickAfter}>After</AfterText>
           <BeforeText onClick={handleClickBefore}>Before</BeforeText>
@@ -96,18 +95,24 @@ const WebChapter13 = () => {
               <Font2>{title ? title[0].replace("제목: ", "") : ""}</Font2>
               <Font1>에 대해 정리해보았어요!</Font1>{" "}
             </TitleBox>
+
             <Sequence>핵심 키워드</Sequence>
+
             <RowContainer>
               {keywords.map((word, index) => (
                 <KeywordBox key={index}>{word}</KeywordBox>
               ))}
             </RowContainer>
+
             <Sequence>제안 이유</Sequence>
+
             <RowContainer>
               <LeftCharacter src={left} />
               <ContentBox>{reason}</ContentBox>
             </RowContainer>
+
             <Sequence>제안 내용</Sequence>
+
             <RowContainer>
               <ContentBox>{description}</ContentBox>
               <RightCharacter src={right} />
@@ -116,13 +121,16 @@ const WebChapter13 = () => {
         ) : (
           <>
             <TitleAfterBox>
-              <Font2>{title ? title[0].replace("제목: ", "") : ""}</Font2>
+              {title ? title[0].replace("제목: ", "") : ""}
             </TitleAfterBox>
+
             <ExplainBill>
               <BillTitle>법안 설명</BillTitle>
-              <Font3 >{title}</Font3>
-              <Font3 >{rationale}</Font3>
-              <Font3 >{content}</Font3>
+
+              <Font3>
+                {rationale} <br></br>
+                {content}
+              </Font3>
             </ExplainBill>
           </>
         )}
@@ -132,23 +140,30 @@ const WebChapter13 = () => {
   );
 };
 
+const TitleContainer = styled.div`
+  color: #fff;
+  font-family: "Pretendard Variable";
+  font-size: 32px;
+  font-weight: 600;
+  margin-left: -65%;
+  margin-bottom: 28px;
+`;
 const TitleAfterBox = styled.div`
-  width: 940px;
+  width: 900px;
   height: 50px;
-  margin-top: 80px;
+  margin-top: 40px;
   margin-bottom: 80px;
   flex-shrink: 0;
   background: rgba(246, 246, 246, 0.5);
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--sub_text, #464646);
+  color: var(--sec_text, #5379c2);
   font-family: "Pretendard Variable";
-  font-size: 24px;
+  font-size: 18px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
 `;
 
 const Font1 = styled.div`
@@ -159,17 +174,20 @@ const Font1 = styled.div`
   font-weight: 400;
   line-height: normal;
   text-align: center; /* 가운데 정렬 */
-  margin-bottom: 20px;
 `;
 
 const Font2 = styled(Font1)`
   color: var(--sec_text, #5379c2);
 `;
 
-const Font3 = styled(Font1)`
-  color: #FFF;
-  font-size: 15px;
-  margin-bottom: 20px;
+const Font3 = styled.div`
+  margin-top: 20px;
+  color: #fff;
+  font-family: "Pretendard Variable";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `;
 
 const AfterText = styled.div`
@@ -194,16 +212,15 @@ const AfterState = styled.div`
   height: 88px;
   transform: rotate(-90deg);
   flex-shrink: 0;
-  margin-bottom: -60px;
-  margin-right: 46%;
-
+  margin-bottom: -50px;
   border-radius: 0px 5px 5px 0px;
   opacity: 0.9;
   background: linear-gradient(180deg, #ffc634 0%, #d8f5dd 100%);
+  margin-left: -43.5%;
 `;
 
 const BeforeState = styled(AfterState)`
-  margin-left: 89.5%;
+  margin-left: 43%;
 `;
 
 const TitleBox = styled.div`
@@ -213,7 +230,6 @@ const TitleBox = styled.div`
   margin-bottom: 80px;
   flex-shrink: 0;
   background: rgba(246, 246, 246, 0.5);
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -223,6 +239,8 @@ const TitleBox = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  padding-left: 20px;
+  padding-right: 20px;
 `;
 
 const TitleText = styled(Font2)`
@@ -232,10 +250,9 @@ const TitleText = styled(Font2)`
   justify-content: center;
 `;
 
-
 const Sequence = styled(Font2)`
-  font-weight: 700;
-  margin-left: -68%;
+  // font-weight: 700;
+  // margin-left: -68%;
 `;
 
 const RowContainer = styled(Div)`
@@ -296,20 +313,32 @@ const NextButton = styled(Button)`
   margin-bottom: 55px;
 `;
 
-const ExplainBill = styled(Div)`
+const ExplainBill = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 900px;
   height: 510px;
+  flex-shrink: 0;
   background: rgba(198, 198, 198, 0.1);
   backdrop-filter: blur(50px);
   margin-top: -81px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  overflow: auto;
 `;
 
-const BillTitle = styled(Sequence)`
-  margin-top: 20px;
-  margin-right: 60px;
-  /* margin-left: -20px; */
+const BillTitle = styled.div`
+  color: var(--sec_text, #5379c2);
+  font-family: "Pretendard Variable";
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-top: 20px;
+  paddign-left: 40px;
+  z-index: 1000;
 `;
 
 export default WebChapter13;

@@ -92,7 +92,7 @@ const WebChapter13 = () => {
           <>
             <TitleBox>
               <Font1>제안하신 법안주제</Font1>
-              <Font2>00에 대한 법률 (XXX에 대하여)</Font2>
+              <Font2>{title}</Font2>
               <Font1>에 대해 정리해보았어요!</Font1>{" "}
             </TitleBox>
             <Sequence>핵심 키워드</Sequence>
@@ -115,7 +115,7 @@ const WebChapter13 = () => {
         ) : (
           <>
             <TitleBox>
-              <TitleText>00에 대한 법률 (XXX에 대하여)</TitleText>
+              <TitleText>{title}</TitleText>
             </TitleBox>
             <ExplainBill>
               <BillTitle>법안 설명</BillTitle>

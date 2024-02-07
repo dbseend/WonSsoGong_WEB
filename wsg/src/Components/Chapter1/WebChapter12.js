@@ -7,8 +7,7 @@ import { billContent } from "../../Recoil/atom"; // atoms 파일 경로에 맞�
 import Twinkle from "../../Assets/Twinkle.svg";
 import smallBg from "../../Assets/bg1.svg";
 import GlobalStyle from "../Etc/GlobalStyle";
-import loading from "../../Assets/법안발의로딩페이지.svg"; //법안발의로딩페이지 파일 없어서 임시로 바꿔놓음
-
+import loadingImgFinal from "../../Assets/LoadingImgFinal.png";
 const WebChapter12 = () => {
   const [keyword, setKeyword] = useState("");
   const [title, setTitle] = useState("");
@@ -33,9 +32,8 @@ const WebChapter12 = () => {
       });
 
       setTimeout(() => {
-        //5초 대기(답변 생성 예상 시간) 후 페이지 이동
         navigate("/chapter1/3");
-      }, 8 * 1000);
+      }, 10 * 1000);
     }
   };
 
@@ -73,7 +71,7 @@ const WebChapter12 = () => {
       <GlobalStyle />
       <Div>
         {isSubmitted ? (
-          <LoadingImage src={loading} alt="법안 분석" />
+          <LoadingImage src={loadingImgFinal} alt="법안 분석" />
         ) : (
           <>
             <SmallBackground src={smallBg} />
@@ -327,6 +325,7 @@ const Form2 = styled.textarea`
 `;
 
 const LoadingImage = styled.img`
+  margin-top: 10%;
   width: 70%;
   object-fit: cover;
   z-index: 9999; // 다른 요소 위에 표시되도록 z-index를 높게 설정합니다.

@@ -71,7 +71,7 @@ const Overlay = styled.div`
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.10);
   backdrop-filter: blur(25px);
   opacity: 0.9;
-  margin-top: 2%; /* Adjust the top position according to your layout */
+  margin-top: 8%; /* Adjust the top position according to your layout */
   margin-right: 0%; /* Center horizontally */
 `;
 
@@ -119,7 +119,7 @@ const RectArea = styled.div`
   display: flex;
   flex-direction: row;
   gap: 26px;
-  margin-top: 88px;
+  margin-top: 5%;
   z-index:1;
   margin-left: -3%;
 `;
@@ -133,6 +133,6 @@ const RectImage = styled.img`
   display: flex;
 `;
 
-export { Button };
+export { Overlay, Button, RectArea, RectImage };
 
 export default WebTutorial5;

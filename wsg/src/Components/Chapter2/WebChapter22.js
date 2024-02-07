@@ -29,7 +29,7 @@ const WebChapter22 = () => {
   const [debateContentsState, setDebateContentsState] =
     useRecoilState(debateContents);
   const [isDebateStarted, setIsDebateStarted] = useState(false);
-  const [count, setCount] = useState(5);
+  const [count, setCount] = useState(300);
   const [minutes, setMinutes] = useState(Math.floor(count / 60));
   const [seconds, setSeconds] = useState(count % 60);
   const navigate = useNavigate();
@@ -237,6 +237,9 @@ const CenteredContainer = styled.div`
   overflow: scroll;
   overflow-y: auto;
   overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 12px;  /* Chrome, Safari, Edge */
+  }
 `;
 
 const MessageContainer = styled.div`
@@ -313,7 +316,7 @@ const ContentInput = styled.input`
 const SendButton = styled.button`
   width: 149px;
   height: 40px;
-  background-color: rgba(255, 198, 52, 0.8);
+  background-color: #DCC06E;
   color: white;
   border: none;
   border-radius: 84px 84px 84px 84px; /* 상단 양쪽 모서리만 84픽셀 radius */

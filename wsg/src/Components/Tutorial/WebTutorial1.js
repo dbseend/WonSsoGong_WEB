@@ -22,11 +22,12 @@ const WebTutorial1 = () => {
       <LogoImage src={TutorialLogo} alt="Tutorial TutorialLogo" />
       <Overlay>
         <NameText>???</NameText>
-        <WelcomeText>안녕하세요! 
-          <BoldText>방방국국</BoldText>
-        에 오신 여러분을 환영합니다~!!</WelcomeText>
+        <WelcomeText>
+          안녕하세요!
+          <BoldText>방방국국</BoldText>에 오신 여러분을 환영합니다~!!
+        </WelcomeText>
       </Overlay>
-        <Button onClick={moveToNext}>다음</Button>
+      <Button onClick={moveToNext}>다음</Button>
     </Div>
   );
 };
@@ -38,21 +39,15 @@ const Overlay = styled.div`
   width: 900px;
   height: 167px;
   border-radius: 2px;
-  background: rgba(246, 246, 246, 0.30);
-  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.10);
+  background: rgba(246, 246, 246, 0.3);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(25px);
   opacity: 0.9;
-  margin-top: 28%; /* Adjust the top position according to your layout */
-  margin-right: 0%; /* Center horizontally */
 `;
 
 const Button = styled.div`
-  bottom: 150px;
-  left: 1800px;
-  transform: translate(220%, -130%);
   width: 151px;
   height: 29px;
-  flex-shrink: 0;
   border-radius: 84px;
   background: linear-gradient(
     90deg,
@@ -70,6 +65,9 @@ const Button = styled.div`
   line-height: 30px;
   text-align: center;
   cursor: pointer;
+  z-index: 1000;
+  margin-top: -5%;
+  margin-left: 65%;
 `;
 
 const Tutorial1GreetImage = styled.img`
@@ -78,14 +76,17 @@ const Tutorial1GreetImage = styled.img`
   right: 200px;
   width: 1050px;
   height: 50px;
+  filter: drop-shadow(0px 0px 65px rgba(255, 255, 255, 0.8));
 `;
 
 const LogoImage = styled.img`
-  top: 210px;
-  transform: translate(0, 80%);
-  width: 722px;
-  height: 215px;
+  margin-top: 20%;
+  margin-bottom: 8%;
+  width: 822.29px;
+  height: 215.89px;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+  filter: drop-shadow(0px 0px 65px rgba(255, 255, 255, 0.8));
 `;
 
+export { Overlay, Button };
 export default WebTutorial1;

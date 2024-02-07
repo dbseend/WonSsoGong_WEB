@@ -25,6 +25,9 @@ const WebChapter41 = () => {
 
   const [keyword, setKeyword] = useState("");
   const [billUrls, setBillUrls] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [visibleItems, setVisibleItems] = useState([]);
 
   const types = ["재난", "안전", "도시", "교통", "주민", "법률"];
   const itemsPerPage = 10;
@@ -36,14 +39,35 @@ const WebChapter41 = () => {
   ];
 
   useEffect(() => {
+    
     const fetchData = async () => {
       const urls = await extractInfo(keyword);
       console.log(urls);
       setBillUrls(urls);
+      setSearchResults(urls);
     };
-
+  
     fetchData();
   }, [keyword]);
+  
+  useEffect(() => {
+    const response = getVisibleItems(searchResults);
+    setVisibleItems(response);
+  }, [searchResults, currentPage, itemsPerPage]);
+
+  const getVisibleItems = (items) => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return items.slice(startIndex, endIndex);
+  };
+
+
+  const handleSearch = () => {
+    console.log(searchValue);
+    const results =  billUrls.filter(item => item.title.includes(searchValue));
+    setSearchResults(results);
+    console.log(results);
+  };
 
   const handleClick = (index) => {
     const billNo = visibleItems[index].id;
@@ -59,16 +83,16 @@ const WebChapter41 = () => {
   const totalPages = calculatePageInfo();
   const handlePageClick = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };  
+
+  const handleKeywordChange = (type) => {
+    setKeyword(type);
   };
 
-  const getVisibleItems = () => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    return billUrls.slice(startIndex, endIndex);
+  const handleSearchChange = (e) => {
+    setSearchValue(e.target.value);
   };
-
-  const visibleItems = getVisibleItems();
-
+  
   const Pagination = () => (
     <div>
       <img src={Left} onClick={() => handlePageClick(1)} alt="Left" />
@@ -76,6 +100,7 @@ const WebChapter41 = () => {
         <PaginationButton
           key={index + 1}
           selected={currentPage === index + 1} // Assuming currentPage is the current selected page
+          onChange={handleSearchChange}
           onClick={() => handlePageClick(index + 1)}
         >
           {index + 1}
@@ -88,10 +113,6 @@ const WebChapter41 = () => {
       />
     </div>
   );
-
-  const handleKeywordChange = (type) => {
-    setKeyword(type);
-  };
 
   return (
     <>
@@ -117,10 +138,17 @@ const WebChapter41 = () => {
               ))}
             </TypeArea>
             <SearchArea>
-              <StyledSearchIcon src={searchIcon} />
+              {/* <StyledSearchIcon src={searchIcon} /> */}
               <StyledSearch
                 type="text"
                 placeholder="법안 주제를 검색해주세요."
+                value={searchValue}
+                onChange={handleSearchChange}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    handleSearch();
+                  }
+                }}
               />
             </SearchArea>
           </Container>
@@ -189,15 +217,17 @@ const SearchArea = styled.div`
 `;
 
 const StyledSearchIcon = styled.img`
-  position: absolute;
+  /* position: absolute; */
   top: 65%;
   left: 20px;
   transform: translateY(-50%);
   z-index: 2;
+  margin-top: 40px;
+  margin-left: 50px;
 `;
 const StyledSearch = styled.input`
   margin-top: 20px;
-  width: 810px;
+  width: 880px;
   height: 44px;
   background-color: #f6f6f6;
   border: transparent;
@@ -205,6 +235,9 @@ const StyledSearch = styled.input`
   color: #f6f6f6;
   font-size: 18px;
   line-height: 44px;
+  border-radius: 2px;
+  background: rgba(246, 246, 246, 0.30);
+  margin-bottom: -10px;
 
   /* &:: placeholder {
     color: #f6f6f6;

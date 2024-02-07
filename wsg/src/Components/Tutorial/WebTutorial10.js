@@ -8,7 +8,8 @@ import { SmallBackground } from "../Chapter1/WebChapter12";
 import smallBg from "../../Assets/bg1.svg";
 import { Div } from "../Chapter1/WebChapter11";
 import { WelcomeText, NameText, BoldText } from "../Tutorial/WebTutorial2";
-
+import { Overlay } from "./WebTutorial1";
+import { Button } from "../Chapter1/WebChapter12";
 const WebTutorial10 = () => {
   const navigate = useNavigate();
   const moveToNext = () => {
@@ -18,59 +19,28 @@ const WebTutorial10 = () => {
     <Div>
       <GlobalStyle />
       <SmallBackground src={smallBg} />
-      <Tutorial10GreetImage src={Tutorial10Greet} alt="Tutorial Tutorial10Greet" />
+      <Tutorial10GreetImage
+        src={Tutorial10Greet}
+        alt="Tutorial Tutorial10Greet"
+      />
       <Tutorial10LogoImage src={Tutorial10Logo} alt="Tutorial Tutorial10Logo" />
       <Overlay>
         <NameText>빵긋이</NameText>
-        <WelcomeText><BoldText>이제 여러분도 국회 의원이 되어 국가의 발전에 참여할 수 있어요!</BoldText><br />
-          국회의 중요성을 깨달아보고 방방국국을 통해<br />
-          민주주의 참여의 즐거움을 느껴보면 어떨까요?</WelcomeText>
+        <WelcomeText>
+          <BoldText>
+            이제 여러분도 국회 의원이 되어 국가의 발전에 참여할 수 있어요!
+          </BoldText>
+          <br />
+          국회의 중요성을 깨달아보고 방방국국을 통해
+          <br />
+          민주주의 참여의 즐거움을 느껴보면 어떨까요?
+        </WelcomeText>
       </Overlay>
+      <Br></Br>
       <Button onClick={moveToNext}>홈으로 돌아가기</Button>
     </Div>
   );
 };
-
-const Overlay = styled.div`
-  display: flex; /* 자식 요소들을 가로로 배치 */
-  flex-direction: row;
-  position: relative;
-  width: 900px;
-  height: 167px;
-  border-radius: 2px;
-  background: rgba(246, 246, 246, 0.30);
-  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.10);
-  backdrop-filter: blur(25px);
-  opacity: 0.9;
-  margin-top: 2%; /* Adjust the top position according to your layout */
-  margin-right: 0%; /* Center horizontally */
-`;
-
-const Button = styled.div`
-  bottom: 150px;
-  left: 1800px;
-  transform: translate(0, 215%);
-  width: 1050px;
-  height: 40px;
-  flex-shrink: 0;
-  border-radius: 84px;
-  background: linear-gradient(
-    90deg,
-    #ffc634 0%,
-    #ffd34a 10%,
-    #ffea5f 30%,
-    #fff275 50%,
-    #d8f5dd 100%
-  );
-  color: #5379c2;
-  font-family: "Pretendard Variable";
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 40px;
-  text-align: center;
-  cursor: pointer;
-`;
 
 const Tutorial10GreetImage = styled.img`
   transform: translate(0, -10px);
@@ -81,11 +51,13 @@ const Tutorial10GreetImage = styled.img`
 `;
 
 const Tutorial10LogoImage = styled.img`
-  top: 500px;
-  transform: translate(0, 8%);
-  width: 840px;
+  margin-top: 3%;
+  width: 923.7px;
   height: 400px;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
 `;
 
+const Br = styled.div`
+  height: 40px;
+`;
 export default WebTutorial10;

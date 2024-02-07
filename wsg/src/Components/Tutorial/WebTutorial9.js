@@ -75,7 +75,7 @@ const RectArea = styled.div`
   flex-direction: row;
   gap: 26px;
   margin-top: 40px;
-  margin-bottom: 63px;
+  margin-bottom: 60px;
   z-index:1;
   margin-left: 0%;
 `;
@@ -88,7 +88,5 @@ const RectImage = styled.img`
   gap: 26px;
   display: flex;
 `;
-
-export { Button };
 
 export default WebTutorial9;

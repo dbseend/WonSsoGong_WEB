@@ -160,6 +160,19 @@ export const extractInfo = async (keyword) => {
   }
 };
 
+export const findBill = async (billNo) => {
+  try {
+    const response = await fetch(`/txt/${billNo}.txt`);
+    // 불러온 파일의 내용을 텍스트로 변환합니다.
+    const text = await response.text();
+
+    return text;
+  } catch (error) {
+    console.log(error);
+  }
+  // public 폴더에 있는 텍스트 파일을 불러옵니다.
+};
+
 const template = `
 As an AI specialist in drafting laws, I'm here to assist you in creating and analyzing a comprehensive legislative proposal. I will guide you based on the keywords, title, and description you provide, and facilitate a discussion of the draft.
 

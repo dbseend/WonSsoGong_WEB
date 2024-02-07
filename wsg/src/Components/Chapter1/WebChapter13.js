@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
 import { billContent } from "../../Recoil/atom"; // atoms 파일 경로에 맞게 수정해주세요.
 import { analyzeBill } from "../../Api/BillAPI";
 import smallBg from "../../Assets/bg1.svg";
@@ -11,6 +12,7 @@ import { Div, SmallBackground, Title, Hr, Button } from "./WebChapter12";
 
 const WebChapter13 = () => {
   const [isClicked, setIsClicked] = useState(false);
+  const navigate = useNavigate();
 
   const [madeBill, setMadeBill] = useRecoilState(billContent);
   const titleRegex = /제목: (.+?)\n/;
@@ -70,6 +72,10 @@ const WebChapter13 = () => {
     setIsClicked(false);
   };
 
+  const moveToChapter2 = () =>{
+    navigate("/chapter2/1");
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -119,7 +125,7 @@ const WebChapter13 = () => {
             </ExplainBill>
           </>
         )}
-        <NextButton>다음 단계로 넘어가기</NextButton>
+        <NextButton onClick={moveToChapter2}>다음 단계로 넘어가기</NextButton>
       </Div>
     </>
   );

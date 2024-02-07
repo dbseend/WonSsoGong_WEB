@@ -133,36 +133,36 @@ const Group146Image = styled.img`
 `;
 
 const Button1Image = styled.img`
-width : 158.4px;
-height: 86.07px;
+  width : 158.4px;
+  height: 86.07px;
 `;
 
 const Button1ClickImage = styled.img`
-width : 158.4px;
-height: 86.07px;
-transform: translateY(10px);
+  width : 158.4px;
+  height: 86.07px;
+  transform: translateY(10px);
 `;
 
 const Button2Image = styled.img`
-width : 158.4px;
-height: 86.07px;
+  width : 158.4px;
+  height: 86.07px;
 `;
 
 const Button2ClickImage = styled.img`
-width : 158.4px;
-height: 86.07px;
-transform: translateY(10px);
+  width : 158.4px;
+  height: 86.07px;
+  transform: translateY(10px);
 `;
 
 const Button3Image = styled.img`
-width : 158.4px;
-height: 86.07px;
+  width : 158.4px;
+  height: 86.07px;
 `;
 
 const Button3ClickImage = styled.img`
-width : 158.4px;
-height: 86.07px;
-transform: translateY(10px);
+  width : 158.4px;
+  height: 86.07px;
+  transform: translateY(10px);
 `;
 
 export default WebChapter33;

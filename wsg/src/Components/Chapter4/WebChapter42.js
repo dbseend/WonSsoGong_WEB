@@ -114,8 +114,8 @@ const WebChapter42 = () => {
         {isClicked ? (
           <>
             <TitleBox>
-              <Font1>제안하신 법안주제</Font1>
-              <Font2>00에 대한 법률 (XXX에 대하여)</Font2>
+              <Font1>제안하신 법안주제&nbsp;</Font1>
+              <Font2>{title.replace("제목: ", "")}</Font2>
               <Font1>에 대해 정리해보았어요!</Font1>{" "}
             </TitleBox>
             <Sequence>핵심 키워드</Sequence>
@@ -137,9 +137,9 @@ const WebChapter42 = () => {
           </>
         ) : (
           <>
-            <TitleBox>
-              <TitleText>00에 대한 법률 (XXX에 대하여)</TitleText>
-            </TitleBox>
+            <TitleAfterBox>
+            {title.replace("제목: ", "")}
+            </TitleAfterBox>
             <ExplainBill>
               <BillTitle>법안 설명</BillTitle>
               <Font3>제목: {title}</Font3>
@@ -172,6 +172,24 @@ const Font2 = styled(Font1)`
 const Font3 = styled(Font1)`
   color: #fff;
   font-size: 20px;
+`;
+
+const TitleAfterBox = styled.div`
+  width: 900px;
+  height: 50px;
+  margin-top: 40px;
+  margin-bottom: 80px;
+  flex-shrink: 0;
+  background: rgba(246, 246, 246, 0.5);
+
+  color: var(--sec_text, #5379c2);
+  font-family: "Pretendard Variable";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
 `;
 
 const AfterText = styled.div`
@@ -209,13 +227,12 @@ const BeforeState = styled(AfterState)`
 `;
 
 const TitleBox = styled.div`
-  width: 900px;
+  width: 1200px;
   height: 50px;
   margin-top: 80px;
   margin-bottom: 80px;
   flex-shrink: 0;
   background: rgba(246, 246, 246, 0.5);
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -225,6 +242,8 @@ const TitleBox = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  padding-left: 20px;
+  padding-right: 20px;
 `;
 
 const TitleText = styled(Font2)`
@@ -294,12 +313,20 @@ const NextButton = styled(Button)`
   margin-bottom: 55px;
 `;
 
-const ExplainBill = styled(Div)`
+const ExplainBill = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 900px;
   height: 510px;
+  flex-shrink: 0;
   background: rgba(198, 198, 198, 0.1);
   backdrop-filter: blur(50px);
   margin-top: -81px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  overflow: auto;
 `;
 
 const BillTitle = styled(Sequence)`

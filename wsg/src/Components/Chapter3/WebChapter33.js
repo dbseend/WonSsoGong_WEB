@@ -160,9 +160,9 @@ const Button3Image = styled.img`
 `;
 
 const Button3ClickImage = styled.img`
-  width : 158.4px;
-  height: 86.07px;
-  transform: translateY(10px);
+width : 158.4px;
+height: 86.07px;
+transform: translateY(10px);
 `;
 
 export default WebChapter33;

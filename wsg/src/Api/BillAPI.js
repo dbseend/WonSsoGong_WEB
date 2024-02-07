@@ -170,7 +170,84 @@ export const findBill = async (billNo) => {
   } catch (error) {
     console.log(error);
   }
-  // public 폴더에 있는 텍스트 파일을 불러옵니다.
+};
+
+export const summarizeBill = async (message) => {
+  const apiEndpoint = process.env.REACT_APP_URL;
+  const apiKey = process.env.REACT_APP_KEY;
+  const apiModel = process.env.REACT_APP_MODEL;
+
+  try {
+    const response = await fetch(apiEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: apiModel,
+        messages: [
+          { role: "system", content: `당신은 법률안 전문가입니다. 복잡한 법률 용어를 쉽게 설명하고, 필요시 사용자를 대신해 법률안을 작성해야 합니다. 이때, 말하고 쓰는 모든 것은 전문적이면서 이해하기 쉽게, 그리고 반드시 3줄 이내로 요약해야 합니다.` },
+          { role: "user", content: message},
+        ],
+        max_tokens: 1000,
+        top_p: 1,
+        temperature: 0.8,
+        frequency_penalty: 0.3,
+        presence_penalty: 0.7,
+        stop: ["문장 생성 중단 단어"],
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const aiResponse = data.choices?.[0]?.message?.content || "No response";
+    return aiResponse;
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
+};
+
+export const summarizeDebate = async (message) => {
+  const apiEndpoint = process.env.REACT_APP_URL;
+  const apiKey = process.env.REACT_APP_KEY;
+  const apiModel = process.env.REACT_APP_MODEL;
+
+  try {
+    const response = await fetch(apiEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: apiModel,
+        messages: [
+          { role: "system", content: `당신은 법률안 전문가입니다. 복잡한 법률 용어를 쉽게 설명하고, 필요시 사용자를 대신해 법률안을 작성해야 합니다. 이때, 말하고 쓰는 모든 것은 전문적이면서 이해하기 쉽게, 그리고 반드시 3줄 이내로 요약해야 합니다.` },
+          { role: "user", content: message},
+        ],
+        max_tokens: 1000,
+        top_p: 1,
+        temperature: 0.8,
+        frequency_penalty: 0.3,
+        presence_penalty: 0.7,
+        stop: ["문장 생성 중단 단어"],
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const aiResponse = data.choices?.[0]?.message?.content || "No response";
+    return aiResponse;
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
 };
 
 const template = `

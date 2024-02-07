@@ -13,8 +13,8 @@ const WebNavbar = () => {
     const handleClick = () => {
         navigate("/chapter1/1");  // board페이지로 이동
     };
-    const handleChatbot = () => {
-        navigate("/chat");  // chat페이지로 이동
+    const handleBill = () => {
+        navigate("/chapter4/1");  // chat페이지로 이동
     };
     const handleGoBack = () => { // 이전화면으로 이동
         navigate(-1);
@@ -29,12 +29,17 @@ const WebNavbar = () => {
             <Menu onClick={handleGoRoot} isActive={location.pathname === "/"}>
                 홈
             </Menu>
-            <Menu onClick={handleTutorial} isActive={location.pathname === "/tutorial" || location.pathname === "/tutorial2"
-            || location.pathname === "/tutorial3" || location.pathname === "/tutorial4" || location.pathname === "/tutorial5"}>
+            <Menu onClick={handleTutorial} isActive={location.pathname === "/tutorial/1" || location.pathname === "/tutorial/2"
+            || location.pathname === "/tutorial/3" || location.pathname === "/tutorial/4" || location.pathname === "/tutorial/5"
+            || location.pathname === "/tutorial/6" || location.pathname === "/tutorial/7" || location.pathname === "/tutorial/8"
+            || location.pathname === "/tutorial/9" || location.pathname === "/tutorial/10"}>
                 튜토리얼
             </Menu>
-            <Menu isActive={location.pathname === "/board"}>법안 분석</Menu>
-            <Menu onClick={handleClick} isActive={location.pathname === "/board"}>
+            <Menu onClick={handleBill} isActive={location.pathname === "/chapter4/1" || location.pathname === "/chapter4/2"}>법안 분석</Menu>
+            <Menu onClick={handleClick} isActive={location.pathname === "/chapter1/1" || location.pathname === "/chapter1/2"
+            || location.pathname === "/chapter1/3" || location.pathname === "/chapter2/1" || location.pathname === "/chapter2/2"
+            || location.pathname === "/chapter3/1" || location.pathname === "/chapter3/2" || location.pathname === "/chapter3/3"
+            || location.pathname === "/chapter3/result1" || location.pathname === "/chapter3/result2" || location.pathname === "/chapter3/result3"}>
                 시작하기
             </Menu>
         </NavbarContainer>

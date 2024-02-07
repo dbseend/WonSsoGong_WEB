@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { billContent } from "../../Recoil/atom"; // atoms 파일 경로에 맞게 수정해주세요.
 import { analyzeBill, findBill } from "../../Api/BillAPI";
@@ -17,11 +17,10 @@ import {
 } from "../Chapter1/WebChapter12";
 
 const WebChapter42 = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const { billNo } = location.state;
-
   const [isClicked, setIsClicked] = useState(false);
-
   const [madeBill, setMadeBill] = useRecoilState(billContent);
   const [summarizedBill, setSummarizedBill] = useState("");
   const [title, setTitle] = useState("");
@@ -30,10 +29,14 @@ const WebChapter42 = () => {
   const [keywords, setKeywords] = useState([]);
   const [reason, setReason] = useState("");
   const [description, setDescription] = useState("");
+  const handleGoBack = () => { // 이전화면으로 이동
+    navigate(-1);
+  };
 
   useEffect(() => {
     findBill(billNo).then((response) => {
       console.log(response);
+      console.log("hi1111");
       setSummarizedBill(response);
     
       const titleRegex = /### 제목: (.+?)\n/;
@@ -62,6 +65,7 @@ const WebChapter42 = () => {
 
     const summarizeBill = () => {
       analyzeBill(madeBill).then((response) => {
+        console.log("hi222");
         console.log(response); // 예시: 핵심 키워드: 예시1, 예시2, 예시3
         const keywordRegex = /핵심 키워드: (.+?)\n/; // 키워드 정규식
         const keywordsMatch = response.match(keywordRegex); // 정규식에 매칭되는 부분 찾기
@@ -138,13 +142,13 @@ const WebChapter42 = () => {
             </TitleBox>
             <ExplainBill>
               <BillTitle>법안 설명</BillTitle>
-              <Font3>{title}</Font3>
-              <Font3>{basis}</Font3>
-              <Font3>{content}</Font3>
+              <Font3>제목: {title}</Font3>
+              <Font3>근거: {basis}</Font3>
+              <Font3>내용: {content}</Font3>
             </ExplainBill>
           </>
         )}
-        <NextButton>뒤로 가기</NextButton>
+        <NextButton onClick={handleGoBack}>뒤로 가기</NextButton>
       </Div>
     </>
   );
@@ -277,13 +281,13 @@ const LeftCharacter = styled.img`
   height: 260px;
   flex-shrink: 0;
   margin-top: -200px;
-  margin-right: -100px;
+  margin-right: 25px;
   z-index: 1;
 `;
 
 const RightCharacter = styled(LeftCharacter)`
   margin-right: 0px;
-  margin-left: -100px;
+  margin-left: 25px;
 `;
 
 const NextButton = styled(Button)`

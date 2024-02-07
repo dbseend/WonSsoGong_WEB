@@ -15,7 +15,6 @@ const WebChapter12 = () => {
   const [madeBill, setMadeBill] = useRecoilState(billContent);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const types = ["재난", "안전", "도시", "교통", "주민", "법률"];
-
   const navigate = useNavigate();
 
   const addBill = async (e) => {
@@ -326,7 +325,7 @@ const Form2 = styled.textarea`
 `;
 
 const LoadingImage = styled.img`
-  margin-top: 10%;
+  margin-top: 3%;
   width: 70%;
   object-fit: cover;
   z-index: 9999; // 다른 요소 위에 표시되도록 z-index를 높게 설정합니다.

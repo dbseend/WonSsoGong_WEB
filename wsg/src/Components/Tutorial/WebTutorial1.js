@@ -66,12 +66,11 @@ const Button = styled.div`
   text-align: center;
   cursor: pointer;
   z-index: 1000;
-  margin-top: -5%;
+  margin-top: -4%;
   margin-left: 65%;
 `;
 
 const Tutorial1GreetImage = styled.img`
-  transform: translate(0, 50px);
   top: 100px;
   right: 200px;
   width: 1050px;
@@ -80,8 +79,8 @@ const Tutorial1GreetImage = styled.img`
 `;
 
 const LogoImage = styled.img`
-  margin-top: 20%;
-  margin-bottom: 8%;
+  margin-top: 10%;
+  margin-bottom: 15%;
   width: 822.29px;
   height: 215.89px;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);

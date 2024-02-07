@@ -36,19 +36,18 @@ const WebTutorial3 = () => {
 };
 
 const Tutorial3GreetImage = styled.img`
-  transform: translate(0, 50px);
-  top: 100px;
-  right: 200px;
-  width: 1050px;
-  height: 50px;
+top: 100px;
+right: 200px;
+width: 1050px;
+height: 50px;
+filter: drop-shadow(0px 0px 65px rgba(255, 255, 255, 0.8));
 `;
 
 const Tutorial3LogoImage = styled.img`
-  margin-top: 10%;
+  margin-top: 6.5%;
   margin-bottom: 6%;
   width: 707.53px;
   height: 342.63px;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-`;
+  `;
 
 export default WebTutorial3;

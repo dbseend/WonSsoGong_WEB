@@ -39,8 +39,8 @@ const Overlay = styled.div`
   width: 900px;
   height: 167px;
   border-radius: 2px;
-  background: rgba(246, 246, 246, 0.30);
-  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.10);
+  background: rgba(246, 246, 246, 0.3);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(25px);
   opacity: 0.9;
   margin-top: 4%; /* Adjust the top position according to your layout */

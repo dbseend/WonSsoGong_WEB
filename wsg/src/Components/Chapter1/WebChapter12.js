@@ -150,7 +150,8 @@ const SmallBackground = styled.img`
 const Part0 = styled.div`
   margin-top: 30px;
   z-index: 2;
-  margin-left: -75%;
+  margin-left: -45%;
+  min-width: 50%;
 `;
 
 const ChapTitle = styled.div`
@@ -170,13 +171,12 @@ const Title = styled.div`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 `;
 
 const Hr = styled.hr`
   width: 1131px;
   background: #fff;
-  margin-top: 18px;
 `;
 
 const Body = styled.div`

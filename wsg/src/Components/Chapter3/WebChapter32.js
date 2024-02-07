@@ -15,7 +15,7 @@ const WebChapter32 = () => {
   const [content, setContent] = useState("");
   const [debateContentsState, setDebateContentsState] =
     useRecoilState(debateContents);
-  const combinedString = debateContentsState.map(item => item.text).join(' ');
+  const combinedString = debateContentsState.map((item) => item.text).join(" ");
   const [summarizedDebate, setSummarizedDebate] = useState("");
   const [billContentState, setBillContentState] = useRecoilState(billContent);
   const [summarizedBill, setSummarizedBill] = useState("");
@@ -50,49 +50,52 @@ const WebChapter32 = () => {
         </ChapTitle>
       </Part0>
       <Hr />
-      <Div>
-        <Font1>
-          법안 요약
-        </Font1>
-        <Font2>
-          {summarizeBill}
-        </Font2>
-        <Font1>
-          토론 요약
-        </Font1>
-        <Font2>
-          {summarizeDebate}
-        </Font2>
-      <ImageContainer>
-        <NoteImage src={Note} alt="Chapter 32 Note" />
-      </ImageContainer>
-      </Div>
+      {summarizedBill && summarizedDebate && (
+        <>
+          <SumDiv>
+            <Font1>법안 요약</Font1>
+            <Font2>{summarizedBill}</Font2>
+            <Font1>토론 요약</Font1>
+            <Font2>{summarizedDebate}</Font2>
+          </SumDiv>
+          <ImageContainer>
+            <NoteImage src={Note} alt="Chapter 32 Note" />
+          </ImageContainer>
+        </>
+      )}
       <Button onClick={moveToNext}>다음으로 넘어가기</Button>
     </Div>
   );
 };
 
+const SumDiv = styled(Div)`
+  width: 800px;
+  margin-left: 200px;
+`;
+
 const Font1 = styled.div`
   width: 300px;
-  color: var(--Primary, #FFC634);
+  color: var(--Primary, #ffc634);
   font-family: "Pretendard Variable";
   font-size: 28px;
   font-style: normal;
   font-weight: 900;
   line-height: normal;
-  margin-right: 80%;
-`
+  margin-right: 112%;
+`;
 
 const Font2 = styled.div`
   width: 100%;
-  color: var(--white-text, #F6F6F6);
+  color: var(--white-text, #f6f6f6);
   font-family: "Pretendard Variable";
   font-size: 24px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: normal;
   margin-right: 50%;
-`
+  margin-top: 10px;
+  margin-bottom: 20px;
+`;
 
 const ImageContainer = styled.div`
   display: relative;

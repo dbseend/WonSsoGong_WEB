@@ -97,7 +97,7 @@ const WebChapter42 = () => {
             </ExplainBill>
           </>
         )}
-        <NextButton>다음 단계로 넘어가기</NextButton>
+        <NextButton>뒤로 가기</NextButton>
       </Div>
     </>
   );

@@ -18,6 +18,7 @@ const WebNavbar = () => {
     };
     const handleGoBack = () => { // 이전화면으로 이동
         navigate(-1);
+
     };
     const handleGoRoot = () => { // 첫화면으로 이동
         navigate("/");
@@ -25,7 +26,7 @@ const WebNavbar = () => {
 
     return (
         <NavbarContainer>
-            <LogoImage src={Logo} alt="Navbar Logo" />
+            <LogoImage src={Logo} alt="Navbar Logo" onClick={handleGoRoot}/>
             <Menu onClick={handleGoRoot} isActive={location.pathname === "/"}>
                 홈
             </Menu>
@@ -79,6 +80,7 @@ const ColorMenu = styled(Menu)`
 `;
 
 const LogoImage = styled.img`
+    cursor: pointer;
     position: absolute; /* 상대적 위치 설정을 위해 */
     left: 2.5%; /* 왼쪽으로 10px 이동 */
     width: 150px;

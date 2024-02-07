@@ -1,17 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useRecoilState } from "recoil";
+import { billContent, debateContents } from "../../Recoil/atom";
+import { summarizeBill, summarizeDebate } from "../../Api/BillAPI";
 import { SmallBackground } from "../Chapter1/WebChapter12";
 import smallBg from "../../Assets/bg1.svg";
 import GlobalStyle from "../Etc/GlobalStyle";
 import Note from "../../Assets/WebChapter32 Note.png";
 import { Button } from "../Chapter1/WebChapter12";
-import {
-  Div,
-} from "../Chapter1/WebChapter11";
+import { Div } from "../Chapter1/WebChapter11";
 
 const WebChapter32 = () => {
   const [content, setContent] = useState("");
+  const [debateContentsState, setDebateContentsState] =
+    useRecoilState(debateContents);
+  const combinedString = debateContentsState.map(item => item.text).join(' ');
+  const [summarizedDebate, setSummarizedDebate] = useState("");
+  const [billContentState, setBillContentState] = useRecoilState(billContent);
+  const [summarizedBill, setSummarizedBill] = useState("");
+
+  useEffect(() => {
+    console.log(billContentState);
+    summarizeBill(billContentState).then((response) => {
+      console.log(response);
+      setSummarizedBill(response);
+    });
+
+    console.log(combinedString);
+    summarizeDebate(combinedString).then((response) => {
+      console.log(response);
+      setSummarizedDebate(response);
+    });
+  }, []);
+
   const navigate = useNavigate();
   const moveToNext = () => {
     navigate("/chapter3/3");
@@ -23,25 +45,61 @@ const WebChapter32 = () => {
       <Part0>
         <ChapTitle>Chapter 3.</ChapTitle>
         <ChapTitle>
-        <Title>투표 진행 : </Title> 
-        법안리마인드
+          <Title>투표 진행 : </Title>
+          법안리마인드
         </ChapTitle>
       </Part0>
       <Hr />
+      <Div>
+        <Font1>
+          법안 요약
+        </Font1>
+        <Font2>
+          {summarizeBill}
+        </Font2>
+        <Font1>
+          토론 요약
+        </Font1>
+        <Font2>
+          {summarizeDebate}
+        </Font2>
       <ImageContainer>
         <NoteImage src={Note} alt="Chapter 32 Note" />
       </ImageContainer>
+      </Div>
       <Button onClick={moveToNext}>다음으로 넘어가기</Button>
     </Div>
   );
 };
 
+const Font1 = styled.div`
+  width: 300px;
+  color: var(--Primary, #FFC634);
+  font-family: "Pretendard Variable";
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  margin-right: 80%;
+`
+
+const Font2 = styled.div`
+  width: 100%;
+  color: var(--white-text, #F6F6F6);
+  font-family: "Pretendard Variable";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-right: 50%;
+`
+
 const ImageContainer = styled.div`
   display: relative;
   flex-direction: row;
   right: 200px;
-  margin-top: 12.7%;
-  margin-bottom: 3.1%;
+  margin-top: -10%;
+  margin-bottom: 5%;
   margin-right: -60%;
 `;
 

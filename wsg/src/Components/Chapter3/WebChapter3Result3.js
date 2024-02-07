@@ -105,6 +105,7 @@ const Hr = styled.hr`
 `;
 
 const Button = styled.div`
+  cursor: pointer;
   width: 333px;
   height: 40px;
   flex-shrink: 0;
@@ -130,6 +131,7 @@ const Button = styled.div`
   flex-direction: row;
   justify-content: center;
   gap: 10px;
+  z-index: 10;
 `;
 
 const Chapter3ResultImageContainer = styled.div`

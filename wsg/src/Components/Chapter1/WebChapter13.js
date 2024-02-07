@@ -34,6 +34,7 @@ const WebChapter13 = () => {
   const topicRegex = /법안의 주제: (.+?)\n/;
   const reasonRegex = /법안 제안의 이유: (.+?)\n/;
   const descriptionRegex = /법안 설명: (.+)/;
+  console.log(title);
 
 
   useEffect(() => {
@@ -91,8 +92,8 @@ const WebChapter13 = () => {
         {isClicked ? (
           <>
             <TitleBox>
-              <Font1>제안하신 법안주제</Font1>
-              <Font2>{title}</Font2>
+              <Font1>제안하신 법안주제&nbsp;</Font1>
+              <Font2>{title ? title[0].replace("제목: ", "") : ""}</Font2>
               <Font1>에 대해 정리해보았어요!</Font1>{" "}
             </TitleBox>
             <Sequence>핵심 키워드</Sequence>
@@ -114,9 +115,9 @@ const WebChapter13 = () => {
           </>
         ) : (
           <>
-            <TitleBox>
-              <TitleText>{title}</TitleText>
-            </TitleBox>
+            <TitleAfterBox>
+              <Font2>{title ? title[0].replace("제목: ", "") : ""}</Font2>
+            </TitleAfterBox>
             <ExplainBill>
               <BillTitle>법안 설명</BillTitle>
               <Font3 >{title}</Font3>
@@ -130,6 +131,25 @@ const WebChapter13 = () => {
     </>
   );
 };
+
+const TitleAfterBox = styled.div`
+  width: 940px;
+  height: 50px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  flex-shrink: 0;
+  background: rgba(246, 246, 246, 0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sub_text, #464646);
+  font-family: "Pretendard Variable";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+`;
 
 const Font1 = styled.div`
   color: var(--sub_text, #464646);
@@ -187,7 +207,7 @@ const BeforeState = styled(AfterState)`
 `;
 
 const TitleBox = styled.div`
-  width: 900px;
+  width: 1200px;
   height: 50px;
   margin-top: 80px;
   margin-bottom: 80px;
@@ -207,6 +227,9 @@ const TitleBox = styled.div`
 
 const TitleText = styled(Font2)`
   margin-right: 50%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 `;
 
 
@@ -279,6 +302,8 @@ const ExplainBill = styled(Div)`
   background: rgba(198, 198, 198, 0.1);
   backdrop-filter: blur(50px);
   margin-top: -81px;
+  padding-left: 20px;
+  padding-right: 20px;
 `;
 
 const BillTitle = styled(Sequence)`

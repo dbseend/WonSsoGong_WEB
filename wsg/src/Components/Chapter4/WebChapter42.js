@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { billContent } from "../../Recoil/atom"; // atoms 파일 경로에 맞게 수정해주세요.
-import { findBill } from "../../Api/BillAPI";
+import { analyzeBill, findBill } from "../../Api/BillAPI";
 import smallBg from "../../Assets/bg1.svg";
 import left from "../../Assets/Group 169.svg";
 import right from "../../Assets/Group 174.svg";
@@ -23,28 +23,68 @@ const WebChapter42 = () => {
   const [isClicked, setIsClicked] = useState(false);
 
   const [madeBill, setMadeBill] = useRecoilState(billContent);
-  const titleRegex = /제목: (.+?)\n/;
-  const rationaleRegex = /근거: (.+?)\n/;
-  const contentRegex = /내용:\n([\s\S]*)/;
-  const title = madeBill.match(titleRegex);
-  const rationale = madeBill.match(rationaleRegex);
-  const content = madeBill.match(contentRegex);
-
   const [summarizedBill, setSummarizedBill] = useState("");
-  const [keywords, setKeywords] = useState(["쿵짝짝1", "쿵짝짝2", "쿵짝짝3"]);
-  const [topic, setTopic] = useState("");
+  const [title, setTitle] = useState("");
+  const [basis, setBasis] = useState("");
+  const [content, setContent] = useState("");
+  const [keywords, setKeywords] = useState([]);
   const [reason, setReason] = useState("");
   const [description, setDescription] = useState("");
-  const keywordRegex = /핵심 키워드: (.+?)\n/;
-  const topicRegex = /법안의 주제: (.+?)\n/;
-  const reasonRegex = /법안 제안의 이유: (.+?)\n/;
-  const descriptionRegex = /법안 설명: (.+)/;
 
   useEffect(() => {
     findBill(billNo).then((response) => {
       console.log(response);
       setSummarizedBill(response);
+    
+      const titleRegex = /### 제목: (.+?)\n/;
+      const basisRegex = /### 근거:\n([\s\S]+?)\n\n/;
+      const contentRegex = /### 내용:\n([\s\S]+)/;
+    
+      const titleMatch = response.match(titleRegex);
+      const basisMatch = response.match(basisRegex);
+      const contentMatch = response.match(contentRegex);
+    
+      if (titleMatch) {
+        console.log(titleMatch[1]);
+        setTitle(titleMatch[1]);
+      }
+    
+      if (basisMatch) {
+        console.log(basisMatch[1]);
+        setBasis(basisMatch[1]);
+      }
+    
+      if (contentMatch) {
+        console.log(contentMatch[1]);
+        setContent(contentMatch[1]);
+      }
     });
+
+    const summarizeBill = () => {
+      analyzeBill(madeBill).then((response) => {
+        console.log(response); // 예시: 핵심 키워드: 예시1, 예시2, 예시3
+        const keywordRegex = /핵심 키워드: (.+?)\n/; // 키워드 정규식
+        const keywordsMatch = response.match(keywordRegex); // 정규식에 매칭되는 부분 찾기
+        if (keywordsMatch) {
+          // 매칭된 키워드가 있는 경우
+          const extractedKeywords = keywordsMatch[1].split(", "); // 쉼표로 구분된 키워드들을 배열로 분할
+          setKeywords(extractedKeywords); // 키워드 배열 상태 업데이트
+        }
+        setSummarizedBill(response); // 요약된 법안 내용 상태 업데이트
+        const reasonRegex = /법안 제안의 이유: (.+?)\n/;
+        const reasonMatch = response.match(reasonRegex);
+        const reason = reasonMatch ? reasonMatch[1] : "";
+        setReason(reason);
+        const descriptionRegex = /법안 설명: (.+)/;
+        const descriptionMatch = response.match(descriptionRegex);
+        const description = descriptionMatch ? descriptionMatch[1] : "";
+        setDescription(description);
+      });
+    };
+
+    setTimeout(() => {
+      summarizeBill();
+    }, 1000);
   }, []);
 
   const handleClickAfter = () => {
@@ -83,11 +123,11 @@ const WebChapter42 = () => {
             <Sequence>제안 이유</Sequence>
             <RowContainer>
               <LeftCharacter src={left} />
-              <ContentBox>쿵짝짝1</ContentBox>
+              <ContentBox>{reason}</ContentBox>
             </RowContainer>
             <Sequence>제안 내용</Sequence>
             <RowContainer>
-              <ContentBox>쿵짝짝2</ContentBox>
+              <ContentBox>{description}</ContentBox>
               <RightCharacter src={right} />
             </RowContainer>
           </>
@@ -99,7 +139,7 @@ const WebChapter42 = () => {
             <ExplainBill>
               <BillTitle>법안 설명</BillTitle>
               <Font3>{title}</Font3>
-              <Font3>{rationale}</Font3>
+              <Font3>{basis}</Font3>
               <Font3>{content}</Font3>
             </ExplainBill>
           </>

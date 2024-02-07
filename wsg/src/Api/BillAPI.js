@@ -47,10 +47,10 @@ export const analyzeBill = async (madeBill) => {
   const message = `
 
   위 법률안을 분석하여 다음 정보를 리스트 형식으로 제공해주세요:
-  1. 핵심 키워드 3개 (1. 핵심 키워드: 예시1, 예시2, 예시3 이런 형태로 한 줄로 나타내줘)
+  1. 핵심 키워드 3개 (1. 핵심 키워드: 예시1, 예시2, 예시3 무조건 이런 형태로 한 줄로 나타내줘)
   2. 법안의 주제
-  3. 법안 제안의 이유 (법안 제안의 이유: 현행법에는 스마트 시티에서 생성되는 빅데이터의 수집·이용·제공에 대한 규제가 상세히 규정되어 있지 않다. 이런 형태로 한 줄로 설명해줘)
-  4. 법안 설명 (법안 설명: 본 법률은 스마트 시티에서 생성된 데이터를 활용하기 위한 법적 장치를 마련한다. 이런 형태로 한 줄로 설명해줘)
+  3. 법안 제안의 이유 (법안 제안의 이유: 예시4 무조건 이런 형태로 한 줄로 설명해줘)
+  4. 법안 설명 (법안 설명: 예시5 무조건 이런 형태로 한 줄로 설명해줘)
   
   상세하고 명확하게 분석해주세요.
   `;
@@ -96,7 +96,7 @@ export const analyzeBill = async (madeBill) => {
   }
 };
 
-export const debate = async (message) => {
+export const debate = async (message, madeBill) => {
   const apiEndpoint = process.env.REACT_APP_URL;
   const apiKey = process.env.REACT_APP_KEY;
   const apiModel = process.env.REACT_APP_MODEL;
@@ -111,7 +111,7 @@ export const debate = async (message) => {
       body: JSON.stringify({
         model: apiModel,
         messages: [
-          { role: "system", content: debateTemplate },
+          { role: "system", content: madeBill + debateTemplate },
           { role: "user", content: message },
         ],
         max_tokens: 1000,
@@ -284,4 +284,6 @@ Please write all text in Korean.
 
 const debateTemplate = `
 Greetings, user. I am bbgg, an expert in analyzing legislative bills, approached from a somewhat cynical perspective. I provide in-depth analysis based on the legislative bill and statements you provide, discussing the pros and cons, and areas that need improvement. In addition, I offer insights on how the bill can be enhanced and what aspects are already well-addressed. Through this, we aim to facilitate a constructive and productive discussion, our ultimate goal. My cynical viewpoint offers a unique and critical perspective to the discussion. Please note that all responses will be provided in Korean and within 100 characters.
+
+When user asks you the question related to the bill that you made previously, please answer according to that.
 `;

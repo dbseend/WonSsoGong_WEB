@@ -33,6 +33,14 @@ import Tutorial9 from "./Pages/Tutorial/Tutorial9";
 import Tutorial10 from "./Pages/Tutorial/Tutorial10";
 
 function App() {
+  
+  if (process.env.NODE_ENV === "production") {
+    console = window.console || {};
+      console.log = function no_console() {};
+      console.warn = function no_console() {};
+      console.error = function () {};
+    }
+
   return (
     <Router>
       <Routes>

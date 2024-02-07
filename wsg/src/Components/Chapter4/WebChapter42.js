@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { billContent } from "../../Recoil/atom"; // atoms 파일 경로에 맞게 수정해주세요.
-import { createAssistant } from "../../Api/BillAPI";
+import { findBill } from "../../Api/BillAPI";
 import smallBg from "../../Assets/bg1.svg";
 import left from "../../Assets/Group 169.svg";
 import right from "../../Assets/Group 174.svg";
 import GlobalStyle from "../Etc/GlobalStyle";
-import { Div, SmallBackground, Title, Hr, Button } from "../Chapter1/WebChapter12";
+import {
+  Div,
+  SmallBackground,
+  Title,
+  Hr,
+  Button,
+} from "../Chapter1/WebChapter12";
 
 const WebChapter42 = () => {
   const location = useLocation();
@@ -23,7 +29,6 @@ const WebChapter42 = () => {
   const title = madeBill.match(titleRegex);
   const rationale = madeBill.match(rationaleRegex);
   const content = madeBill.match(contentRegex);
-  
 
   const [summarizedBill, setSummarizedBill] = useState("");
   const [keywords, setKeywords] = useState(["쿵짝짝1", "쿵짝짝2", "쿵짝짝3"]);
@@ -35,9 +40,11 @@ const WebChapter42 = () => {
   const reasonRegex = /법안 제안의 이유: (.+?)\n/;
   const descriptionRegex = /법안 설명: (.+)/;
 
-
   useEffect(() => {
-    createAssistant(billNo);
+    findBill(billNo).then((response) => {
+      console.log(response);
+      setSummarizedBill(response);
+    });
   }, []);
 
   const handleClickAfter = () => {
@@ -91,9 +98,9 @@ const WebChapter42 = () => {
             </TitleBox>
             <ExplainBill>
               <BillTitle>법안 설명</BillTitle>
-              <Font3 >{title}</Font3>
-              <Font3 >{rationale}</Font3>
-              <Font3 >{content}</Font3>
+              <Font3>{title}</Font3>
+              <Font3>{rationale}</Font3>
+              <Font3>{content}</Font3>
             </ExplainBill>
           </>
         )}
@@ -119,9 +126,9 @@ const Font2 = styled(Font1)`
 `;
 
 const Font3 = styled(Font1)`
-  color: #FFF;
+  color: #fff;
   font-size: 20px;
-`
+`;
 
 const AfterText = styled.div`
   color: #fff;
@@ -145,7 +152,7 @@ const AfterState = styled.div`
   height: 88px;
   transform: rotate(-90deg);
   flex-shrink: 0;
-  margin-bottom: -60px;
+  margin-bottom: -50px;
   margin-right: 46%;
 
   border-radius: 0px 5px 5px 0px;
@@ -179,7 +186,6 @@ const TitleBox = styled.div`
 const TitleText = styled(Font2)`
   margin-right: 50%;
 `;
-
 
 const Sequence = styled(Font2)`
   font-weight: 700;

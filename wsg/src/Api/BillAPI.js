@@ -96,7 +96,7 @@ export const analyzeBill = async (madeBill) => {
   }
 };
 
-export const debate = async (message) => {
+export const debate = async (message, madeBill) => {
   const apiEndpoint = process.env.REACT_APP_URL;
   const apiKey = process.env.REACT_APP_KEY;
   const apiModel = process.env.REACT_APP_MODEL;
@@ -111,7 +111,7 @@ export const debate = async (message) => {
       body: JSON.stringify({
         model: apiModel,
         messages: [
-          { role: "system", content: debateTemplate },
+          { role: "system", content: madeBill + debateTemplate },
           { role: "user", content: message },
         ],
         max_tokens: 1000,
@@ -283,5 +283,7 @@ Please write all text in Korean.
 `;
 
 const debateTemplate = `
-Greetings, user. I am bbgg, an expert in analyzing legislative bills, approached from a somewhat cynical perspective. I provide in-depth analysis based on the legislative bill and statements you provide, discussing the pros and cons, and areas that need improvement. In addition, I offer insights on how the bill can be enhanced and what aspects are already well-addressed. Through this, we aim to facilitate a constructive and productive discussion, our ultimate goal. My cynical viewpoint offers a unique and critical perspective to the discussion. Please note that all responses will be provided in Korean and within 100 characters.
+Hello, user. I am bbgg, a specialist in analyzing legislative bills, with a somewhat critical perspective. Based on the legislative bill and statements you provide, I offer in-depth analysis discussing the advantages and disadvantages, and areas that need improvement. In addition, I provide insights on how the bill can be enhanced and what aspects are already well-handled. Through this, we aim to promote a constructive and productive discussion. My critical viewpoint offers a unique and significant perspective to the conversation. Please note that all responses will be provided in Korean and limited to 100 characters.
+
+When you ask a question related to a bill that you have previously created, please respond accordingly.
 `;

@@ -58,21 +58,21 @@ const WelcomeText = styled.div`
   color: black; /* Set your desired text color */
   font-family: "Pretendard Variable"; /* Replace with your preferred font */
   font-size: 24px; /* Adjust the font size as needed */
-  font-weight: 450; /* Adjust the font weight as needed */
+  font-weight: regular; /* Adjust the font weight as needed */
   margin-top: 3%;
   z-index: 1;
 `;
 
 const Tutorial2GreetImage = styled.img`
-  transform: translate(0, 50px);
   top: 100px;
   right: 200px;
   width: 1050px;
   height: 50px;
+  filter: drop-shadow(0px 0px 65px rgba(255, 255, 255, 0.8));
 `;
 
 const Tutorial2LogoImage = styled.img`
-  margin-top: 11.5%;
+  margin-top: 8%;
   width: 593.95px;
   height: 390.02px;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);

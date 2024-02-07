@@ -36,7 +36,7 @@ const WebChapter12 = () => {
       setTimeout(() => {
         //5초 대기(답변 생성 예상 시간) 후 페이지 이동
         navigate("/chapter1/3");
-      }, 8 * 1000);
+      }, 10 * 1000);
     }
   };
 

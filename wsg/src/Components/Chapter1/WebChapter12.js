@@ -16,7 +16,6 @@ const WebChapter12 = () => {
   const [madeBill, setMadeBill] = useRecoilState(billContent);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const types = ["재난", "안전", "도시", "교통", "주민", "법률"];
-
   const navigate = useNavigate();
 
   const addBill = async (e) => {

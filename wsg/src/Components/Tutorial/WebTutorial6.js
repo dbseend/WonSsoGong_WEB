@@ -37,15 +37,14 @@ const WebTutorial6 = () => {
 
 
 const Tutorial6GreetImage = styled.img`
-  transform: translate(0, -10px);
-  top: 100px;
-  right: 200px;
-  width: 1050px;
-  height: 50px;
+top: 100px;
+right: 200px;
+width: 1050px;
+height: 50px;
 `;
 
 const Tutorial6LogoImage = styled.img`
-margin-top: 8%;
+margin-top: 3%;
   width: 612px;
   height: 408px;
 `;
@@ -56,5 +55,6 @@ height: 367px;
 z-index: 1000;
 margin-top: -30%;
 margin-left: -65%;
+margin-bottom: -2.5%;
 `;
 export default WebTutorial6;

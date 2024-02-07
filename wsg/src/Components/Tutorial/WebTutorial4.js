@@ -33,7 +33,7 @@ const WebTutorial4 = () => {
           </BoldText>{" "}
           <br />
           중요한 기관입니다. 국회는 <BoldText>국가의 정책 방향을 결정</BoldText>
-          하고, <br />
+          하고,<br />
           <BoldText>국민들의 다양한 의견을 수렴</BoldText>하여 나라를 향상시키기
           위해 노력하죠.
         </WelcomeText>
@@ -44,15 +44,14 @@ const WebTutorial4 = () => {
 };
 
 const Tutorial4GreetImage = styled.img`
-  transform: translate(0, -10px);
-  top: 100px;
-  right: 200px;
-  width: 1050px;
-  height: 50px;
+top: 100px;
+right: 200px;
+width: 1050px;
+height: 50px;
 `;
 
 const Tutorial4LogoImage = styled.img`
-  margin-top: 7.5%;
+  margin-top: 3%;
   width: 756px;
   height: 390px;
 `;

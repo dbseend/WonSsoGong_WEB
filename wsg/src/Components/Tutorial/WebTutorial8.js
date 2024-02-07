@@ -39,11 +39,11 @@ const Tutorial8GreetImage = styled.img`
 `;
 
 const Tutorial8LogoImage = styled.img`
-margin-top: 4%;
+margin-top: 2%;
   width: 939.68px;
   height: 433.47px;
   margin-left:10%;
-  margin-bottom: 4%;
+  margin-bottom: 2%;
 `;
 
 export default WebTutorial8;

@@ -71,7 +71,7 @@ const Overlay = styled.div`
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.10);
   backdrop-filter: blur(25px);
   opacity: 0.9;
-  margin-top: 8%; /* Adjust the top position according to your layout */
+  margin-top: 5%; /* Adjust the top position according to your layout */
   margin-right: 0%; /* Center horizontally */
 `;
 
@@ -84,7 +84,7 @@ const Div = styled.div`
 const Button = styled.div`
   bottom: 150px;
   left: 1800px;
-  transform: translate(220%, -200%);
+  transform: translate(220%, -190%);
   width: 151px;
   height: 29px;
   flex-shrink: 0;
@@ -108,11 +108,10 @@ const Button = styled.div`
 `;
 
 const Tutorial5GreetImage = styled.img`
-    transform: translate(-15px, -10px);
-    top: 100px;
-    right: 200px;
-    width: 1050px;
-    height: 50px;
+top: 100px;
+right: 200px;
+width: 1050px;
+height: 50px;
 `;
 
 const RectArea = styled.div`

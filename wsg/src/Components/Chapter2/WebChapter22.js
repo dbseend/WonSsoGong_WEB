@@ -18,8 +18,10 @@ import { useRecoilState } from "recoil";
 import { debateContents } from "../../Recoil/atom";
 import TimerVector from "../../Assets/Timer.svg";
 import { useNavigate } from "react-router-dom";
+import { billContent } from "../../Recoil/atom"; // atoms 파일 경로에 맞게 수정해주세요.
 
 const WebChapter22 = () => {
+  const [madeBill] = useRecoilState(billContent);
   const [messages, setMessages] = useState([]);
   const [aiMessages, setAiMessages] = useState([]);
   const [userInput, setUserInput] = useState("");
@@ -64,6 +66,9 @@ const WebChapter22 = () => {
   };
 
   useEffect(() => {
+    console.log (madeBill);
+  }, []);
+  useEffect(() => {
     scrollToBottom();
   }, [conversation]);
 
@@ -106,7 +111,7 @@ const WebChapter22 = () => {
         const userMessage = { text: userInput, sender: "user" };
         setMessages([...messages, userMessage]);
 
-        const answer = await debate(userInput);
+        const answer = await debate(madeBill, userInput);
         const aiMessage = { text: answer, sender: "Ai" };
 
         setAiAnswer(answer);

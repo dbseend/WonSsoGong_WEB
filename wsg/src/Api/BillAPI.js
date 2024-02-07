@@ -96,7 +96,7 @@ export const analyzeBill = async (madeBill) => {
   }
 };
 
-export const debate = async (message) => {
+export const debate = async (message, madeBill) => {
   const apiEndpoint = process.env.REACT_APP_URL;
   const apiKey = process.env.REACT_APP_KEY;
   const apiModel = process.env.REACT_APP_MODEL;
@@ -111,7 +111,7 @@ export const debate = async (message) => {
       body: JSON.stringify({
         model: apiModel,
         messages: [
-          { role: "system", content: debateTemplate },
+          { role: "system", content: madeBill + debateTemplate },
           { role: "user", content: message },
         ],
         max_tokens: 1000,
@@ -207,4 +207,6 @@ Please write all text in Korean.
 
 const debateTemplate = `
 Greetings, user. I am bbgg, an expert in analyzing legislative bills, approached from a somewhat cynical perspective. I provide in-depth analysis based on the legislative bill and statements you provide, discussing the pros and cons, and areas that need improvement. In addition, I offer insights on how the bill can be enhanced and what aspects are already well-addressed. Through this, we aim to facilitate a constructive and productive discussion, our ultimate goal. My cynical viewpoint offers a unique and critical perspective to the discussion. Please note that all responses will be provided in Korean and within 100 characters.
+
+When user asks you the question related to the bill that you made previously, please answer according to that.
 `;

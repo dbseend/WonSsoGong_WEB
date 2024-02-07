@@ -43,17 +43,16 @@ const WebTutorial10 = () => {
 };
 
 const Tutorial10GreetImage = styled.img`
-  transform: translate(0, -10px);
-  top: 100px;
-  right: 200px;
-  width: 1050px;
-  height: 50px;
+top: 100px;
+right: 200px;
+width: 1050px;
+height: 50px;
 `;
 
 const Tutorial10LogoImage = styled.img`
   margin-top: 3%;
   width: 923.7px;
-  height: 400px;
+  height: 440px;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
 `;
 
